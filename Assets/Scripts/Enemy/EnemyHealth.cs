@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour {
 	void Update () {
         AddjustCurrentHealth(0);
 
+		if (curHealth <= 0) 
+		{
+			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+		}
+
 
 	}
 

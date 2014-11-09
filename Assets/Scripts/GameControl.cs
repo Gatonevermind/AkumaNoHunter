@@ -16,6 +16,7 @@ public class GameControl : MonoBehaviour {
         player.AddComponent<CharacterController>();
         player.AddComponent("PlayerMovement");
         player.AddComponent("PlayerHealth");
+		player.AddComponent ("PlayerAttack");
 
         Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;
         
