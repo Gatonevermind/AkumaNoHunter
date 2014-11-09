@@ -4,8 +4,8 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8.0F;
-    public float jumpSpeed = 8.0F;
-    public float gravity = 9.81F;
+    public float jumpSpeed = 12F;
+    public float gravity = 20F;
 	public float sprint = 14.0F;
 	public float dashTimer;
 	public float coolDown;
