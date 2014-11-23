@@ -7,3 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/Locomotion.unity
+  - enabled: 0
+    path: Assets/Scenes/Alpha.unity

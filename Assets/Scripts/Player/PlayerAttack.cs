@@ -15,9 +15,11 @@ using System.Collections;
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject go = GameObject.FindGameObjectWithTag("Enemy");
+		
+       /*
+        GameObject go = GameObject.FindGameObjectWithTag("Enemy");
 		target = go.transform;
-
+        */
 		if(target.renderer.material.color == Color.red)
 		{
 			timecounter += 1;

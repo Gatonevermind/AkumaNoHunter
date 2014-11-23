@@ -6,6 +6,7 @@ public class GameControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        
         GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 
         player.name = "Player";
@@ -17,6 +18,7 @@ public class GameControl : MonoBehaviour {
         player.AddComponent("PlayerMovement");
         player.AddComponent("PlayerHealth");
 		player.AddComponent ("PlayerAttack");
+        
 
         Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;
         
