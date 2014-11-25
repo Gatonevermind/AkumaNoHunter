@@ -12,7 +12,7 @@ public class GameControl : MonoBehaviour {
         player.name = "Player";
         player.tag = "Player";
 
-        player.transform.position = new Vector3(0, 2, 0);
+        player.transform.position = new Vector3(-64, 3, -153);
 
         player.AddComponent<CharacterController>();
         player.AddComponent("PlayerMovement");
