@@ -2,25 +2,25 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
-{
+{ 
     public float speed = 8.0F;
     public float jumpSpeed = 12F;
     public float gravity = 20F;
 	public float sprint = 14.0F;
+    public float sprintLateral = 11.0F;
+    public float lateral = 6.0F;
+    public float back = 4.0F;
 	public float dashTimer;
 	public float coolDown;
 	public float dash = 25.0F;
 
-
-    
-   
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
     float acceleration = 0.2F;
    
     void Start()
 	{
-		dashTimer = 0;
+        dashTimer = 0;
 		coolDown = 0.7f;
 	}
     
@@ -36,8 +36,6 @@ public class PlayerMovement : MonoBehaviour
         // Calculates the module of the speed
         float root = Mathf.Sqrt(speed * speed / 2);
 
-		// Calculates the module of the sprint
-		float rootSprint = Mathf.Sqrt(sprint * sprint / 2);
 
         // Acceleration and deceleration
         interpolateDirection = new Vector3(Mathf.Lerp(interpolateDirection.x, objectiveDirection.x, acceleration),
@@ -45,17 +43,76 @@ public class PlayerMovement : MonoBehaviour
                                             Mathf.Lerp(interpolateDirection.z, objectiveDirection.z, acceleration));
 
         // Calculates the direction
-        HorizontalMovement(speed, sprint, root, rootSprint);
+        HorizontalMovement(speed, root);
 
 		if (dashTimer > 0)
 						dashTimer -= Time.deltaTime;
 		if (dashTimer < 0)
 						dashTimer = 0;
-		/*if ((Input.GetKey (KeyCode.C)) && (dashTimer == 0))
-		{
-			objectiveDirection = new Vector3((objectiveDirection.x)*10, 0, (objectiveDirection.z)*10);
-			dashTimer = coolDown;
-		}*/
+
+        //sprint
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+
+            if (Input.GetKey(KeyCode.W))
+                if (speed < sprint)
+                {
+                    speed++;
+                }
+                else if (speed >= sprint)
+                {
+                    speed = sprint;
+                }
+            
+            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                if (speed < sprintLateral)
+                {
+                    speed++;
+                }
+                else if (speed >= sprintLateral)
+                {
+                    speed = sprintLateral;
+                }
+
+
+             if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+                 if (speed < sprintLateral)
+                {
+                    speed++;
+                }
+                else if (speed >= sprintLateral)
+                {
+                    speed = sprintLateral;
+                }
+
+
+        }
+        else speed = 8;
+
+        if(Input.GetKey(KeyCode.S))
+            {
+                if (speed > back)
+                {
+                    speed--;
+                }
+                else if (speed <= back)
+                {
+                    speed = back;
+                }
+                
+                if (Input.GetKey(KeyCode.D))
+                    {
+                        if (speed > back)
+                        {
+                            speed--;
+                        }
+                        else if (speed <= back)
+                        {
+                            speed = back;
+                        }
+                    }
+            }
+
         // Jump/Dash
         if (controller.isGrounded)
         {
@@ -63,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space))
 			{
 				objectiveDirection = new Vector3(objectiveDirection.x, jumpSpeed, objectiveDirection.z);
+               
 			}
 
 			//dash
@@ -97,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private void HorizontalMovement(float speed, float sprint, float root, float rootSprint)
+    private void HorizontalMovement(float speed, float root)
     {
         // Assign a direction depending on the input introduced
 		//NORMAL MOVEMENT
@@ -146,57 +204,6 @@ public class PlayerMovement : MonoBehaviour
             else
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
         	}
-
-		//SPRINT
-		if (Input.GetKey (KeyCode.LeftShift))
-		{
-			if ((Input.GetKey (KeyCode.W)) && (Input.GetKey (KeyCode.A)))
-			{
-				objectiveDirection = new Vector3 (-rootSprint, objectiveDirection.y, rootSprint);
-				transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-			}
-			else if ((Input.GetKey (KeyCode.W)) && (Input.GetKey (KeyCode.D)))
-			{
-				objectiveDirection = new Vector3 (rootSprint, objectiveDirection.y, rootSprint);
-				transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-			}
-			else if ((Input.GetKey (KeyCode.S)) && (Input.GetKey (KeyCode.A)))
-			{
-				objectiveDirection = new Vector3 (-rootSprint, objectiveDirection.y, -rootSprint);
-				transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-			}
-			else if ((Input.GetKey (KeyCode.S)) && (Input.GetKey (KeyCode.D)))
-			{
-				objectiveDirection = new Vector3 (rootSprint, objectiveDirection.y, -rootSprint);
-				transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-			}
-			else
-			{
-				if (Input.GetKey (KeyCode.W)) 
-				{
-					objectiveDirection = new Vector3 (0, objectiveDirection.y, sprint);
-					transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-				}
-				else if (Input.GetKey (KeyCode.S)) 
-				{
-					objectiveDirection = new Vector3 (0, objectiveDirection.y, -sprint);
-					transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-				}
-				else if (Input.GetKey (KeyCode.A)) 
-				{
-					objectiveDirection = new Vector3 (-sprint, objectiveDirection.y, 0);
-					transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-				}
-				else if (Input.GetKey (KeyCode.D)) 
-				{
-					objectiveDirection = new Vector3 (sprint, objectiveDirection.y, 0);
-					transform.eulerAngles = new Vector3 (0, Camera.main.transform.eulerAngles.y, 0);
-				}
-			}
-			
-		}
-
-
 
         //transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 

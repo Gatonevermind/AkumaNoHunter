@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9439c75b3dd16cd4b98c49068dbd3f37
+guid: 083cd39949ef9944a956a37056da99f6
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -42,11 +42,11 @@ ModelImporter:
     100072: Bip001 Spine
     100074: Bip001 Spine1
     100076: Bip001 Spine2
-    100078: Object001
-    100080: Pants
-    100082: Plane003
-    100084: Plane004
-    100086: //RootNode
+    100078: Cabeza
+    100080: Katana
+    100082: Samurai
+    100084: //RootNode
+    100086: Vaina
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -86,23 +86,23 @@ ModelImporter:
     400072: Bip001 Spine
     400074: Bip001 Spine1
     400076: Bip001 Spine2
-    400078: Object001
-    400080: Pants
-    400082: Plane003
-    400084: Plane004
-    400086: //RootNode
-    2300000: Plane003
-    2300002: Plane004
-    3300000: Plane003
-    3300002: Plane004
-    4300000: Object001
-    4300002: Pants
-    4300004: Plane004
-    4300006: Plane003
+    400078: Cabeza
+    400080: Katana
+    400082: Samurai
+    400084: //RootNode
+    400086: Vaina
+    2300000: Katana
+    2300002: Vaina
+    3300000: Katana
+    3300002: Vaina
+    4300000: Samurai
+    4300002: Vaina
+    4300004: Katana
+    4300006: Cabeza
     7400000: Take 001
     9500000: //RootNode
-    13700000: Object001
-    13700002: Pants
+    13700000: Cabeza
+    13700002: Samurai
   materials:
     importMaterials: 1
     materialName: 0
