@@ -5,16 +5,23 @@ public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
     public int curHealth = 100;
 
+    public string level;
+
     public float healthBarLenght;
 
 	// Use this for initialization
 	void Start () {
         healthBarLenght = Screen.width / 2;
+
+        level = "Alpha";
 	}
 	
 	// Update is called once per frame
 	void Update () {
         AddjustCurrentHealth(0);
+
+        if (curHealth <= 0)
+            Application.LoadLevel(level);
 
 
 	}

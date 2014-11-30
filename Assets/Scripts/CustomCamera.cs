@@ -51,7 +51,7 @@ public class CustomCamera : MonoBehaviour
         transform.position = position;
 
         // IS VIEW BLOCKED? 
-        /*RaycastHit hit;
+        RaycastHit hit;
         Vector3 trueTargetPosition = Target.transform.position - new Vector3(0, -targetHeight, 0);
         // Cast the line to check: 
         if (Physics.Linecast(trueTargetPosition, transform.position, out hit, collisionMask))
@@ -61,7 +61,7 @@ public class CustomCamera : MonoBehaviour
             // Finally, rePOSITION the CAMERA: 
             position = Target.position - (rotation * Vector3.forward * tempDistance + new Vector3(0, -targetHeight, 0));
             transform.position = position;
-        }*/
+        }
     }
 
     static float ClampAngle(float angle, float min, float max)
@@ -74,3 +74,4 @@ public class CustomCamera : MonoBehaviour
 
     }
 }
+

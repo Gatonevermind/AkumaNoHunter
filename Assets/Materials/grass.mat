@@ -39,6 +39,10 @@ Material:
         first:
           name: _Outline
         second: .00499999989
+      data:
+        first:
+          name: _Shininess
+        second: .078125
     m_Colors:
       data:
         first:
@@ -48,3 +52,7 @@ Material:
         first:
           name: _OutlineColor
         second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .720588207, g: .720588207, b: .720588207, a: 1}
