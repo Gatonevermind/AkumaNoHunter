@@ -5,7 +5,7 @@ public class CustomCamera : MonoBehaviour
 {
     public Transform Target;
     float targetHeight = 0.75f;
-    float distance = 1.0f;
+    float distance = 1.3f;
     float maxDistance = 3.5f;
     float minDistance = 1.0f;
     float xSpeed = 250.0f;
