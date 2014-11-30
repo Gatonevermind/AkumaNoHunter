@@ -4,10 +4,10 @@ using System.Collections;
 public class CustomCamera : MonoBehaviour
 {
     public Transform Target;
-    float targetHeight = 2.0f;
-    float distance = 8.8f;
-    float maxDistance = 10f;
-    float minDistance = 0.5f;
+    float targetHeight = 0.75f;
+    float distance = 1.0f;
+    float maxDistance = 3.5f;
+    float minDistance = 1.0f;
     float xSpeed = 250.0f;
     float ySpeed = 120.0f;
     float yMinLimit = -40f;
@@ -51,7 +51,7 @@ public class CustomCamera : MonoBehaviour
         transform.position = position;
 
         // IS VIEW BLOCKED? 
-        RaycastHit hit;
+        /*RaycastHit hit;
         Vector3 trueTargetPosition = Target.transform.position - new Vector3(0, -targetHeight, 0);
         // Cast the line to check: 
         if (Physics.Linecast(trueTargetPosition, transform.position, out hit, collisionMask))
@@ -61,7 +61,7 @@ public class CustomCamera : MonoBehaviour
             // Finally, rePOSITION the CAMERA: 
             position = Target.position - (rotation * Vector3.forward * tempDistance + new Vector3(0, -targetHeight, 0));
             transform.position = position;
-        }
+        }*/
     }
 
     static float ClampAngle(float angle, float min, float max)

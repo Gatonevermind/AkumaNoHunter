@@ -7,17 +7,17 @@ public class GameControl : MonoBehaviour {
 	void Start () 
     {
         
-        GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 
         player.name = "Player";
         player.tag = "Player";
 
-        player.transform.position = new Vector3(-64, 3, -153);
+        player.transform.position = new Vector3(15, 2, 55);
 
         player.AddComponent<CharacterController>();
         player.AddComponent("PlayerMovement");
         player.AddComponent("PlayerHealth");
-		player.AddComponent ("PlayerAttack");
+		//player.AddComponent ("PlayerAttack");
         
 
         Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;

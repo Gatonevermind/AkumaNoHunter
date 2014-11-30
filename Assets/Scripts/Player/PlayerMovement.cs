@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 { 
-    public float speed = 8.0F;
-    public float jumpSpeed = 12F;
-    public float gravity = 20F;
-	public float sprint = 14.0F;
-    public float sprintLateral = 11.0F;
+    public float speed = 4.0F;
+    public float jumpSpeed = 5F;
+    public float gravity = 12F;
+	public float sprint = 5.0F;
+    public float sprintLateral = 4.5F;
     public float lateral = 6.0F;
     public float back = 4.0F;
 	public float dashTimer;
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-        else speed = 8;
+        else speed = 4;
 
         if(Input.GetKey(KeyCode.S))
             {
