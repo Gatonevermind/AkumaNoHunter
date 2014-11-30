@@ -32,10 +32,6 @@ Material:
         first:
           name: _Outline
         second: .00499999989
-      data:
-        first:
-          name: _LineWidth
-        second: .100000001
     m_Colors:
       data:
         first:
@@ -45,11 +41,3 @@ Material:
         first:
           name: _OutlineColor
         second: {r: 0, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _LineColor
-        second: {r: 0, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _GridColor
-        second: {r: 1, g: 1, b: 1, a: 0}
