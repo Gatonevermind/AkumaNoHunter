@@ -56,8 +56,7 @@ public class EnemyAI : MonoBehaviour {
 		if(attackTimer < 0)
 			attackTimer = 0;
 		
-		if(attackTimer == 0) 
-        {
+		if(attackTimer == 0) {
 			Attack();
 			attackTimer = coolDown;
 		}
@@ -76,8 +75,7 @@ public class EnemyAI : MonoBehaviour {
 		
 	}
 
-	private void Attack() 
-    {
+	private void Attack() {
 		float distance = Vector3.Distance(target.transform.position, transform.position);
 		
 		Vector3 dir = (target.transform.position - transform.position).normalized;
