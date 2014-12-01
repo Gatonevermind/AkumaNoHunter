@@ -6,12 +6,15 @@ using System.Collections;
 	public float coolDown;
 	public int timecounter = 0;
 
+	private Animator animator;
+
 	
 	// Use this for initialization
 	void Start () {
 
 		attackTimer = 0;
-		coolDown = 0.5f;
+		coolDown = 0.7f;
+		animator = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -33,15 +36,21 @@ using System.Collections;
 
 
 		if(attackTimer > 0)
-			attackTimer -= Time.deltaTime;
-		
+			{
+				animator.SetBool("Attack", false);
+				attackTimer -= Time.deltaTime;
+			}
 		if(attackTimer < 0)
 			attackTimer = 0;
 		
-		if(Input.GetKeyUp(KeyCode.Mouse0)) 
+
+		if(attackTimer == 0) 
         {
-			if(attackTimer == 0) 
+
+			if(Input.GetKeyUp(KeyCode.Mouse0)) 
+
             {
+				animator.SetBool ("Attack", true);
 				Attack();
 				attackTimer = coolDown;
 			}
@@ -62,6 +71,7 @@ using System.Collections;
 				EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
 				eh.AddjustCurrentHealth(-20);
 				target.renderer.material.color = Color.red;
+
 			}
 		}
 	}

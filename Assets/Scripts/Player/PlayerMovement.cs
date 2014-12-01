@@ -77,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("Dash", false);
                 animator.SetBool("DashBack", false);
+				animator.SetBool("DashRight", false);
+				animator.SetBool("DashLeft", false);
                 dashTimer = 0;
             }
 
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
                         speed = sprint;
                     }
 
-                if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                /*if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
                     if (speed < sprintLateral)
                     {
                         speed++;
@@ -128,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
                     else if (speed >= sprintLateral)
                     {
                         speed = sprintLateral;
-                    }
+                    }*/
 
 
 
@@ -178,8 +180,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if ((Input.GetKey(KeyCode.C)) && (dashTimer == 0))
                     {
-
-                        objectiveDirection = new Vector3((objectiveDirection.x) * 10.6f, 0, (objectiveDirection.z) * 10.6f);
+						animator.SetBool("Dash", true);
+                        objectiveDirection = new Vector3((objectiveDirection.x) * 5, 0, (objectiveDirection.z) * 5);
                         dashTimer = coolDown;
                     }
                 }
@@ -191,15 +193,27 @@ public class PlayerMovement : MonoBehaviour
                         if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.W)))
                         {
                             animator.SetBool("Dash", true);
-                            objectiveDirection = new Vector3((objectiveDirection.x) * 10.6f, 0, (objectiveDirection.z) * 10.6f);
+                            objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
                             dashTimer = coolDown;
                         }
                         else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.S)))
                         {
                             animator.SetBool("DashBack", true);
-                            objectiveDirection = new Vector3((objectiveDirection.x) * 20, 0, (objectiveDirection.z) * 20);
+                            objectiveDirection = new Vector3((objectiveDirection.x) * 30, 0, (objectiveDirection.z) * 30);
                             dashTimer = coolDown;
                         }
+						else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.A)))
+						{
+							animator.SetBool("DashLeft", true);
+							objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
+							dashTimer = coolDown;
+						}
+						else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.D)))
+						{
+							animator.SetBool("DashRight", true);
+							objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
+							dashTimer = coolDown;
+						}
                     }
                 }
 
@@ -262,12 +276,13 @@ public class PlayerMovement : MonoBehaviour
 		//NORMAL MOVEMENT
 		if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
 		{
-			
+
 			objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
 			transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 		}
 		else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
 		{
+
 			objectiveDirection = new Vector3(root, objectiveDirection.y, root);
 			transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 		}
@@ -285,6 +300,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.D))
 			{
+				animator.SetBool ("RunDiaRight", false);
 				animator.SetBool ("RunRight", true);
 				animator.SetBool ("Run", false);
 				animator.SetBool ("Back", false);
@@ -297,6 +313,7 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool ("RunLeft", true);
 				animator.SetBool ("Run", false);
 				animator.SetBool ("Back", false);
+				animator.SetBool ("RunDiaRight", false);
 				objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
@@ -305,6 +322,8 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool ("Run", true);
 				animator.SetBool ("RunLeft", false);
 				animator.SetBool ("RunRight", false);
+				animator.SetBool ("RunDiaRight", false);
+				animator.SetBool ("Back", false);
 				objectiveDirection = new Vector3(0, objectiveDirection.y, speed);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
@@ -314,11 +333,13 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool ("Run", false);
 				animator.SetBool ("RunRight", false);
 				animator.SetBool ("RunLeft", false);
+				animator.SetBool ("RunDiaRight", false);
 				objectiveDirection = new Vector3(0, objectiveDirection.y, -back);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
 			else
 			{
+				animator.SetBool ("RunDiaRight", false);
 				animator.SetBool ("Run", false);
 				animator.SetBool ("Back", false);
 				animator.SetBool ("RunLeft", false);
