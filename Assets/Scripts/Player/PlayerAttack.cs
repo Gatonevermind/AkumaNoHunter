@@ -5,21 +5,22 @@ using System.Collections;
 	public float attackTimer;
 	public float coolDown;
 	public int timecounter = 0;
+
 	
 	// Use this for initialization
 	void Start () {
 
 		attackTimer = 0;
-		coolDown = 2.0f;
+		coolDown = 0.5f;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-       /*
+	void Update () 
+    {
+
         GameObject go = GameObject.FindGameObjectWithTag("Enemy");
 		target = go.transform;
-        */
+     
 		if(target.renderer.material.color == Color.red)
 		{
 			timecounter += 1;
@@ -37,8 +38,10 @@ using System.Collections;
 		if(attackTimer < 0)
 			attackTimer = 0;
 		
-		if(Input.GetKeyUp(KeyCode.Mouse0)) {
-			if(attackTimer == 0) {
+		if(Input.GetKeyUp(KeyCode.Mouse0)) 
+        {
+			if(attackTimer == 0) 
+            {
 				Attack();
 				attackTimer = coolDown;
 			}
@@ -46,14 +49,15 @@ using System.Collections;
 		
 	}
 	
-	private void Attack() {
+	private void Attack() 
+    {
 		float distance = Vector3.Distance(target.transform.position, transform.position);
 		
 		Vector3 dir = (target.transform.position - transform.position).normalized;
 		
 		float direction = Vector3.Dot(dir, transform.forward);
 		
-		if(distance < 3f) {
+		if(distance < 2f) {
 			if(direction > 0) {
 				EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
 				eh.AddjustCurrentHealth(-20);

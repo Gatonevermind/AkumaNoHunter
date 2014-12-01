@@ -9,19 +9,46 @@ public class PlayerHealth : MonoBehaviour {
 
     public float healthBarLenght;
 
+    public bool invincible;
+    public float active = 0;
+
 	// Use this for initialization
 	void Start () {
         healthBarLenght = Screen.width / 2;
 
         level = "Alpha";
+
+        invincible = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         AddjustCurrentHealth(0);
 
-        if (curHealth <= 0)
-            Application.LoadLevel(level);
+        if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            if (invincible == true)
+            {
+                invincible = false;
+                active = 0;
+            }
+            else if (invincible == false)
+            {
+                invincible = true;
+                active = 1;
+            }
+        }
+        
+        if (invincible == false)
+        {
+            if (curHealth <= 0)
+                Application.LoadLevel(level);
+        }
+        else if (invincible == true)
+        {
+            curHealth = 100;
+        }
+
 
 
 	}

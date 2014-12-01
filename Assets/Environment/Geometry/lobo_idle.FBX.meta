@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: 26bc2d1d89680384c82008440be0c197
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Lobo
+    100002: //RootNode
+    100004: Panther
+    100006: PantherHead
+    100008: PantherLLeg1
+    100010: PantherLLeg1 1
+    100012: PantherLLeg2
+    100014: PantherLLeg2 1
+    100016: PantherLLegCollarbone
+    100018: PantherLLegDigit11
+    100020: PantherLLegDigit11 1
+    100022: PantherLLegDigit12
+    100024: PantherLLegDigit12 1
+    100026: PantherLLegPalm
+    100028: PantherLLegPalm 1
+    100030: PantherLLegPlatform
+    100032: PantherLLegPlatform 1
+    100034: PantherNeck1
+    100036: PantherNeck2
+    100038: PantherNeck3
+    100040: PantherNeck4
+    100042: PantherNeck5
+    100044: PantherPelvis
+    100046: PantherRibcage
+    100048: PantherRLeg1
+    100050: PantherRLeg1 1
+    100052: PantherRLeg2
+    100054: PantherRLeg2 1
+    100056: PantherRLegDigit11
+    100058: PantherRLegDigit11 1
+    100060: PantherRLegDigit12
+    100062: PantherRLegDigit12 1
+    100064: PantherRLegPalm
+    100066: PantherRLegPalm 1
+    100068: PantherRLegPlatform
+    100070: PantherRLegPlatform 1
+    100072: PantherRLegShoulderblade
+    100074: PantherSpine1
+    100076: PantherSpine2
+    100078: PantherSpine3
+    100080: PantherSpine4
+    100082: PantherSpine5
+    100084: PantherSpine6
+    100086: PantherTail1
+    100088: PantherTail2
+    100090: PantherTail3
+    100092: PantherTail4
+    100094: PantherTail5
+    100096: PantherTail6
+    100098: PantherTail7
+    400000: Lobo
+    400002: //RootNode
+    400004: Panther
+    400006: PantherHead
+    400008: PantherLLeg1
+    400010: PantherLLeg1 1
+    400012: PantherLLeg2
+    400014: PantherLLeg2 1
+    400016: PantherLLegCollarbone
+    400018: PantherLLegDigit11
+    400020: PantherLLegDigit11 1
+    400022: PantherLLegDigit12
+    400024: PantherLLegDigit12 1
+    400026: PantherLLegPalm
+    400028: PantherLLegPalm 1
+    400030: PantherLLegPlatform
+    400032: PantherLLegPlatform 1
+    400034: PantherNeck1
+    400036: PantherNeck2
+    400038: PantherNeck3
+    400040: PantherNeck4
+    400042: PantherNeck5
+    400044: PantherPelvis
+    400046: PantherRibcage
+    400048: PantherRLeg1
+    400050: PantherRLeg1 1
+    400052: PantherRLeg2
+    400054: PantherRLeg2 1
+    400056: PantherRLegDigit11
+    400058: PantherRLegDigit11 1
+    400060: PantherRLegDigit12
+    400062: PantherRLegDigit12 1
+    400064: PantherRLegPalm
+    400066: PantherRLegPalm 1
+    400068: PantherRLegPlatform
+    400070: PantherRLegPlatform 1
+    400072: PantherRLegShoulderblade
+    400074: PantherSpine1
+    400076: PantherSpine2
+    400078: PantherSpine3
+    400080: PantherSpine4
+    400082: PantherSpine5
+    400084: PantherSpine6
+    400086: PantherTail1
+    400088: PantherTail2
+    400090: PantherTail3
+    400092: PantherTail4
+    400094: PantherTail5
+    400096: PantherTail6
+    400098: PantherTail7
+    4300000: Lobo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Lobo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
