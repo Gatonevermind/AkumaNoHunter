@@ -4,8 +4,8 @@ using System.Collections;
 public class CustomCamera : MonoBehaviour
 {
     public Transform Target;
-    float targetHeight = 0.75f;
-    float distance = 1.3f;
+    float targetHeight = 0.8f;
+    float distance = 1.5f;
     float maxDistance = 3.5f;
     float minDistance = 1.0f;
     float xSpeed = 250.0f;
@@ -52,7 +52,7 @@ public class CustomCamera : MonoBehaviour
 
         // IS VIEW BLOCKED? 
         RaycastHit hit;
-        Vector3 trueTargetPosition = Target.transform.position - new Vector3(0, -targetHeight, 0);
+        Vector3 trueTargetPosition = Target.transform.position - new Vector3(0.15f, -targetHeight, 0);
         // Cast the line to check: 
         if (Physics.Linecast(trueTargetPosition, transform.position, out hit, collisionMask))
         {

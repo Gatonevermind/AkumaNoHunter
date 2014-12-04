@@ -37,7 +37,7 @@ public class NavigationScript : MonoBehaviour {
             Attack();
             attackTimer = coolDown;
         }
-
+		/*
         //color para que sea mas visual
         if (target.renderer.material.color == Color.red)
         {
@@ -48,7 +48,7 @@ public class NavigationScript : MonoBehaviour {
                 timecounter = 0;
             }
         }
-
+*/
 
 	}
 

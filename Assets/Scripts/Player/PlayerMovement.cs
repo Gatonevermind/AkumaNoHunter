@@ -14,13 +14,17 @@ public class PlayerMovement : MonoBehaviour
 	public float coolDown;
 	public float dash = 10.0F;
     public float active = 0;
-	
+
+	public bool blocked;
 	public bool combat;
+	public float animationSpeed = 0;
+
 
     bool GodMode = false;
 
 	private Animator animator;
-	
+
+
 	private Vector3 objectiveDirection;
 	private Vector3 interpolateDirection;
 	float acceleration = 0.2F;
@@ -31,9 +35,10 @@ public class PlayerMovement : MonoBehaviour
 		coolDown = 0.7f;
 		
 		animator = GetComponent<Animator> ();
-		
+
+
 	}
-	
+
 	void Update()
 	{
 
@@ -86,31 +91,46 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 combat = !combat;
+				blocked = true;
             }
 
             if (combat)
             {
-                animator.SetBool("Combat", true);
+				animator.SetBool("Combat", true);
             }
             else if (!combat)
             {
+
                 animator.SetBool("Combat", false);
             }
             //sprint
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                animator.SetBool("Sprint", true);
+
 
                 if (Input.GetKey(KeyCode.W))
-                    if (speed < sprint)
+				{
+					if((animationSpeed >= 10) && (animationSpeed < 20))
+					{
+						animationSpeed += 0.5f;
+					}
+					else if(animationSpeed >= 20)
+					{
+						animationSpeed = 20;
+					}
+					
+					animator.SetFloat("Speed", animationSpeed);
+
+					if (speed < sprint)
                     {
+						
                         speed++;
                     }
                     else if (speed >= sprint)
                     {
                         speed = sprint;
                     }
-
+				}
                 /*if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
                     if (speed < sprintLateral)
                     {
@@ -137,7 +157,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                animator.SetBool("Sprint", false);
+				if(animationSpeed > 10)
+				{
+					animationSpeed -= 0.5f;
+				}
                 speed = 3;
             }
             /*
@@ -220,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                animator.SetBool("Run", false);
+               
 
                 objectiveDirection += new Vector3(objectiveDirection.x, -gravity * 1.5f, objectiveDirection.z) * Time.deltaTime;
 
@@ -300,55 +323,61 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.D))
 			{
-				animator.SetBool ("RunDiaRight", false);
-				animator.SetBool ("RunRight", true);
-				animator.SetBool ("Run", false);
-				animator.SetBool ("Back", false);
-				animator.SetBool ("RunLeft", false);
+				animator.SetBool ("Right", true);
+				animator.SetBool ("Left", false);
 				objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
 			else if (Input.GetKey(KeyCode.A))
 			{ 
-				animator.SetBool ("RunLeft", true);
-				animator.SetBool ("Run", false);
-				animator.SetBool ("Back", false);
-				animator.SetBool ("RunDiaRight", false);
+				animator.SetBool ("Left", true);
+				animator.SetBool ("Right", false);
 				objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
 			else if (Input.GetKey(KeyCode.W))
 			{
-				animator.SetBool ("Run", true);
-				animator.SetBool ("RunLeft", false);
-				animator.SetBool ("RunRight", false);
-				animator.SetBool ("RunDiaRight", false);
-				animator.SetBool ("Back", false);
+				
+				if((animationSpeed >= 0) && (animationSpeed < 10))
+				{
+					animationSpeed += 0.5f;
+				}
+	
+				animator.SetFloat ("Speed", animationSpeed);
+				animator.SetBool ("Front", true);
+				animator.SetBool ("Right", false);
+				animator.SetBool ("Left", false);
+
 				objectiveDirection = new Vector3(0, objectiveDirection.y, speed);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
 			else if (Input.GetKey(KeyCode.S))
 			{
-				animator.SetBool ("Back", true);
-				animator.SetBool ("Run", false);
-				animator.SetBool ("RunRight", false);
-				animator.SetBool ("RunLeft", false);
-				animator.SetBool ("RunDiaRight", false);
+
 				objectiveDirection = new Vector3(0, objectiveDirection.y, -back);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 			}
 			else
 			{
-				animator.SetBool ("RunDiaRight", false);
-				animator.SetBool ("Run", false);
-				animator.SetBool ("Back", false);
-				animator.SetBool ("RunLeft", false);
-				animator.SetBool ("RunRight", false);
+				animator.SetBool ("Left", false);
+				animator.SetBool ("Right", false);
+				if(animationSpeed > 0)
+				{
+					animationSpeed -= 0.5f;
+				}
+				else if(animationSpeed <= 0)
+				{
+					animationSpeed = 0;
+				}
+				
+				animator.SetFloat ("Speed", animationSpeed);
+				 
 				objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
 			}
 			
 		}
-		
+
+	
 		//transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 		
 		//x  transform.eulerAngles = new Vector3(0, Mathf.Lerp(transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, 0.2F), 0);
