@@ -5290,7 +5290,7 @@ Animator:
   m_GameObject: {fileID: 268897428}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8a46eabcd2bb264419d20ca4ecfb13f9, type: 3}
-  m_Controller: {fileID: 9100000, guid: ce7c861249565e747a7d406d0c113fe8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ca566c2827c035e48ba06d46be4e5eed, type: 2}
   m_CullingMode: 1
   m_ApplyRootMotion: 0
   m_AnimatePhysics: 0
@@ -14178,6 +14178,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 100092, guid: 8a46eabcd2bb264419d20ca4ecfb13f9, type: 3}
+    - target: {fileID: 2300000, guid: a0082ab52d6719d4681f267834092aa9, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2034370124}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0082ab52d6719d4681f267834092aa9, type: 2}
   m_RootGameObject: {fileID: 1275254858}
@@ -40230,7 +40234,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: aa359546f9fb7e54aae242083cd76261, type: 2}
+  - {fileID: 2034370124}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -66285,6 +66289,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .54661113, y: .751905978, z: .574630141}
   m_Center: {x: .0435289443, y: -.0294408128, z: .326054811}
+--- !u!21 &2034370124
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: LOBOTexture (Instance)
+  m_Shader: {fileID: 4800000, guid: 054a31a99d11e49d110086ba44295342, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 03a7112890451154e8c8cce4caf38ea0, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: 4a056241e2722dc46a7262a8e7073fd9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Outline
+        second: .00499999989
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2036469820
 GameObject:
   m_ObjectHideFlags: 0
