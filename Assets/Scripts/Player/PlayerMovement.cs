@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 	public float animationDirection = 10;
 	public float transitionSpeed = 0.5f;
 
+	public float seatheCooldown = 0;
+
 
     bool GodMode = false;
 
@@ -93,15 +95,41 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 combat = !combat;
-				blocked = true;
+
+				seatheCooldown += 0.1f;
+
             }
 
             if (combat)
             {
+				if((seatheCooldown > 0) && (seatheCooldown < 5))
+				{
+					seatheCooldown += 0.1f;
+					speed = 0;
+					//sprint = 0;
+				}
+				else if (seatheCooldown >=5)
+				{
+					seatheCooldown = 0;
+					speed = 3;
+					//sprint = 4.5f;
+				}
 				animator.SetBool("Combat", true);
             }
             else if (!combat)
             {
+				if((seatheCooldown > 0) && (seatheCooldown < 5))
+				{
+					seatheCooldown += 0.1f;
+					speed = 0;
+					//sprint = 0;
+				}
+				else if (seatheCooldown >=5)
+				{
+					seatheCooldown = 0;
+					speed = 3;
+					//sprint = 4.5f;
+				}
 
                 animator.SetBool("Combat", false);
             }
@@ -158,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
 				animator.SetBool ("Sprint", false);
-				speed = 3;
+				//speed = 3;
             }
             /*
             if(Input.GetKey(KeyCode.S))
@@ -283,11 +311,14 @@ public class PlayerMovement : MonoBehaviour
         }
 	}
 	
-	
+	/*private void Blocked ()
+	{
+		speed = 0;
+	}*/
 	
 	private void HorizontalMovement(float speed, float root)
 	{
-
+	
 
 		animator.SetFloat ("Direction", animationDirection);
 		// Assign a direction depending on the input introduced
