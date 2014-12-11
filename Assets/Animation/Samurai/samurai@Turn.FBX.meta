@@ -121,6 +121,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -131,7 +132,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Turn
       takeName: Take 001
-      firstFrame: 8.10000038
+      firstFrame: 8.5
       lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0

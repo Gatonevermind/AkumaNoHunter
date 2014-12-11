@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 { 
-	public float speed = 4.0F;
+	public float speed = 3.0F;
 	public float jumpSpeed = 5F;
 	public float gravity = 9F;
 	public float sprint = 4.5F;
@@ -189,11 +189,10 @@ public class PlayerMovement : MonoBehaviour
 				}
 
             }
-            else
+            else 
             {
 				animator.SetBool ("Sprint", false);
 				//speed = 3;
-			
             }
             /*
             if(Input.GetKey(KeyCode.S))
@@ -217,16 +216,18 @@ public class PlayerMovement : MonoBehaviour
             // Jump/Dash
             if (controller.isGrounded)
             {
-				if (land >= 5)
+				if (land >= 6)
 				{
+					animator.SetBool ("Land", true);
 					speed = 0;
 					sprint = 0;
 					land += 0.1f;
-					if(land >= 10)
+					if(land >= 9)
 					{
 						speed = 3;
 						sprint = 4.5f;
 						land = 0;
+						animator.SetBool ("Land", false);
 					}
 				}
 
@@ -286,10 +287,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-				if(land < 5)
+				if(land < 6)
 				{
 					land += 0.1f;
 				}
+
 
 				animator.SetBool ("Jump", true);
                 objectiveDirection += new Vector3(objectiveDirection.x, -gravity * 1.5f, objectiveDirection.z) * Time.deltaTime;
