@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 	public float dash = 10.0F;
     public float active = 0;
 
+	public float land = 0;
+
 	public bool blocked;
 	public bool combat;
 	public float animationSpeed = 0;
@@ -118,13 +120,13 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (!combat)
             {
-				if((seatheCooldown > 0) && (seatheCooldown < 8))
+				if((seatheCooldown > 0) && (seatheCooldown < 7))
 				{
 					seatheCooldown += 0.1f;
 					speed = 0;
 					sprint = 0;
 				}
-				else if (seatheCooldown >= 8)
+				else if (seatheCooldown >= 7)
 				{
 					seatheCooldown = 0;
 					speed = 3;
@@ -215,16 +217,29 @@ public class PlayerMovement : MonoBehaviour
             // Jump/Dash
             if (controller.isGrounded)
             {
+				if (land >= 5)
+				{
+					speed = 0;
+					sprint = 0;
+					land += 0.1f;
+					if(land >= 10)
+					{
+						speed = 3;
+						sprint = 4.5f;
+						land = 0;
+					}
+				}
+
                 animator.SetBool("Jump", false);
 				if (Input.GetKeyUp(KeyCode.LeftShift))
 				{
 					speed = 3;
 				}
                 //jump
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-
-                    animator.SetBool("Jump", true);
+					land = 0;
+                    //animator.SetBool("Jump", true);
 
                     objectiveDirection = new Vector3(objectiveDirection.x, jumpSpeed, objectiveDirection.z);
 
@@ -271,8 +286,12 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-               
+				if(land < 5)
+				{
+					land += 0.1f;
+				}
 
+				animator.SetBool ("Jump", true);
                 objectiveDirection += new Vector3(objectiveDirection.x, -gravity * 1.5f, objectiveDirection.z) * Time.deltaTime;
 
             }
