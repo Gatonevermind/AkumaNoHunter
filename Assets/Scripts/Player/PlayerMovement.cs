@@ -102,33 +102,33 @@ public class PlayerMovement : MonoBehaviour
 
             if (combat)
             {
-				if((seatheCooldown > 0) && (seatheCooldown < 5))
+				if((seatheCooldown > 0) && (seatheCooldown < 7))
 				{
 					seatheCooldown += 0.1f;
 					speed = 0;
-					//sprint = 0;
+					sprint = 0;
 				}
-				else if (seatheCooldown >=5)
+				else if (seatheCooldown >=7)
 				{
 					seatheCooldown = 0;
 					speed = 3;
-					//sprint = 4.5f;
+					sprint = 4.5f;
 				}
 				animator.SetBool("Combat", true);
             }
             else if (!combat)
             {
-				if((seatheCooldown > 0) && (seatheCooldown < 5))
+				if((seatheCooldown > 0) && (seatheCooldown < 8))
 				{
 					seatheCooldown += 0.1f;
 					speed = 0;
-					//sprint = 0;
+					sprint = 0;
 				}
-				else if (seatheCooldown >=5)
+				else if (seatheCooldown >= 8)
 				{
 					seatheCooldown = 0;
 					speed = 3;
-					//sprint = 4.5f;
+					sprint = 4.5f;
 				}
 
                 animator.SetBool("Combat", false);
@@ -141,7 +141,16 @@ public class PlayerMovement : MonoBehaviour
 				{
 					
 					animator.SetBool ("Sprint", false);
+					speed = 3;
 			
+				}
+
+				else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+				{
+					
+					animator.SetBool ("Sprint", false);
+					speed = 3;
+					
 				}
                 
 				else if (Input.GetKey(KeyCode.W))
@@ -149,44 +158,40 @@ public class PlayerMovement : MonoBehaviour
 
 					animator.SetBool ("Sprint", true);
 
-					if (speed < sprint)
-                    {
-						
-                        speed++;
-                    }
-                    else if (speed >= sprint)
-                    {
-                        speed = sprint;
-                    }
+					speed = sprint;
 				}
-                /*if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
-                    if (speed < sprintLateral)
-                    {
-                        speed++;
-                    }
-                    else if (speed >= sprintLateral)
-                    {
-                        speed = sprintLateral;
-                    }
+
+            /*if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                if (speed < sprintLateral)
+                {
+                    speed++;
+                }
+                else if (speed >= sprintLateral)
+                {
+                    speed = sprintLateral;
+                }
 
 
-                if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
-                    if (speed < sprintLateral)
-                    {
-                        speed++;
-                    }
-                    else if (speed >= sprintLateral)
-                    {
-                        speed = sprintLateral;
-                    }*/
-
-
+            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+                if (speed < sprintLateral)
+                {
+                    speed++;
+                }
+                else if (speed >= sprintLateral)
+                {
+                    speed = sprintLateral;
+                }*/
+				else
+				{
+					animator.SetBool ("Sprint", false);
+				}
 
             }
             else
             {
 				animator.SetBool ("Sprint", false);
 				//speed = 3;
+			
             }
             /*
             if(Input.GetKey(KeyCode.S))
@@ -211,7 +216,10 @@ public class PlayerMovement : MonoBehaviour
             if (controller.isGrounded)
             {
                 animator.SetBool("Jump", false);
-
+				if (Input.GetKeyUp(KeyCode.LeftShift))
+				{
+					speed = 3;
+				}
                 //jump
                 if (Input.GetKey(KeyCode.Space))
                 {
