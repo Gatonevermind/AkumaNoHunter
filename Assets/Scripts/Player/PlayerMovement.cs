@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool combat;
 	public float animationSpeed = 0;
 	public float animationDirection = 10;
-	public float transitionSpeed = 0.5f;
+	public float transitionSpeed = 0.75f;
 
 	public float seatheCooldown = 0;
 
@@ -104,13 +104,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (combat)
             {
-				if((seatheCooldown > 0) && (seatheCooldown < 7))
+				if((seatheCooldown > 0) && (seatheCooldown < 5))
 				{
 					seatheCooldown += 0.1f;
 					speed = 0;
 					sprint = 0;
 				}
-				else if (seatheCooldown >=7)
+				else if (seatheCooldown >=5)
 				{
 					seatheCooldown = 0;
 					speed = 3;
@@ -292,6 +292,10 @@ public class PlayerMovement : MonoBehaviour
 					land += 0.1f;
 				}
 
+				if (Input.GetKeyUp(KeyCode.LeftShift))
+				{
+					speed = 3;
+				}
 
 				animator.SetBool ("Jump", true);
                 objectiveDirection += new Vector3(objectiveDirection.x, -gravity * 1.5f, objectiveDirection.z) * Time.deltaTime;
@@ -398,16 +402,22 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.D))
 			{
-				animator.SetBool ("Run", true);
 
-				if(animationDirection <20)
+
+				if(animationDirection <10)
 				{
+					speed = 0;
+					animationDirection += transitionSpeed*2;
+
+
+				}
+				else if ((animationDirection <20) && (animationDirection >= 10))
+				{
+					speed = 3;
 					animationDirection += transitionSpeed;
+					animator.SetBool ("Run", true);
 				}
-				else if(animationDirection <10)
-				{
-					animationDirection += transitionSpeed*3;
-				}
+
 
 				objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -416,14 +426,17 @@ public class PlayerMovement : MonoBehaviour
 			{ 
 				animator.SetBool ("Run", true);
 
-				if(animationDirection >0)
+				if(animationDirection >10)
 				{
+					speed = 0;
+					animationDirection -= transitionSpeed*2;
+				}
+				else if((animationDirection >0) && (animationDirection <= 10))
+				{
+					speed = 3;
 					animationDirection -= transitionSpeed;
 				}
-				else if(animationDirection >10)
-				{
-					animationDirection -= transitionSpeed*3;
-				}
+
 
 				objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
 				transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -458,7 +471,7 @@ public class PlayerMovement : MonoBehaviour
 			else
 			{
 				animator.SetBool ("Run", false);
-
+				/*
 				if(animationDirection < 9.5f)
 				{
 					animationDirection += transitionSpeed;
@@ -467,7 +480,7 @@ public class PlayerMovement : MonoBehaviour
 				{
 					animationDirection -= transitionSpeed;
 				}
-				 
+				 */
 				objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
 			}
 			
