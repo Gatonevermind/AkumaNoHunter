@@ -109,12 +109,14 @@ public class PlayerMovement : MonoBehaviour
 					seatheCooldown += 0.1f;
 					speed = 0;
 					sprint = 0;
+					jumpSpeed = 0;
 				}
 				else if (seatheCooldown >=5)
 				{
 					seatheCooldown = 0;
 					speed = 3;
 					sprint = 4.5f;
+					jumpSpeed = 5;
 				}
 				animator.SetBool("Combat", true);
             }
@@ -125,12 +127,14 @@ public class PlayerMovement : MonoBehaviour
 					seatheCooldown += 0.1f;
 					speed = 0;
 					sprint = 0;
+					jumpSpeed = 0;
 				}
 				else if (seatheCooldown >= 7)
 				{
 					seatheCooldown = 0;
 					speed = 3;
 					sprint = 4.5f;
+					jumpSpeed = 5;
 				}
 
                 animator.SetBool("Combat", false);

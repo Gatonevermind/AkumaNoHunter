@@ -4,6 +4,7 @@ using System.Collections;
 public class VisKatana : MonoBehaviour {
 
 	public bool combat;
+	private float show = 0;
 	// Use this for initialization
 	void Start () 
 	{
@@ -16,16 +17,33 @@ public class VisKatana : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
 			combat = !combat;
+			show += 0.1f;
 		}
 		
 		if (combat)
 		{
-			HideChildren ();
+			if((show > 0) && (show < 5))
+			{
+				show += 0.1f;
+			}
+			if(show >= 5)
+			{
+				HideChildren ();
+				show = 0;
+			}
 		}
 		else if (!combat)
 		{
-			
-			ShowChildren ();
+			if((show > 0) && (show < 5.9f))
+			{
+				show += 0.1f;
+			}
+			if(show >= 5.9f)
+			{
+				ShowChildren ();
+				show = 0;
+			}
+
 		}
 	}
 	
