@@ -50,19 +50,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Turn
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: TLeft
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: TRight
+  - m_Name: IdleJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -178,7 +166,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Turn
+    m_ConditionEvent: Run
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -338,7 +326,7 @@ Transition:
   m_TransitionOffset: .394535452
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Turn
+    m_ConditionEvent: Run
     m_EventTreshold: 0
     m_ExitTime: .680828512
   - m_ConditionMode: 1
@@ -378,7 +366,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Turn
+    m_ConditionEvent: Run
     m_EventTreshold: 0
     m_ExitTime: .460431635
   m_Atomic: 1
@@ -425,6 +413,24 @@ Transition:
     m_ConditionEvent: Land
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110155128
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110208167}
+  m_DstState: {fileID: 110212839}
+  m_TransitionDuration: .416666567
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Run
+    m_EventTreshold: 0
+    m_ExitTime: .583333433
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -476,7 +482,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Turn
+    m_ConditionEvent: Run
     m_EventTreshold: 0
     m_ExitTime: .84375
   - m_ConditionMode: 1
@@ -498,7 +504,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: Turn
+    m_ConditionEvent: Run
     m_EventTreshold: 0
     m_ExitTime: .460431635
   m_Atomic: 1
@@ -594,25 +600,43 @@ Transition:
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
---- !u!1101 &110182347
+--- !u!1101 &110190026
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110208167}
+  m_DstState: {fileID: 110200000}
+  m_TransitionDuration: .100000001
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: IdleJump
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110196903
 Transition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 110270977}
-  m_DstState: {fileID: 110200000}
-  m_TransitionDuration: .193031549
-  m_TransitionOffset: .220982715
+  m_DstState: {fileID: 110208167}
+  m_TransitionDuration: .156249985
+  m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Jump
     m_EventTreshold: 0
-    m_ExitTime: .899999976
+    m_ExitTime: .84375
   - m_ConditionMode: 2
     m_ConditionEvent: Land
     m_EventTreshold: 0
-    m_ExitTime: .899999976
+    m_ExitTime: .84375
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -627,7 +651,22 @@ State:
   m_Motions:
   - {fileID: 20607445}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 348, y: 216, z: 0}
+  m_Position: {x: 372, y: 240, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110208167
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: LandIdle
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400002, guid: 2d3f6cde4ab1f6b42b1d6fe9aa3a355a, type: 3}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 108, y: 0, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -642,7 +681,7 @@ State:
   m_Motions:
   - {fileID: 20600000}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 576, y: 84, z: 0}
+  m_Position: {x: 576, y: 132, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -657,7 +696,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 995c3df503defce4e9a8e3c28ac457f4, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 420, y: -156, z: 0}
+  m_Position: {x: 696, y: -144, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -685,9 +724,9 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 2b7143b734fb5ba47899819b0c970470, type: 3}
+  - {fileID: 7400000, guid: 3392f6e1f3452694fb49733d36401a87, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 684, y: -60, z: 0}
+  m_Position: {x: 816, y: 12, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -702,7 +741,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 2d3f6cde4ab1f6b42b1d6fe9aa3a355a, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 204, y: -72, z: 0}
+  m_Position: {x: 336, y: -60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -753,6 +792,7 @@ StateMachine:
   - {fileID: 110227266}
   - {fileID: 110270977}
   - {fileID: 110223675}
+  - {fileID: 110208167}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
@@ -795,21 +835,23 @@ StateMachine:
       - {fileID: 110141939}
       - {fileID: 110173323}
     data:
-      first: {fileID: 0}
-      second: []
-    data:
       first: {fileID: 110270977}
       second:
       - {fileID: 110151834}
       - {fileID: 110131286}
-      - {fileID: 110182347}
       - {fileID: 110181169}
+      - {fileID: 110196903}
     data:
       first: {fileID: 110223675}
       second:
       - {fileID: 110100159}
       - {fileID: 110174419}
       - {fileID: 110148734}
+    data:
+      first: {fileID: 110208167}
+      second:
+      - {fileID: 110190026}
+      - {fileID: 110155128}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 48, y: -144, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

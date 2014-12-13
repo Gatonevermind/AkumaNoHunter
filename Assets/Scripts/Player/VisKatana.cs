@@ -5,6 +5,7 @@ public class VisKatana : MonoBehaviour {
 
 	public bool combat;
 	private float show = 0;
+	private float seatheCooldown = 0;
 	// Use this for initialization
 	void Start () 
 	{
@@ -14,16 +15,32 @@ public class VisKatana : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Q))
+		if(seatheCooldown == 0)
 		{
-			combat = !combat;
-			show += 0.1f;
+			if (Input.GetKeyDown(KeyCode.Q))
+			{
+				combat = !combat;
+				show += 0.1f;
+				seatheCooldown += 0.1f;
+			}
 		}
 		
 		if (combat)
 		{
+			//Cooldown para desenvaine
+			if((seatheCooldown > 0) && (seatheCooldown < 5))
+			{
+				seatheCooldown += 0.1f;
+			}
+			else if (seatheCooldown >=5)
+			{
+				seatheCooldown = 0;
+			}
+
+			//Temporizador para show/hide de la katana
 			if((show > 0) && (show < 5))
 			{
+				ShowChildren ();
 				show += 0.1f;
 			}
 			if(show >= 5)
@@ -34,8 +51,20 @@ public class VisKatana : MonoBehaviour {
 		}
 		else if (!combat)
 		{
+			//Cooldown para envaine
+			if((seatheCooldown > 0) && (seatheCooldown < 7))
+			{
+				seatheCooldown += 0.1f;
+			}
+			else if (seatheCooldown >=7)
+			{
+				seatheCooldown = 0;
+			}
+
+			//Temporizador para show/hide de la katana
 			if((show > 0) && (show < 5.9f))
 			{
+				HideChildren ();
 				show += 0.1f;
 			}
 			if(show >= 5.9f)

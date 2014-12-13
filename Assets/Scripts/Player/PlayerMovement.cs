@@ -5,7 +5,8 @@ public class PlayerMovement : MonoBehaviour
 { 
 	public float speed = 3.0F;
 	public float jumpSpeed = 5F;
-	public float gravity = 9F;
+	public float fall = 0F;
+	public float gravity = 14F;
 	public float sprint = 4.5F;
 	public float sprintLateral = 3.0F;
 	public float lateral = 6.0F;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 	public float dash = 10.0F;
     public float active = 0;
 
+	public float grounded;
 	public float land = 0;
 
 	public bool blocked;
@@ -93,30 +95,29 @@ public class PlayerMovement : MonoBehaviour
                 dashTimer = 0;
             }
 
-            //desenvaine
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                combat = !combat;
+            //desenvaine/envaine
+	        if(seatheCooldown == 0)
+			{
+				if (Input.GetKeyDown(KeyCode.Q))
+	            {
+	                combat = !combat;
 
-				seatheCooldown += 0.1f;
+					seatheCooldown += 0.1f;
 
-            }
+	            }
+			}
 
             if (combat)
             {
 				if((seatheCooldown > 0) && (seatheCooldown < 5))
 				{
 					seatheCooldown += 0.1f;
-					speed = 0;
-					sprint = 0;
-					jumpSpeed = 0;
+					Blocked ();
 				}
 				else if (seatheCooldown >=5)
 				{
 					seatheCooldown = 0;
-					speed = 3;
-					sprint = 4.5f;
-					jumpSpeed = 5;
+					Unblocked ();
 				}
 				animator.SetBool("Combat", true);
             }
@@ -125,16 +126,12 @@ public class PlayerMovement : MonoBehaviour
 				if((seatheCooldown > 0) && (seatheCooldown < 7))
 				{
 					seatheCooldown += 0.1f;
-					speed = 0;
-					sprint = 0;
-					jumpSpeed = 0;
+					Blocked ();
 				}
 				else if (seatheCooldown >= 7)
 				{
 					seatheCooldown = 0;
-					speed = 3;
-					sprint = 4.5f;
-					jumpSpeed = 5;
+					Unblocked ();
 				}
 
                 animator.SetBool("Combat", false);
@@ -167,26 +164,6 @@ public class PlayerMovement : MonoBehaviour
 					speed = sprint;
 				}
 
-            /*if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
-                if (speed < sprintLateral)
-                {
-                    speed++;
-                }
-                else if (speed >= sprintLateral)
-                {
-                    speed = sprintLateral;
-                }
-
-
-            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
-                if (speed < sprintLateral)
-                {
-                    speed++;
-                }
-                else if (speed >= sprintLateral)
-                {
-                    speed = sprintLateral;
-                }*/
 				else
 				{
 					animator.SetBool ("Sprint", false);
@@ -218,18 +195,22 @@ public class PlayerMovement : MonoBehaviour
 
 
             // Jump/Dash
-            if (controller.isGrounded)
-            {
-				if (land >= 6)
+			if(controller.isGrounded)
+			{
+				grounded = 0;
+
+				if(land < 6)
+				{
+					land = 0;
+				}
+				else if (land >= 6)
 				{
 					animator.SetBool ("Land", true);
-					speed = 0;
-					sprint = 0;
+					Blocked ();
 					land += 0.1f;
 					if(land >= 9)
 					{
-						speed = 3;
-						sprint = 4.5f;
+						Unblocked ();
 						land = 0;
 						animator.SetBool ("Land", false);
 					}
@@ -243,8 +224,7 @@ public class PlayerMovement : MonoBehaviour
                 //jump
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-					land = 0;
-                    //animator.SetBool("Jump", true);
+					//animator.SetBool("Jump", true);
 
                     objectiveDirection = new Vector3(objectiveDirection.x, jumpSpeed, objectiveDirection.z);
 
@@ -291,6 +271,25 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+				//reinicia la gravedad cuando te dejas caer (sin jump)
+				grounded += 0.1f;
+
+				if((objectiveDirection.y <= 0) && (grounded <= 0.2f))
+				{
+					objectiveDirection.y = -0.5f;
+				}
+
+				
+				if(objectiveDirection.y >= -0.5f)
+				{
+					animator.SetBool ("Jump", true);
+				}
+
+				if(objectiveDirection.y <= -0.5f)
+				{
+					animator.SetBool ("IdleJump", true);
+				}
+				//comprueba cuanto rato llevas en el aire (controlar el Land)
 				if(land < 6)
 				{
 					land += 0.1f;
@@ -301,8 +300,9 @@ public class PlayerMovement : MonoBehaviour
 					speed = 3;
 				}
 
-				animator.SetBool ("Jump", true);
-                objectiveDirection += new Vector3(objectiveDirection.x, -gravity * 1.5f, objectiveDirection.z) * Time.deltaTime;
+				//fall += gravity;
+
+                objectiveDirection += new Vector3(objectiveDirection.x, -gravity , objectiveDirection.z) * Time.deltaTime;
 
             }
 
@@ -348,10 +348,7 @@ public class PlayerMovement : MonoBehaviour
         }
 	}
 	
-	/*private void Blocked ()
-	{
-		speed = 0;
-	}*/
+
 	
 	private void HorizontalMovement(float speed, float root)
 	{
@@ -372,6 +369,10 @@ public class PlayerMovement : MonoBehaviour
 			{
 				animationDirection -= transitionSpeed;
 			}
+			else if((animationDirection >= 4.5f) && (animationDirection <= 5.5))
+			{
+				animationDirection = 5.2f;
+			}
 
 			objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
 			transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -388,7 +389,10 @@ public class PlayerMovement : MonoBehaviour
 			{
 				animationDirection -= transitionSpeed;
 			}
-
+			else if((animationDirection >= 14.5f) && (animationDirection <= 55.5))
+			{
+				animationDirection = 14.8f;
+			}
 			objectiveDirection = new Vector3(root, objectiveDirection.y, root);
 			transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 		}
@@ -421,6 +425,8 @@ public class PlayerMovement : MonoBehaviour
 					animationDirection += transitionSpeed;
 					animator.SetBool ("Run", true);
 				}
+				else if (animationDirection > 20)
+					animator.SetBool ("Run", true);
 
 
 				objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
@@ -496,5 +502,19 @@ public class PlayerMovement : MonoBehaviour
 		//x  transform.eulerAngles = new Vector3(0, Mathf.Lerp(transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, 0.2F), 0);
 		
 		objectiveDirection = transform.TransformDirection(objectiveDirection);
+	}
+
+	private void Blocked ()
+	{
+		speed = 0;
+		sprint = 0;
+		jumpSpeed = 0;
+	}
+	
+	private void Unblocked ()
+	{
+		speed = 3;
+		sprint = 4.5f;
+		jumpSpeed = 5F;
 	}
 }
