@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public float healthBarLenght;
 
+
 	// Use this for initialization
 	void Start () {
         healthBarLenght = Screen.width / 2;
@@ -20,6 +21,7 @@ public class EnemyHealth : MonoBehaviour {
 		{
 			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
+
 	}
 
     public void AddjustCurrentHealth(int adj) {

@@ -248,9 +248,11 @@ public class PlayerMovement : MonoBehaviour
 					speed = 3;
 				}
                 //jump
-                if (Input.GetKeyDown(KeyCode.Space))
+                if ((Input.GetKeyDown(KeyCode.Space)) && (curStam >= 20))
                 {
 					//animator.SetBool("Jump", true);
+
+                    curStam -= 20;
 
                     objectiveDirection = new Vector3(objectiveDirection.x, jumpSpeed, objectiveDirection.z);
 
@@ -542,6 +544,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Box(new Rect(10, 35, staminaBarLenght, 20), curStam + "/" + maxStam);
+        GUI.Box(new Rect(10, 35, staminaBarLenght, 20), "Stamina: " + curStam);
     }
 }
