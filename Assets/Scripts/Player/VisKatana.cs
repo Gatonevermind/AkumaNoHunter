@@ -62,12 +62,12 @@ public class VisKatana : MonoBehaviour {
 			}
 
 			//Temporizador para show/hide de la katana
-			if((show > 0) && (show < 5.9f))
+			if((show > 0) && (show < 5.4f))
 			{
 				HideChildren ();
 				show += 0.1f;
 			}
-			if(show >= 5.9f)
+			if(show >= 5.4f)
 			{
 				ShowChildren ();
 				show = 0;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cfd2ea62858715f4197a3ba1ed938a52
+guid: 308f7ef22fbe3314f9b37d51d5bfcf6e
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -132,7 +132,7 @@ ModelImporter:
       name: Sprint
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Stamina Control
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (speed == 4.5F)
             {
 
                 curStam--;
@@ -190,6 +190,11 @@ public class PlayerMovement : MonoBehaviour
                     }
 
                 }
+				else if (curStam <= 0)
+				{
+					speed = 3;
+					animator.SetBool ("Sprint", false);
+				}
             }
             else 
             {
