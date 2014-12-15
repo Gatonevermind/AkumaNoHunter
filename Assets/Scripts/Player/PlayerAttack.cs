@@ -12,8 +12,8 @@ using System.Collections;
 
 	
 	// Use this for initialization
-	void Start () {
-
+	void Start () 
+    {
 		attackTimer = 0;
 		coolDown = 0.7f;
 		animator = GetComponent<Animator> ();
@@ -26,8 +26,7 @@ using System.Collections;
         {
             combatActivate = !combatActivate;
         }
-        
-        
+
         if (combatActivate)
         {
             GameObject go = GameObject.FindGameObjectWithTag("Enemy");

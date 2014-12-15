@@ -20,8 +20,6 @@ public class EnemyHealth : MonoBehaviour {
 		{
 			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
 		}
-
-
 	}
 
     public void AddjustCurrentHealth(int adj) {
@@ -36,7 +34,6 @@ public class EnemyHealth : MonoBehaviour {
 
         if (maxHealth < 1)
             maxHealth = 1;
-
 
         healthBarLenght = (Screen.width / 2) * (curHealth / (float)maxHealth);
     }

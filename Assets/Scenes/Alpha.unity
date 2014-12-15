@@ -14421,7 +14421,7 @@ Prefab:
     - target: {fileID: 11400002, guid: a0082ab52d6719d4681f267834092aa9, type: 2}
       propertyPath: target
       value: 
-      objectReference: {fileID: 100092, guid: 8a46eabcd2bb264419d20ca4ecfb13f9, type: 3}
+      objectReference: {fileID: 268897428}
     - target: {fileID: 2300000, guid: a0082ab52d6719d4681f267834092aa9, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -40683,7 +40683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bbdb05c5ce61544bd104c45e993411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 100092, guid: 8a46eabcd2bb264419d20ca4ecfb13f9, type: 3}
+  target: {fileID: 268897428}
   attackTimer: 0
   coolDown: 0
   timecounter: 0

@@ -5,11 +5,9 @@ public class GameControl : MonoBehaviour {
 
     public string levelname;
     public string resetlevel;
-
 	// Use this for initialization
 	void Start () 
-    {
-        
+    {       
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 
         player.name = "Player";
@@ -22,14 +20,11 @@ public class GameControl : MonoBehaviour {
 		player.AddComponent ("PlayerAttack");
         
 
-        Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;
-        
+        Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;   
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
-
         if (Input.GetKey(KeyCode.F6))
         {
             Application.LoadLevel(levelname);
@@ -39,6 +34,5 @@ public class GameControl : MonoBehaviour {
         {
             Application.LoadLevel(resetlevel);
         }
-
 	}
 }

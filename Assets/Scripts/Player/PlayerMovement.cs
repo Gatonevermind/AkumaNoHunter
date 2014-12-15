@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private Animator animator;
 
-
 	private Vector3 objectiveDirection;
 	private Vector3 interpolateDirection;
 	float acceleration = 0.2F;
@@ -55,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-
         if (Input.GetKeyUp(KeyCode.Alpha9))
         {
             if (GodMode == true)
@@ -155,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
                 animator.SetBool("Combat", false);
             }
+
             //sprint
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -213,8 +212,8 @@ public class PlayerMovement : MonoBehaviour
                         {
                             speed = back;
                         }
-                    }*/
-
+                    }
+             */
 
             // Jump/Dash
 			if(controller.isGrounded)
@@ -370,12 +369,8 @@ public class PlayerMovement : MonoBehaviour
         }
 	}
 	
-
-	
 	private void HorizontalMovement(float speed, float root)
 	{
-	
-
 		animator.SetFloat ("Direction", animationDirection);
 		// Assign a direction depending on the input introduced
 		//NORMAL MOVEMENT

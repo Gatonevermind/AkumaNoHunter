@@ -9,21 +9,14 @@ public class NavigationScript : MonoBehaviour {
     public float coolDown;
     public int timecounter = 0;
 
-
-	// Use this for initialization
 	void Start () 
     {
-
         attackTimer = 0;
         coolDown = 3.0f;
-
-
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
-
         gameObject.GetComponent<NavMeshAgent>().SetDestination(target.transform.position);
 
         if (attackTimer > 0)
@@ -37,19 +30,6 @@ public class NavigationScript : MonoBehaviour {
             Attack();
             attackTimer = coolDown;
         }
-		/*
-        //color para que sea mas visual
-        if (target.renderer.material.color == Color.red)
-        {
-            timecounter += 1;
-            if (timecounter > 10)
-            {
-                target.renderer.material.color = Color.white;
-                timecounter = 0;
-            }
-        }
-*/
-
 	}
 
     private void Attack()
