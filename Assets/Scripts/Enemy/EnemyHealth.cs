@@ -24,11 +24,6 @@ public class EnemyHealth : MonoBehaviour {
 
 	}
 
-
-    void OnGUI() {
-        //GUI.Box(new Rect(10, 10, healthBarLenght, 20), curHealth + "/" + maxHealth);
-    }
-
     public void AddjustCurrentHealth(int adj) {
         curHealth += adj;
 

@@ -2,8 +2,14 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
-{ 
-	public float speed = 3.0F;
+{
+
+    public float staminaBarLenght;
+
+    public int maxStam = 100;
+    public int curStam = 100;
+    
+    public float speed = 3.0F;
 	public float jumpSpeed = 5F;
 	public float fall = 0F;
 	public float gravity = 14F;
@@ -36,15 +42,15 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 objectiveDirection;
 	private Vector3 interpolateDirection;
 	float acceleration = 0.2F;
-	
+
 	void Start()
 	{
-		dashTimer = 0;
+        staminaBarLenght = Screen.width / 3;
+
+        dashTimer = 0;
 		coolDown = 0.7f;
 		
 		animator = GetComponent<Animator> ();
-
-
 	}
 
 	void Update()
@@ -95,6 +101,19 @@ public class PlayerMovement : MonoBehaviour
                 dashTimer = 0;
             }
 
+            //Stamina Control
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+
+                curStam--;
+
+            }
+            else curStam++;
+
+            if (curStam >= maxStam) curStam = maxStam;
+            if (curStam <= 0) curStam = 0;
+
             //desenvaine/envaine
 	        if(seatheCooldown == 0)
 			{
@@ -140,35 +159,38 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
 
-				if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
-				{
-					
-					animator.SetBool ("Sprint", false);
-					speed = 3;
-			
-				}
+                if (curStam > 0)
+                {
+                    if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                    {
 
-				else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
-				{
-					
-					animator.SetBool ("Sprint", false);
-					speed = 3;
-					
-				}
-                
-				else if (Input.GetKey(KeyCode.W))
-				{
+                        animator.SetBool("Sprint", false);
+                        speed = 3;
 
-					animator.SetBool ("Sprint", true);
+                    }
 
-					speed = sprint;
-				}
+                    else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+                    {
 
-				else
-				{
-					animator.SetBool ("Sprint", false);
-				}
+                        animator.SetBool("Sprint", false);
+                        speed = 3;
 
+                    }
+
+                    else if (Input.GetKey(KeyCode.W))
+                    {
+
+                        animator.SetBool("Sprint", true);
+
+                        speed = sprint;
+                    }
+
+                    else
+                    {
+                        animator.SetBool("Sprint", false);
+                    }
+
+                }
             }
             else 
             {
@@ -517,4 +539,9 @@ public class PlayerMovement : MonoBehaviour
 		sprint = 4.5f;
 		jumpSpeed = 5F;
 	}
+
+    void OnGUI()
+    {
+        GUI.Box(new Rect(10, 35, staminaBarLenght, 20), curStam + "/" + maxStam);
+    }
 }

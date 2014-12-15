@@ -8,6 +8,8 @@ using System.Collections;
 
 	private Animator animator;
 
+    bool combatActivate = false;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -20,42 +22,48 @@ using System.Collections;
 	// Update is called once per frame
 	void Update () 
     {
-
-        GameObject go = GameObject.FindGameObjectWithTag("Enemy");
-		target = go.transform;
-     
-		if(target.renderer.material.color == Color.red)
-		{
-			timecounter += 1;
-			if(timecounter > 10)
-			{
-				target.renderer.material.color = Color.white;
-				timecounter = 0;
-			}
-		}
-
-
-		if(attackTimer > 0)
-			{
-				animator.SetBool("Attack", false);
-				attackTimer -= Time.deltaTime;
-			}
-		if(attackTimer < 0)
-			attackTimer = 0;
-		
-
-		if(attackTimer == 0) 
+        if (Input.GetKeyDown(KeyCode.Q))
         {
+            combatActivate = !combatActivate;
+        }
+        
+        
+        if (combatActivate)
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("Enemy");
+            target = go.transform;
 
-			if(Input.GetKeyUp(KeyCode.Mouse0)) 
-
+            if (target.renderer.material.color == Color.red)
             {
-				animator.SetBool ("Attack", true);
-				Attack();
-				attackTimer = coolDown;
-			}
-		}
-		
+                timecounter += 1;
+                if (timecounter > 10)
+                {
+                    target.renderer.material.color = Color.white;
+                    timecounter = 0;
+                }
+            }
+
+
+            if (attackTimer > 0)
+            {
+                animator.SetBool("Attack", false);
+                attackTimer -= Time.deltaTime;
+            }
+            if (attackTimer < 0)
+                attackTimer = 0;
+
+
+            if (attackTimer == 0)
+            {
+
+                if (Input.GetKeyUp(KeyCode.Mouse0))
+                {
+                    animator.SetBool("Attack", true);
+                    Attack();
+                    attackTimer = coolDown;
+                }
+            }
+        }
 	}
 	
 	private void Attack() 
