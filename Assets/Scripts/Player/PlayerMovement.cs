@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         staminaBarLenght = Screen.width / 3;
 
         dashTimer = 0;
-		coolDown = 0.7f;
+		coolDown = 0.5f;
 		
 		animator = GetComponent<Animator> ();
 	}
@@ -93,9 +93,6 @@ public class PlayerMovement : MonoBehaviour
             if (dashTimer <= 0)
             {
                 animator.SetBool("Dash", false);
-                animator.SetBool("DashBack", false);
-				animator.SetBool("DashRight", false);
-				animator.SetBool("DashLeft", false);
                 dashTimer = 0;
             }
 
@@ -265,7 +262,10 @@ public class PlayerMovement : MonoBehaviour
                     if ((Input.GetKey(KeyCode.C)) && (dashTimer == 0))
                     {
                         objectiveDirection = new Vector3((objectiveDirection.x) * 5, 0, (objectiveDirection.z) * 5);
-                        dashTimer = coolDown;
+                        
+						dashTimer = coolDown;
+
+						animator.SetBool ("Dash", true);
                     }
                 }
                 else
@@ -275,25 +275,31 @@ public class PlayerMovement : MonoBehaviour
 
                         if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.W)))
                         {
-                            objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
+                            //objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
                             dashTimer = coolDown;
+
                         }
                         else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.S)))
                         {
-                            objectiveDirection = new Vector3((objectiveDirection.x) * 30, 0, (objectiveDirection.z) * 30);
+                            //objectiveDirection = new Vector3((objectiveDirection.x) * 30, 0, (objectiveDirection.z) * 30);
                             dashTimer = coolDown;
                         }
 						else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.A)))
 						{
-							objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
+							//objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
 							dashTimer = coolDown;
 						}
 						else if ((Input.GetKey(KeyCode.C)) && (Input.GetKey(KeyCode.D)))
 						{
-							objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
+							//objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
 							dashTimer = coolDown;
 						}
                     }
+					else if( dashTimer > 0)
+					{
+						objectiveDirection = new Vector3((objectiveDirection.x) * 2.5f, 0, (objectiveDirection.z) * 2.5f);
+						animator.SetBool ("Dash", true);
+					}
                 }
 
             }
@@ -308,15 +314,8 @@ public class PlayerMovement : MonoBehaviour
 				}
 
 				
-				if(objectiveDirection.y >= -0.5f)
-				{
-					animator.SetBool ("Jump", true);
-				}
 
-				if(objectiveDirection.y <= -0.5f)
-				{
-					animator.SetBool ("IdleJump", true);
-				}
+
 				//comprueba cuanto rato llevas en el aire (controlar el Land)
 				if(land < 6)
 				{
