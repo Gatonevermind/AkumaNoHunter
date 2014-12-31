@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float speedW = 3.0F;
 	public float speedA = 3.0F;
 	public float speedD = 3.0F;
-	public float speedS = 2.0F;
+	public float speedS = 1.55F;
 
 	public float jumpSpeed = 5F;
 	public float fall = 0F;
@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
                     {
 
                         //animator.SetBool("Sprint", false);
-                        speedW = 3;
+                        speedW = 3; 
 
                     }
 
@@ -606,6 +606,11 @@ public class PlayerMovement : MonoBehaviour
 				}
 				else if (Input.GetKey(KeyCode.S))
 				{
+					if(animationSpeed <= -2)
+						animationSpeed = -2;
+					
+					else if(animationSpeed > -2)
+						animationSpeed -= 0.4f;
 
 					objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
 					transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -614,10 +619,13 @@ public class PlayerMovement : MonoBehaviour
 				{
 					animator.SetBool ("Run", false);
 
-					if(animationSpeed<=0)
+					if ((animationSpeed >= -0.2f) && (animationSpeed <=0.2f))
 						animationSpeed = 0;
 					
-					else if(animationSpeed>0)
+					else if(animationSpeed< -0.2f)
+						animationSpeed += 0.4f;
+
+					else if(animationSpeed>0.2f)
 						animationSpeed -= 0.4f;
 					/*
 					if(animationDirection < 9.5f)
@@ -658,7 +666,7 @@ public class PlayerMovement : MonoBehaviour
 		speedW = 3;
 		speedA = 3;
 		speedD = 3;
-		speedS = 2;
+		speedS = 1.5f;
 		sprint = 4.5f;
 		jumpSpeed = 5F;
 	}
