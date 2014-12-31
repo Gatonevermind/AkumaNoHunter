@@ -132,7 +132,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Jump
       takeName: Take 001
-      firstFrame: 0
+      firstFrame: 29
       lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
@@ -299,7 +299,7 @@ ModelImporter:
       name: LandIdle
       takeName: Take 001
       firstFrame: 30
-      lastFrame: 48
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
