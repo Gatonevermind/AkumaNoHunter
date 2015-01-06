@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-	public class PlayerAttack : MonoBehaviour {
+
+public class PlayerAttack : MonoBehaviour 
+{
+
 	public Transform target;
-	public float attackTimer;
+	public static float attackTimer;
+	public static float attackMove;
 	public float coolDown;
+	public float attackCount;
 	public int timecounter = 0;
+
+
 
 	private Animator animator;
 
@@ -15,7 +22,7 @@ using System.Collections;
 	void Start () 
     {
 		attackTimer = 0;
-		coolDown = 0.7f;
+		coolDown = 1f;
 		animator = GetComponent<Animator> ();
 	}
 	
@@ -45,23 +52,76 @@ using System.Collections;
 
             if (attackTimer > 0)
             {
-                animator.SetBool("Attack", false);
-                attackTimer -= Time.deltaTime;
+                attackTimer += Time.deltaTime;
+				//PlayerMovement.Attack();
+
             }
+			if(( attackTimer >= 0.6f) && (attackTimer < 0.8))
+			{
+				if(attackCount == 1)
+				{
+					animator.SetFloat ("Attack", 0);
+					attackTimer = 0;
+					attackCount = 0;
+				}
+					
+			}
+			else if(( attackTimer >= 1.4f) && (attackTimer <1.5f))
+			{
+				if(attackCount == 2)
+				{
+					animator.SetFloat ("Attack", 0);
+					attackTimer = 0;
+					attackCount = 0;
+				}
+			}
+			else if( attackTimer >= 2.1f)
+			{
+				if(attackCount == 3)
+				{
+					animator.SetFloat ("Attack", 0);
+					attackTimer = 0;
+					attackCount = 0;
+				}
+			}
+
+		
+
+			/*
             if (attackTimer < 0)
+			{
+
                 attackTimer = 0;
+				attackCount = 0;
+			}
+			*/
+
+	        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
+	        {
+	            //animator.SetBool("AttackBool", true);
+				animator.SetFloat("Attack", 1);
+				attackCount = 1;
+	            Attack();
+	            attackTimer =0.1f;
+	        }
+			else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
+			{
+				//animator.SetBool("AttackBool", true);
+				animator.SetFloat("Attack", 2);
+				attackCount = 2;
+				Attack();
+				//attackTimer = coolDown;
+			}
+			else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
+			{
+				//animator.SetBool("AttackBool", true);
+				animator.SetFloat("Attack", 3);
+				attackCount = 3;
+				Attack();
+				//attackTimer = coolDown*1.7f;
+			}
 
 
-            if (attackTimer == 0)
-            {
-
-                if (Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    animator.SetBool("Attack", true);
-                    Attack();
-                    attackTimer = coolDown;
-                }
-            }
         }
 	}
 	

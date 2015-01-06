@@ -9,15 +9,15 @@ public class PlayerMovement : MonoBehaviour
     public int maxStam = 1000;
     public int curStam = 1000;
     
-    public float speedW = 3.0F;
-	public float speedA = 3.0F;
-	public float speedD = 3.0F;
-	public float speedS = 1.55F;
+    public static float speedW = 3.0F;
+	public static float speedA = 3.0F;
+	public static float speedD = 3.0F;
+	public static float speedS = 1.55F;
 
-	public float jumpSpeed = 5F;
+	public static float jumpSpeed = 5F;
 	public float fall = 0F;
 	public float gravity = 14F;
-	public float sprint = 4.5F;
+	public static float sprint = 4.5F;
 	public float sprintLateral = 3.0F;
 	public float lateral = 6.0F;
 	public float back = 1.5F;
@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
 	private Animator animator;
 
-	private Vector3 objectiveDirection;
-	private Vector3 interpolateDirection;
+	public static Vector3 objectiveDirection;
+	public static Vector3 interpolateDirection;
 	float acceleration = 0.2F;
 
 	void Start()
@@ -135,11 +135,13 @@ public class PlayerMovement : MonoBehaviour
             {
 				if((seatheCooldown > 0) && (seatheCooldown < 5))
 				{
+					PlayerAttack.attackTimer = 3;
 					seatheCooldown += 0.1f;
 					Blocked ();
 				}
 				else if (seatheCooldown >=5)
 				{
+					PlayerAttack.attackTimer = 0;
 					seatheCooldown = 0;
 					Unblocked ();
 				}
@@ -204,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             else 
             {
 				animator.SetBool ("Sprint", false);
-				//speed = 3;
+				//speedW = 3;
             }
             /*
             if(Input.GetKey(KeyCode.S))
@@ -296,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
 
                 	if ((animationSpeed >= 3) && (animationDirection == 10))
 	                {
-						if(Input.GetKeyDown(KeyCode.C))
+						if(Input.GetKeyDown(KeyCode.LeftControl))
 						{
                     		//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 1;
@@ -306,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
 	                }
 					else if ((animationSpeed == 3) && (animationDirection <= 5))
 					{
-						if(Input.GetKeyDown(KeyCode.C))
+						if(Input.GetKeyDown(KeyCode.LeftControl))
 						{
 							//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 2;
@@ -316,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if ((animationSpeed == 3) && (animationDirection >= 15))
 					{
-						if(Input.GetKeyDown(KeyCode.C))
+						if(Input.GetKeyDown(KeyCode.LeftControl))
 						{
 							//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 3;
@@ -324,7 +326,7 @@ public class PlayerMovement : MonoBehaviour
 							curStam -= 400;
 						}
 					}
-					else if ((Input.GetKeyDown(KeyCode.C)) && (Input.GetKey(KeyCode.S)))
+					else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Input.GetKey(KeyCode.S)))
 					{
 						//objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
 						dash = 4;
@@ -427,7 +429,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	private void HorizontalMovement(float speedW, float speedA, float speedD, float speedS, float rootA, float rootD)
 	{
-		if  (dashTimer <=0.8f)
+		if  (dashTimer <=1)
 		{
 			animator.SetFloat ("Direction", animationDirection);
 			animator.SetFloat ("Speed", animationSpeed);
@@ -504,7 +506,10 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if ((animationDirection <20) && (animationDirection >= 10))
 					{
-						speedD = 3;
+						if (seatheCooldown == 0)
+						{
+							speedD = 3;
+						}
 						animationDirection += transitionSpeed;
 						if(animationSpeed>=3)
 							animationSpeed = 3;
@@ -522,7 +527,7 @@ public class PlayerMovement : MonoBehaviour
 							animationSpeed += 0.4f;
 					}
 					
-					if((Input.GetKeyDown (KeyCode.C)) && (dashTimer == 0))
+					if((Input.GetKeyDown (KeyCode.LeftControl)) && (dashTimer == 0))
 					{
 						speedD = 5;
 					}
@@ -541,7 +546,10 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if((animationDirection >0) && (animationDirection <= 10))
 					{
-						speedA = 3;
+						if (seatheCooldown == 0)
+						{
+							speedA = 3;
+						}
 						animationDirection -= transitionSpeed;
 						if(animationSpeed>=3)
 							animationSpeed = 3;
@@ -558,9 +566,10 @@ public class PlayerMovement : MonoBehaviour
 							animationSpeed += 0.4f;
 					}
 
-					if ((Input.GetKeyDown (KeyCode.C))&& (dashTimer == 0))
+					if ((Input.GetKeyDown (KeyCode.LeftControl))&& (dashTimer == 0))
 					{
 						speedA = 5;
+					
 					}
 					objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
 					transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -569,7 +578,11 @@ public class PlayerMovement : MonoBehaviour
 				{
 					if((Input.GetKey(KeyCode.LeftShift)) && (sprintActive==true))
 					{
-						if(animationSpeed <=4.5f)
+						speedW = sprint;
+						if((animationSpeed >=3) && (animationSpeed <= 4.5f))
+							animationSpeed += 0.1f;
+
+						else if(animationSpeed <3)
 							animationSpeed += 0.4f;
 					}
 					else
@@ -581,7 +594,8 @@ public class PlayerMovement : MonoBehaviour
 							animationSpeed += 0.2f;
 						
 						else if(animationSpeed>3.4f)
-							animationSpeed -= 0.4f;
+							animationSpeed -= 0.2f;
+
 					}
 
 					if (animationDirection < 9.5f)
@@ -597,7 +611,7 @@ public class PlayerMovement : MonoBehaviour
 					{
 						animationDirection = 10;
 					}
-					if((Input.GetKeyDown (KeyCode.C)) && (dashTimer == 0))
+					if((Input.GetKeyDown (KeyCode.LeftControl)) && (dashTimer == 0))
 					{
 						speedW = 5;
 					}
@@ -610,7 +624,21 @@ public class PlayerMovement : MonoBehaviour
 						animationSpeed = -2;
 					
 					else if(animationSpeed > -2)
-						animationSpeed -= 0.4f;
+						animationSpeed -= 0.1f;
+
+					if((animationDirection>=9.5f) && (animationDirection <=10.5f))
+					{
+						animationDirection = 10;
+					}
+					else if (animationDirection < 9.5f)
+					{
+						animationDirection += transitionSpeed;
+					}
+					else if(animationDirection > 10.5f)
+					{
+						animationDirection -= transitionSpeed;
+					}
+					
 
 					objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
 					transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
@@ -623,10 +651,10 @@ public class PlayerMovement : MonoBehaviour
 						animationSpeed = 0;
 					
 					else if(animationSpeed< -0.2f)
-						animationSpeed += 0.4f;
+						animationSpeed += 0.1f;
 
 					else if(animationSpeed>0.2f)
-						animationSpeed -= 0.4f;
+						animationSpeed -= 0.25f;
 					/*
 					if(animationDirection < 9.5f)
 					{
@@ -649,9 +677,11 @@ public class PlayerMovement : MonoBehaviour
 			
 			objectiveDirection = transform.TransformDirection(objectiveDirection);
 		}
+
+
 	}
 
-	private void Blocked ()
+	public static void Blocked ()
 	{
 		speedW = 0;
 		speedA = 0;
@@ -660,8 +690,17 @@ public class PlayerMovement : MonoBehaviour
 		sprint = 0;
 		jumpSpeed = 0;
 	}
+	public static void Attack ()
+	{
+		speedW = 1;
+		speedA = 0;
+		speedD = 0;
+		speedS = 0;
+		sprint = 0;
+		jumpSpeed = 0;
+	}
 	
-	private void Unblocked ()
+	public static void Unblocked ()
 	{
 		speedW = 3;
 		speedA = 3;
