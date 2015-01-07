@@ -26,12 +26,13 @@ public class PlayerMovement : MonoBehaviour
 	public float dash = 0;
     public float active = 0;
 	public float jumpCooldown = 0;
+	public float idleCount = 0;
 
 	public bool sprintActive;
 
 	public float dashStamina = 500;
 
-	public float grounded;
+	public static float grounded;
 	public float land = 0;
 
 	public bool blocked;
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	public float animationDirection = 10;
 	public float transitionSpeed = 0.75f;
 
-	public float seatheCooldown = 0;
+	public static float seatheCooldown = 0;
 
 
     bool GodMode = false;
@@ -119,17 +120,7 @@ public class PlayerMovement : MonoBehaviour
             if (curStam >= maxStam) curStam = maxStam;
             if (curStam <= 0) curStam = 0;
 
-            //desenvaine/envaine
-	        if(seatheCooldown == 0)
-			{
-				if (Input.GetKeyDown(KeyCode.Q))
-	            {
-	                combat = !combat;
-
-					seatheCooldown += 0.1f;
-
-	            }
-			}
+            
 
             if (combat)
             {
@@ -231,6 +222,19 @@ public class PlayerMovement : MonoBehaviour
 			if(controller.isGrounded)
 			{
 				grounded = 0;
+
+				//desenvaine/envaine
+				if(seatheCooldown == 0)
+				{
+					if (Input.GetKeyDown(KeyCode.Q))
+					{
+						combat = !combat;
+						
+						seatheCooldown += 0.1f;
+						
+					}
+				}
+
 
 				if (jumpCooldown > 0)
 				{
@@ -429,6 +433,18 @@ public class PlayerMovement : MonoBehaviour
 	
 	private void HorizontalMovement(float speedW, float speedA, float speedD, float speedS, float rootA, float rootD)
 	{
+		if(animationSpeed == 0)
+		{
+			idleCount += Time.deltaTime;
+			if (idleCount >= 10)
+				animator.SetBool ("Idle", true);
+		}
+		else
+		{
+			idleCount = 0;
+			animator.SetBool ("Idle", false);
+		}
+
 		if  (dashTimer <=1)
 		{
 			animator.SetFloat ("Direction", animationDirection);

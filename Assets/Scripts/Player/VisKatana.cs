@@ -17,7 +17,7 @@ public class VisKatana : MonoBehaviour {
 	{
 		if(seatheCooldown == 0)
 		{
-			if (Input.GetKeyDown(KeyCode.Q))
+			if ((Input.GetKeyDown(KeyCode.Q)) && (PlayerMovement.grounded == 0))
 			{
 				combat = !combat;
 				show += 0.1f;

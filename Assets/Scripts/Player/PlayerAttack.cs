@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+		if ((Input.GetKeyDown(KeyCode.Q)) && (PlayerMovement.grounded == 0))
         {
             combatActivate = !combatActivate;
         }
@@ -95,34 +95,39 @@ public class PlayerAttack : MonoBehaviour
 				attackCount = 0;
 			}
 			*/
-
-	        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
-	        {
-	            //animator.SetBool("AttackBool", true);
-				animator.SetFloat("Attack", 1);
-				attackCount = 1;
-	            Attack();
-	            attackTimer =0.1f;
-	        }
-			else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
+			if(PlayerMovement.seatheCooldown == 0)
 			{
-				//animator.SetBool("AttackBool", true);
-				animator.SetFloat("Attack", 2);
-				attackCount = 2;
-				Attack();
-				//attackTimer = coolDown;
+		        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
+		        {
+		            //animator.SetBool("AttackBool", true);
+					animator.SetFloat("Attack", 1);
+					attackCount = 1;
+		            Attack();
+		            attackTimer =0.1f;
+		        }
+				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
+				{
+					//animator.SetBool("AttackBool", true);
+					animator.SetFloat("Attack", 2);
+					attackCount = 2;
+					Attack();
+					//attackTimer = coolDown;
+				}
+				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
+				{
+					//animator.SetBool("AttackBool", true);
+					animator.SetFloat("Attack", 3);
+					attackCount = 3;
+					Attack();
+					//attackTimer = coolDown*1.7f;
+				}
 			}
-			else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
-			{
-				//animator.SetBool("AttackBool", true);
-				animator.SetFloat("Attack", 3);
-				attackCount = 3;
-				Attack();
-				//attackTimer = coolDown*1.7f;
-			}
-
-
         }
+		else 
+		{
+			animator.SetFloat("Attack", 0);
+			attackCount = 0;
+		}
 	}
 	
 	private void Attack() 
