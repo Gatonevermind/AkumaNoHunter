@@ -459,21 +459,21 @@ BlendTree:
   m_PrefabInternal: {fileID: 0}
   m_Name: Idle
   m_Childs:
-  - m_Motion: {fileID: 7400000, guid: f118333d31a22b14398fd8af34d80dec, type: 3}
+  - m_Motion: {fileID: 7400000, guid: a2635435629faa044a644f3bca5324f5, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  - m_Motion: {fileID: 7400000, guid: f47e84364aac3b84384a999ed36dba03, type: 3}
+  - m_Motion: {fileID: 7400000, guid: 324228949b38b3147a22709cd46049aa, type: 3}
     m_Threshold: 10
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  - m_Motion: {fileID: 7400000, guid: 5da3be86ecb9919439a6cae17cbdec44, type: 3}
+  - m_Motion: {fileID: 7400000, guid: 353ae5aa4b72e324f8f5f96426d675c9, type: 3}
     m_Threshold: 20
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1608,9 +1608,6 @@ StateMachine:
       first: {fileID: 110256867}
       second:
       - {fileID: 110112616}
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 336, y: 240, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
