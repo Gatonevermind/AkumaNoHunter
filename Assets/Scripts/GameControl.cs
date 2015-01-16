@@ -13,7 +13,7 @@ public class GameControl : MonoBehaviour {
         player.name = "Player";
         player.tag = "Player";
 
-        player.transform.position = new Vector3(15, 2, 55);
+        player.transform.position = new Vector3(30, 10, 70);
 
         player.AddComponent("PlayerMovement");
         player.AddComponent("PlayerHealth");
