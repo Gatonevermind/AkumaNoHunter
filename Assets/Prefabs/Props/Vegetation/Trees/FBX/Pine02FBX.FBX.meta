@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 265ecb56747fddd40997dd3357e95c6c
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: BlackPine02
+    100002: Bone016
+    100004: Bone017
+    100006: Bone018
+    100008: Bone019
+    100010: Bone020
+    100012: Bone021
+    100014: Bone022
+    100016: Bone023
+    100018: Bone024
+    100020: Bone025
+    100022: Bone026
+    100024: Bone027
+    100026: Bone028
+    100028: Bone029
+    100030: //RootNode
+    400000: BlackPine02
+    400002: Bone016
+    400004: Bone017
+    400006: Bone018
+    400008: Bone019
+    400010: Bone020
+    400012: Bone021
+    400014: Bone022
+    400016: Bone023
+    400018: Bone024
+    400020: Bone025
+    400022: Bone026
+    400024: Bone027
+    400026: Bone028
+    400028: Bone029
+    400030: //RootNode
+    4300000: BlackPine02
+    7400000: PineIdle02
+    9500000: //RootNode
+    13700000: BlackPine02
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: PineIdle02
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BlackPine02
+        weight: 1
+      - path: Bone016
+        weight: 1
+      - path: Bone016/Bone017
+        weight: 1
+      - path: Bone016/Bone018
+        weight: 1
+      - path: Bone016/Bone019
+        weight: 1
+      - path: Bone016/Bone020
+        weight: 1
+      - path: Bone016/Bone021
+        weight: 1
+      - path: Bone016/Bone022
+        weight: 1
+      - path: Bone016/Bone023
+        weight: 1
+      - path: Bone016/Bone024
+        weight: 1
+      - path: Bone016/Bone025
+        weight: 1
+      - path: Bone016/Bone026
+        weight: 1
+      - path: Bone016/Bone027
+        weight: 1
+      - path: Bone016/Bone028
+        weight: 1
+      - path: Bone016/Bone029
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

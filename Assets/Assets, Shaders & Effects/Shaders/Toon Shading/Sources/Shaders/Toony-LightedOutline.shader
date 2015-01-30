@@ -1,4 +1,4 @@
-Shader "Cell Shading" {
+Shader "Toon/Lighted Outline" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
