@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 8b7784c420ab2c646ad50418fce569c9
+guid: 879778cc3cdcc7a46816d56a7d72a205
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Bone001
-    100004: Bone002
-    100006: Plane006
     400000: //RootNode
-    400002: Bone001
-    400004: Bone002
-    400006: Plane006
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Plane006
-    7400000: ArbustoIdle01
     9500000: //RootNode
-    13700000: Plane006
   materials:
     importMaterials: 1
     materialName: 0
@@ -23,47 +17,13 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: ArbustoIdle01
-      takeName: Take 001
-      firstFrame: 13
-      lastFrame: 213
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Bone001
-        weight: 1
-      - path: Bone001/Bone002
-        weight: 1
-      - path: Plane006
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -85,7 +45,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

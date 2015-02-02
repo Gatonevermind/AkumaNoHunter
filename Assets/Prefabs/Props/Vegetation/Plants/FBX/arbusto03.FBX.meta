@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 1267edc196760de47b11e0810c495a7e
+guid: 505fd6d436cc62d4fb82851e595fc1cd
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Bone001
-    100004: Bone002
-    100006: Plane005
     400000: //RootNode
-    400002: Bone001
-    400004: Bone002
-    400006: Plane005
-    4300000: Plane005
-    7400000: ArbustoIdle 03
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: arbusto03_Unwrap
     9500000: //RootNode
-    13700000: Plane005
   materials:
     importMaterials: 1
     materialName: 0
@@ -23,47 +17,13 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: ArbustoIdle 03
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 200
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Bone001
-        weight: 1
-      - path: Bone001/Bone002
-        weight: 1
-      - path: Plane005
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -85,7 +45,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

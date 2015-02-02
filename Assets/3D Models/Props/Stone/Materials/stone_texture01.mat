@@ -38,12 +38,12 @@ Material:
       data:
         first:
           name: _Outline
-        second: .0144999996
+        second: .0199999996
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .588235319, g: .588235319, b: .588235319, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _OutlineColor
