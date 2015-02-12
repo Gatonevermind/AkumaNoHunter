@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
 	private Animator animator;
 
-    bool combatActivate = false;
+    public bool combatActivate = false;
 
 	
 	// Use this for initialization
@@ -36,19 +36,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (combatActivate)
         {
-            GameObject go = GameObject.FindGameObjectWithTag("Enemy");
-            target = go.transform;
-
-            if (target.renderer.material.color == Color.red)
-            {
-                timecounter += 1;
-                if (timecounter > 10)
-                {
-                    target.renderer.material.color = Color.white;
-                    timecounter = 0;
-                }
-            }
-
+            //GameObject go = GameObject.FindGameObjectWithTag("Enemy");
+            //target = go.transform;
 
             if (attackTimer > 0)
             {
@@ -85,16 +74,6 @@ public class PlayerAttack : MonoBehaviour
 				}
 			}
 
-		
-
-			/*
-            if (attackTimer < 0)
-			{
-
-                attackTimer = 0;
-				attackCount = 0;
-			}
-			*/
 			if(PlayerMovement.seatheCooldown == 0)
 			{
 		        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
@@ -102,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
 		            //animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 1);
 					attackCount = 1;
-		            Attack();
+		            //Attack();
 		            attackTimer =0.1f;
 		        }
 				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
@@ -110,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
 					//animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 2);
 					attackCount = 2;
-					Attack();
+					//Attack();
 					//attackTimer = coolDown;
 				}
 				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
@@ -118,7 +97,7 @@ public class PlayerAttack : MonoBehaviour
 					//animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 3);
 					attackCount = 3;
-					Attack();
+					//Attack();
 					//attackTimer = coolDown*1.7f;
 				}
 			}
@@ -129,7 +108,7 @@ public class PlayerAttack : MonoBehaviour
 			attackCount = 0;
 		}
 	}
-	
+	/*
 	private void Attack() 
     {
 		float distance = Vector3.Distance(target.transform.position, transform.position);
@@ -138,13 +117,12 @@ public class PlayerAttack : MonoBehaviour
 		
 		float direction = Vector3.Dot(dir, transform.forward);
 		
-		if(distance < 2f) {
+		if(distance < 1f) {
 			if(direction > 0) {
 				EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
-				eh.AddjustCurrentHealth(-20);
-				target.renderer.material.color = Color.red;
-
+				eh.AddjustCurrentHealth(-30);
 			}
 		}
 	}
+     */
 }

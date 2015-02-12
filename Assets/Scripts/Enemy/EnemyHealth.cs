@@ -4,8 +4,11 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
     public int maxHealth = 100;
     public int curHealth = 100;
+	float deadCounter = 200;
 
     public float healthBarLenght;
+
+	//public AnimationClip dies;
 
 
 	// Use this for initialization
@@ -19,7 +22,14 @@ public class EnemyHealth : MonoBehaviour {
 
 		if (curHealth <= 0) 
 		{
-			Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+			Debug.Log (this.transform.name);
+			deadCounter -= 2;
+			//animation.Play (dies.name);
+
+			if (deadCounter <= 0)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 
 	}

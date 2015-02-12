@@ -7,8 +7,10 @@ public class GameControl : MonoBehaviour {
     public string resetlevel;
 	// Use this for initialization
 	void Start () 
-    {       
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+    {
+        Application.targetFrameRate = 60;
+        
+        GameObject player = GameObject.FindGameObjectWithTag ("Player");
 
         player.name = "Player";
         player.tag = "Player";
