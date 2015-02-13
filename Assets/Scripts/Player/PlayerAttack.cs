@@ -36,13 +36,9 @@ public class PlayerAttack : MonoBehaviour
 
         if (combatActivate)
         {
-            //GameObject go = GameObject.FindGameObjectWithTag("Enemy");
-            //target = go.transform;
-
             if (attackTimer > 0)
             {
                 attackTimer += Time.deltaTime;
-				//PlayerMovement.Attack();
 
             }
 			if(( attackTimer >= 0.6f) && (attackTimer < 0.8))
@@ -78,27 +74,19 @@ public class PlayerAttack : MonoBehaviour
 			{
 		        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
 		        {
-		            //animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 1);
 					attackCount = 1;
-		            //Attack();
 		            attackTimer =0.1f;
 		        }
 				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
 				{
-					//animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 2);
 					attackCount = 2;
-					//Attack();
-					//attackTimer = coolDown;
 				}
 				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
 				{
-					//animator.SetBool("AttackBool", true);
 					animator.SetFloat("Attack", 3);
 					attackCount = 3;
-					//Attack();
-					//attackTimer = coolDown*1.7f;
 				}
 			}
         }
@@ -108,21 +96,4 @@ public class PlayerAttack : MonoBehaviour
 			attackCount = 0;
 		}
 	}
-	/*
-	private void Attack() 
-    {
-		float distance = Vector3.Distance(target.transform.position, transform.position);
-		
-		Vector3 dir = (target.transform.position - transform.position).normalized;
-		
-		float direction = Vector3.Dot(dir, transform.forward);
-		
-		if(distance < 1f) {
-			if(direction > 0) {
-				EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
-				eh.AddjustCurrentHealth(-30);
-			}
-		}
-	}
-     */
 }

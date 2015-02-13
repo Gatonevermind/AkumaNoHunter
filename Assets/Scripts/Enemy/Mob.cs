@@ -25,8 +25,8 @@ public class Mob : MonoBehaviour
     public AnimationClip waitingforbattle;
     AttackType attackCurrent;
     float chargeJump;
-
     bool follow;
+	float attackTime;
 
     private bool statusHealth = true;
 
@@ -57,6 +57,7 @@ public class Mob : MonoBehaviour
         cdNibble = 0;
         cdBlow = 0;
         cdJump = 0;
+		attackTime = 0;
 	}
 	
 	// Update is called once per frame
@@ -86,23 +87,22 @@ public class Mob : MonoBehaviour
 			if (cdNibble < 0) cdNibble = 0;
 			if (cdBlow < 0) cdBlow = 0;
             if (cdJump < 0) cdJump = 0;
-
-			if (distance < 1f) 
-			{
-				if (direction > 0) 
+				if (distance < 1f) 
 				{
-                    if (cdBlow == 0)
-                    {
-                        attackCurrent = AttackType.BLOW;
-                        cdBlow = 130;
-                    }
-                    else if (cdNibble == 0)
-                    {
-                        attackCurrent = AttackType.NIBBLE;
-                        cdNibble = 280;
-                    }
+					if (direction > 0) 
+					{
+	                    if (cdBlow == 0)
+	                    {
+	                        attackCurrent = AttackType.BLOW;
+	                        cdBlow = 130;
+	                    }
+	                    else if (cdNibble == 0)
+	                    {
+	                        attackCurrent = AttackType.NIBBLE;
+	                        cdNibble = 280;
+	                    }
+					}
 				}
-			}
 			if ((InRange()) && (distance > 1f)) animation.CrossFade (run.name);
             if ((InRange()) && (distance > 4f))
             {
@@ -118,7 +118,6 @@ public class Mob : MonoBehaviour
 		{
 			case AttackType.IDLE:
 			{
-                //animation.CrossFade(idle.name);
                 follow = true;
 			}
 			break;	
@@ -126,11 +125,14 @@ public class Mob : MonoBehaviour
 			{
 				PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 follow = false;
-                if (distance < 1f)
+				attackTime += 60 * Time.deltaTime;
+                if ((distance < 1f) && (attackTime >= 60))
                 {
                     eh.AddjustCurrentHealth(-3);
                 }
 				animation.CrossFade (attack.name);
+				attackTime = 0;
+				follow = true;
                 attackCurrent = AttackType.IDLE;
 			}
 			break;	
@@ -138,20 +140,22 @@ public class Mob : MonoBehaviour
 			{
 				PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 follow = false;
-                if (distance < 1f)
+				attackTime += 60 * Time.deltaTime;
+                if ((distance < 1f) && (attackTime >= 60))
                 {
                     eh.AddjustCurrentHealth(-8);
+
                 }
 				animation.CrossFade (attack.name);
+				attackTime = 0;
+				follow = true;
                 attackCurrent = AttackType.IDLE;
 			}
 			break;	
 			case AttackType.JUMP:
 			{
-      
-                //transform.position = samurai.position;
                 follow = true;
-                transform.position = Vector3.Lerp(transform.position, samurai.position, 40 * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, samurai.position, 20 * Time.deltaTime);
                 attackCurrent = AttackType.IDLE;
 			}
 			break;
@@ -170,7 +174,7 @@ public class Mob : MonoBehaviour
 
 		if (statusHealth) 
 		{
-			if (InRange ())
+			if ((InRange ()) || (!follow))
 			{
 				Chase ();
 			} 
