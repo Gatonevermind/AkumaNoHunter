@@ -3,34 +3,35 @@ using System.Collections;
 
 public class Mob : MonoBehaviour 
 {
-    public AnimationClip attack;
+    public CharacterController controller;
 
+    public Transform enemy;
+    public Transform samurai;
+
+    public AnimationClip attack;
+    public AnimationClip waitingforbattle;
+    public AnimationClip run;
+    public AnimationClip idle;
+    public AnimationClip die;
+
+    public float range;
+    public float speed;
     public float cdBlow;
     public float cdJump;
     public float cdNibble;
-    public CharacterController controller;
-
-    public AnimationClip die;
-
-    public Transform enemy;
-
-    public AnimationClip idle;
-
-    public float range;
-
-    public AnimationClip run;
-
-    public Transform samurai;
-    public float speed;
-    public AnimationClip waitingforbattle;
-    AttackType attackCurrent;
-    float chargeJump;
+    public float chargeJump;
+    public float timeJump;
+    public float chargeBlow;
+    public float chargeNibble;
 
     bool follow;
+    bool statusHealth = true;
 
-    private bool statusHealth = true;
+    AttackType attackCurrent;
+    Vector3 positionAttack;
 
     enum AttackType { IDLE, JUMP, BLOW, NIBBLE, DEAD, COMBAT};
+
     void Chase()
     {
         transform.LookAt(samurai.position);
@@ -53,10 +54,13 @@ public class Mob : MonoBehaviour
 	void Start () 
 	{
 		attackCurrent = AttackType.IDLE;
-        follow = true;
         cdNibble = 0;
         cdBlow = 0;
         cdJump = 0;
+        timeJump = 0;
+        chargeJump = 0;
+        chargeNibble = 0;
+        chargeBlow = 0;
 	}
 	
 	// Update is called once per frame
@@ -79,86 +83,105 @@ public class Mob : MonoBehaviour
 		if (statusHealth) 
 		{
 
-			cdNibble -= 60 * Time.deltaTime;
-			cdBlow -= 60 * Time.deltaTime;
-            cdJump -= 60 * Time.deltaTime;
+			cdNibble -= Time.deltaTime;
+			cdBlow -= Time.deltaTime;
+            cdJump -= Time.deltaTime;
 
 			if (cdNibble < 0) cdNibble = 0;
 			if (cdBlow < 0) cdBlow = 0;
             if (cdJump < 0) cdJump = 0;
+            if (chargeJump < 0) chargeJump = 0;
 
-			if (distance < 1f) 
+			if (distance < 1) 
 			{
 				if (direction > 0) 
 				{
                     if (cdBlow == 0)
                     {
                         attackCurrent = AttackType.BLOW;
-                        cdBlow = 130;
+                        cdBlow = 2;
                     }
                     else if (cdNibble == 0)
                     {
                         attackCurrent = AttackType.NIBBLE;
-                        cdNibble = 280;
+                        cdNibble = 3;
                     }
 				}
 			}
-			if ((InRange()) && (distance > 1f)) animation.CrossFade (run.name);
-            if ((InRange()) && (distance > 4f))
+            if ((InRange()) && (distance > 4))
             {
                 if (cdJump == 0)
                 {
+                    positionAttack = samurai.transform.position;
                     attackCurrent = AttackType.JUMP;
-                    cdJump = 500;
+                    cdJump = 5;
+                    chargeJump = 2;
                 }
             }
+            else if ((InRange()) && (distance > 1)) animation.CrossFade(run.name);
 		}
 
 		switch (attackCurrent) 
 		{
 			case AttackType.IDLE:
 			{
-                //animation.CrossFade(idle.name);
                 follow = true;
+                chargeJump = 0;
+                chargeNibble = 0;
+                chargeBlow = 0;
+                timeJump = 0;
 			}
 			break;	
 			case AttackType.BLOW:
 			{
-				PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 follow = false;
-                if (distance < 1f)
+                PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
+                chargeBlow += Time.deltaTime;
+                animation.CrossFade(attack.name);
+
+                if (chargeBlow >= 1)
                 {
-                    eh.AddjustCurrentHealth(-3);
+                    if (distance < 1)
+                    {
+                        eh.AddjustCurrentHealth(-3);
+                    }
+                    attackCurrent = AttackType.IDLE;
                 }
-				animation.CrossFade (attack.name);
-                attackCurrent = AttackType.IDLE;
 			}
 			break;	
 			case AttackType.NIBBLE:
 			{
-				PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 follow = false;
-                if (distance < 1f)
-                {
-                    eh.AddjustCurrentHealth(-8);
+                PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
+                chargeNibble +=Time.deltaTime;
+                animation.CrossFade(attack.name);
+   
+                if (chargeNibble >= 1)
+                { 
+                    if (distance < 1f)
+                    {
+                        eh.AddjustCurrentHealth(-8);
+                    }
+                    attackCurrent = AttackType.IDLE;
                 }
-				animation.CrossFade (attack.name);
-                attackCurrent = AttackType.IDLE;
 			}
 			break;	
 			case AttackType.JUMP:
 			{
-      
-                //transform.position = samurai.position;
-                follow = true;
-                transform.position = Vector3.Lerp(transform.position, samurai.position, 40 * Time.deltaTime);
-                attackCurrent = AttackType.IDLE;
+                follow = false;
+                chargeJump -= Time.deltaTime;
+                if (chargeJump <= 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, positionAttack, 0.2f);
+                    timeJump += Time.deltaTime;    
+                }
+                if (timeJump >= 1) attackCurrent = AttackType.IDLE;
 			}
 			break;
 			case AttackType.DEAD:
 			{
 				animation.CrossFade (die.name);
-                follow = true;
+                follow = false;
 			}
 			break;
             case AttackType.COMBAT:
@@ -172,7 +195,7 @@ public class Mob : MonoBehaviour
 		{
 			if (InRange ())
 			{
-				Chase ();
+				if (follow) Chase ();
 			} 
 			else 
 			{

@@ -323,9 +323,24 @@ public class PlayerMovement : MonoBehaviour
                         animationDirection -= transitionSpeed;
                     }
 
+                    if (combat)
+                    {
+                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        {
 
-                    objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
+                        else
+                        {
+                            objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
+                    }
+                    else
+                    {
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    }
+
                 }
                 else
                 {
@@ -339,26 +354,10 @@ public class PlayerMovement : MonoBehaviour
 
                     else if (animationSpeed > 0.2f)
                         animationSpeed -= 0.25f;
-                    /*
-                    if(animationDirection < 9.5f)
-                    {
-                        animationDirection += transitionSpeed;
-                    }
-                    else if(animationDirection > 10.5f)
-                    {
-                        animationDirection -= transitionSpeed;
-                    }
-                     */
                     objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
                 }
 
             }
-
-
-            //transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-
-            //x  transform.eulerAngles = new Vector3(0, Mathf.Lerp(transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, 0.2F), 0);
-
             objectiveDirection = transform.TransformDirection(objectiveDirection);
         }
 
@@ -400,11 +399,6 @@ public class PlayerMovement : MonoBehaviour
         {
             CharacterController controller = gameObject.GetComponent<CharacterController>();
 
-            //moveDirection = transform.position - Camera.main.transform.position;
-            //moveDirection.Normalize();
-            //transform.rotation = moveDirection;
-
-            // Calculates the module of the speed
             float rootA = Mathf.Sqrt(speedA * speedW / 2);
 			float rootD = Mathf.Sqrt(speedD * speedW / 2);
 
