@@ -4,6 +4,7 @@ using System.Collections;
 public class VisKatanaHand : MonoBehaviour {
 
 	public bool combat;
+    public bool activeKatanaHand;
 	private float show = 0;
 	private float seatheCooldown = 0;
 	// Use this for initialization
