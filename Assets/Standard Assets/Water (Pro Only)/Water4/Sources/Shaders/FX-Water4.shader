@@ -1,5 +1,3 @@
-#warning Upgrade NOTE: unity_Scale shader variable was removed; replaced 'unity_Scale.w' with '1.0'
-
 Shader "FX/Water4" { 
 Properties {
 	_ReflectionTex ("Internal reflection", 2D) = "white" {}
@@ -130,7 +128,7 @@ CGINCLUDE
 		v2f o;
 		
 		half3 worldSpaceVertex = mul(_Object2World,(v.vertex)).xyz;
-		half3 vtxForAni = (worldSpaceVertex).xzz * 1.0; 		
+		half3 vtxForAni = (worldSpaceVertex).xzz * unity_Scale.w; 		
 
 		half3 nrml;
 		half3 offsets;
@@ -233,7 +231,7 @@ CGINCLUDE
 		v2f_noGrab o;
 		
 		half3 worldSpaceVertex = mul(_Object2World,(v.vertex)).xyz;
-		half3 vtxForAni = (worldSpaceVertex).xzz * 1.0; 			
+		half3 vtxForAni = (worldSpaceVertex).xzz * unity_Scale.w; 			
 
 		half3 nrml;
 		half3 offsets;

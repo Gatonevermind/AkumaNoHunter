@@ -4,20 +4,17 @@ using System.Collections;
 public class VisKatana : MonoBehaviour {
 
 	public bool combat;
-    public bool activeKatana;
 	private float show = 0;
 	private float seatheCooldown = 0;
 	// Use this for initialization
 	void Start () 
 	{
 		combat = false;
-        HideChildren();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
 		if(seatheCooldown == 0)
 		{
 			if ((Input.GetKeyDown(KeyCode.Q)) && (PlayerMovement.grounded == 0))
