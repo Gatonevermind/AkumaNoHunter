@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
+
 
 public class PlayerMovement : MonoBehaviour
 {
 
+    bool playerIndexSet = false;
+    PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
+    
     public static float grounded;
     public static Vector3 interpolateDirection;
     public static float jumpSpeed = 5F;
@@ -39,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     float acceleration = 0.2F;
     private Animator animator;
     bool GodMode = false;
+    public bool activeEventCombat;
     public static void Attack()
     {
         speedW = 1;
@@ -89,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", animationSpeed);
             // Assign a direction depending on the input introduced
             //NORMAL MOVEMENT
-            if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+            if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))))
             {
                 if (animationSpeed >= 3)
                     animationSpeed = 3;
@@ -113,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 objectiveDirection = new Vector3(-rootA, objectiveDirection.y, rootA);
                 transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
             }
-            else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+            else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
             {
                 if (animationSpeed >= 3)
                     animationSpeed = 3;
@@ -139,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
             else
             {
-                if (Input.GetKey(KeyCode.D))
+                if (Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))
                 {
 
                     if (animationDirection < 10)
@@ -195,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
                         transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
                     }
                 }
-                else if (Input.GetKey(KeyCode.A))
+                else if (Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))
                 {
 
 
@@ -250,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
                         transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
                     }
                 }
-                else if (Input.GetKey(KeyCode.W))
+                else if (Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))
                 {
                     if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive == true))
                     {
@@ -302,7 +310,7 @@ public class PlayerMovement : MonoBehaviour
                         transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
                     }
                 }
-                else if (Input.GetKey(KeyCode.S))
+                else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
                 {
                     if (animationSpeed <= -2)
                         animationSpeed = -2;
@@ -364,10 +372,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void OnGUI()
-    {
-        GUI.Box(new Rect(10, 35, staminaBarLenght, 20), "Stamina: " + curStam);
-    }
 
     void Start()
 	{
@@ -377,10 +381,33 @@ public class PlayerMovement : MonoBehaviour
 		dashCooldown = 1.5f;
 		
 		animator = GetComponent<Animator> ();
+
+        activeEventCombat = true;
 	}
 
 	void Update()
 	{
+
+
+        if (!playerIndexSet || !prevState.IsConnected)
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                PlayerIndex testPlayerIndex = (PlayerIndex)i;
+                GamePadState testState = GamePad.GetState(testPlayerIndex);
+                if (testState.IsConnected)
+                {
+                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
+                    playerIndex = testPlayerIndex;
+                    playerIndexSet = true;
+                }
+            }
+        }
+
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+        
+        
         if (Input.GetKeyUp(KeyCode.Alpha9))
         {
             if (GodMode == true)
@@ -474,7 +501,7 @@ public class PlayerMovement : MonoBehaviour
                 {
 					sprintActive = true;
 
-                    if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+                    if (((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))) && ((Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))))
                     {
 
                         //animator.SetBool("Sprint", false);
@@ -482,7 +509,7 @@ public class PlayerMovement : MonoBehaviour
 
                     }
 
-                    else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+                    else if (((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
                     {
 
                         //animator.SetBool("Sprint", false);
@@ -490,7 +517,7 @@ public class PlayerMovement : MonoBehaviour
 
                     }
 
-                    else if (Input.GetKey(KeyCode.W))
+                    else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)))
                     {
                         speedW = sprint;
                     }
@@ -538,13 +565,22 @@ public class PlayerMovement : MonoBehaviour
 				//desenvaine/envaine
 				if(seatheCooldown == 0)
 				{
-					if (Input.GetKeyDown(KeyCode.Q))
-					{
-						combat = !combat;
-						
-						seatheCooldown += 0.1f;
-						
-					}
+
+                    if (activeEventCombat)
+                    {
+                        if (((Input.GetKeyDown(KeyCode.Q)) || (state.Buttons.X == ButtonState.Pressed)) && (PlayerMovement.grounded == 0))
+                        {
+                            combat = !combat;
+
+                            seatheCooldown += 0.1f;
+                        }
+                        else if ((prevState.Buttons.X == ButtonState.Released && state.Buttons.X == ButtonState.Pressed) && (PlayerMovement.grounded == 0))
+                        {
+                            combat = !combat;
+
+                            seatheCooldown += 0.1f;
+                        }
+                    }
 				}
 
 
@@ -588,7 +624,7 @@ public class PlayerMovement : MonoBehaviour
 					speedW = 3;
 				}
                 //jump
-                if ((Input.GetKeyDown(KeyCode.Space)) && (jumpCooldown == 0))
+                if (((Input.GetKeyDown(KeyCode.Space)) || (state.Buttons.A == ButtonState.Pressed)) && (jumpCooldown == 0))
                 {
 					animator.SetBool("Jump", true);
 
@@ -614,7 +650,7 @@ public class PlayerMovement : MonoBehaviour
 
                 	if ((animationSpeed >= 3) && (animationDirection == 10))
 	                {
-						if(Input.GetKeyDown(KeyCode.LeftControl))
+						if((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
 						{
                     		//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 1;
@@ -624,7 +660,7 @@ public class PlayerMovement : MonoBehaviour
 	                }
 					else if ((animationSpeed == 3) && (animationDirection <= 5))
 					{
-						if(Input.GetKeyDown(KeyCode.LeftControl))
+                        if ((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
 						{
 							//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 2;
@@ -634,7 +670,7 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if ((animationSpeed == 3) && (animationDirection >= 15))
 					{
-						if(Input.GetKeyDown(KeyCode.LeftControl))
+                        if ((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
 						{
 							//objectiveDirection = new Vector3((objectiveDirection.x) * 20f, 0, (objectiveDirection.z) * 20f);
 							dash = 3;
@@ -642,7 +678,7 @@ public class PlayerMovement : MonoBehaviour
 							curStam -= 400;
 						}
 					}
-					else if ((Input.GetKeyDown(KeyCode.LeftControl)) && (Input.GetKey(KeyCode.S)))
+                    else if (((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed))) && (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0)))
 					{
 						//objectiveDirection = new Vector3(0, (objectiveDirection.y) * 20, (objectiveDirection.z) * 20);
 						dash = 4;

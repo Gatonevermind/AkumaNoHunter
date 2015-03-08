@@ -3,18 +3,18 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
-    public int curHealth = 100;
+    public float curHealth = 100;
 
     public string level;
 
-    public float healthBarLenght;
+   // public float healthBarLenght;
 
     public bool invincible;
     public float active = 0;
 
 	// Use this for initialization
 	void Start () {
-        healthBarLenght = Screen.width / 2;
+        //healthBarLenght = Screen.width / 2;
 
         level = "Alpha";
 
@@ -53,11 +53,6 @@ public class PlayerHealth : MonoBehaviour {
 
 	}
 
-
-    void OnGUI() {
-        GUI.Box(new Rect(10, 10, healthBarLenght, 20), curHealth + "/" + maxHealth);
-    }
-
     public void AddjustCurrentHealth(int adj) {
         curHealth += adj;
 
@@ -72,6 +67,6 @@ public class PlayerHealth : MonoBehaviour {
             maxHealth = 1;
 
 
-        healthBarLenght = (Screen.width / 2) * (curHealth / (float)maxHealth);
+        //healthBarLenght = (Screen.width / 2) * (curHealth / (float)maxHealth);
     }
 }

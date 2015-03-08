@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class CustomCamera : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class CustomCamera : MonoBehaviour
     private float x = 0.0f;
     private float y = 0.0f;
 
+    bool playerIndexSet = false;
+    PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
+
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
@@ -30,11 +36,34 @@ public class CustomCamera : MonoBehaviour
 
     void LateUpdate()
     {
+
+        if (!playerIndexSet || !prevState.IsConnected)
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                PlayerIndex testPlayerIndex = (PlayerIndex)i;
+                GamePadState testState = GamePad.GetState(testPlayerIndex);
+                if (testState.IsConnected)
+                {
+                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
+                    playerIndex = testPlayerIndex;
+                    playerIndexSet = true;
+                }
+            }
+        }
+
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+        
+        
         if (!Target)
             return;
         
             x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+
+            x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
+            y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
         
 
         distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);

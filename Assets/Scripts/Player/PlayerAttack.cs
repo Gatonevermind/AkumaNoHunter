@@ -1,99 +1,178 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
-public class PlayerAttack : MonoBehaviour 
+
+public class PlayerAttack : MonoBehaviour
 {
+    public static float attackTimer;
+    public static float attackMove;
+    public float pruebatiempo;
+    public float coolDown;
+    public float attackCount;
+    public float finalTime;
+    public int timecounter = 0;
 
-	public Transform target;
-	public static float attackTimer;
-	public static float attackMove;
-	public float coolDown;
-	public float attackCount;
-	public int timecounter = 0;
+    bool playerIndexSet = false;
+    PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
 
-
-
-	private Animator animator;
+    private Animator animator;
 
     public bool combatActivate = false;
 
-	
-	// Use this for initialization
-	void Start () 
+    public bool activate;
+
+
+    // Use this for initialization
+    void Start()
     {
-		attackTimer = 0;
-		coolDown = 1f;
-		animator = GetComponent<Animator> ();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        attackTimer = 0;
+        finalTime = 0;
+        coolDown = 1f;
+        animator = GetComponent<Animator>();
+        activate = true;
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-		if ((Input.GetKeyDown(KeyCode.Q)) && (PlayerMovement.grounded == 0))
+        
+        if (!playerIndexSet || !prevState.IsConnected)
         {
-            combatActivate = !combatActivate;
+            for (int i = 0; i < 4; ++i)
+            {
+                PlayerIndex testPlayerIndex = (PlayerIndex)i;
+                GamePadState testState = GamePad.GetState(testPlayerIndex);
+                if (testState.IsConnected)
+                {
+                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
+                    playerIndex = testPlayerIndex;
+                    playerIndexSet = true;
+                }
+            }
         }
 
-        if (combatActivate)
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+        
+        pruebatiempo = attackTimer;
+
+        if (activate)
         {
-            if (attackTimer > 0)
+
+            if (((Input.GetKeyDown(KeyCode.Q)) || (state.Buttons.X == ButtonState.Pressed)) && (PlayerMovement.grounded == 0))
             {
-                attackTimer += Time.deltaTime;
+                combatActivate = !combatActivate;
+            }
+
+            if (combatActivate)
+            {
+                if (attackTimer > 0)
+                {
+                    attackTimer += Time.deltaTime;
+
+                }
+
+                if ((attackTimer >= 0.6f) && (attackTimer < 0.8))
+                {
+                    if (attackCount == 1)
+                    {
+                        animator.SetFloat("Attack", 0);
+                    }
+
+                }
+                else if (attackTimer >= 1.6f)
+                {
+
+                    if (attackCount == 1)
+                    {
+                        attackTimer = 0;
+                        attackCount = 0;
+                    }
+
+                }
+
+                if ((attackTimer >= 1.4f) && (attackTimer < 1.5f))
+                {
+                    if (attackCount == 2)
+                    {
+                        animator.SetFloat("Attack", 0);
+                    }
+                }
+                else if (attackTimer >= 3f)
+                {
+
+                    if (attackCount == 2)
+                    {
+                        attackTimer = 0;
+                        attackCount = 0;
+                    }
+
+                }
+
+                if (attackTimer >= 2.1f)
+                {
+                    if (attackCount == 3)
+                    {
+                        animator.SetFloat("Attack", 0);
+                    }
+                }
+                else if (attackTimer >= 3f)
+                {
+                    attackTimer = 0;
+                    attackCount = 0;
+                }
+
+                if (PlayerMovement.seatheCooldown == 0)
+                {
+
+
+                    if (((Input.GetKeyDown(KeyCode.Mouse0)) || (state.Triggers.Right > 0)) && (attackCount == 0))
+                    {
+                        animator.SetFloat("Attack", 1);
+                        attackCount = 1;
+                        attackTimer = 0.1f;
+                    }
+                    else if (((Input.GetKeyDown(KeyCode.Mouse0)) || (state.Triggers.Right > 0)) && (attackCount == 1))
+                    {
+                        animator.SetFloat("Attack", 2);
+                        attackCount = 2;
+                    }
+                    else if (((Input.GetKeyDown(KeyCode.Mouse0)) || (state.Triggers.Right > 0)) && (attackCount == 2))
+                    {
+                        animator.SetFloat("Attack", 3);
+                        attackCount = 3;
+                    }
+                }
+            }
+            else
+            {
+                animator.SetFloat("Attack", 0);
+                attackCount = 0;
+            }
+
+            if (attackCount == 3)
+            {
+
+                finalTime += Time.deltaTime;
+
+                if (finalTime >= 1)
+                {
+                    attackCount = 0;
+                    finalTime = 0;
+
+                }
 
             }
-			if(( attackTimer >= 0.6f) && (attackTimer < 0.8))
-			{
-				if(attackCount == 1)
-				{
-					animator.SetFloat ("Attack", 0);
-					attackTimer = 0;
-					attackCount = 0;
-				}
-					
-			}
-			else if(( attackTimer >= 1.4f) && (attackTimer <1.5f))
-			{
-				if(attackCount == 2)
-				{
-					animator.SetFloat ("Attack", 0);
-					attackTimer = 0;
-					attackCount = 0;
-				}
-			}
-			else if( attackTimer >= 2.1f)
-			{
-				if(attackCount == 3)
-				{
-					animator.SetFloat ("Attack", 0);
-					attackTimer = 0;
-					attackCount = 0;
-				}
-			}
+            if (attackTimer >= 4f)
+            {
+                attackTimer = 0;
+                attackCount = 0;
+                animator.SetFloat("Attack", 0);
+            }
 
-			if(PlayerMovement.seatheCooldown == 0)
-			{
-		        if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 0))
-		        {
-					animator.SetFloat("Attack", 1);
-					attackCount = 1;
-		            attackTimer =0.1f;
-		        }
-				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 1))
-				{
-					animator.SetFloat("Attack", 2);
-					attackCount = 2;
-				}
-				else if ((Input.GetKeyDown(KeyCode.Mouse0)) && (attackCount == 2))
-				{
-					animator.SetFloat("Attack", 3);
-					attackCount = 3;
-				}
-			}
         }
-		else 
-		{
-			animator.SetFloat("Attack", 0);
-			attackCount = 0;
-		}
-	}
+    }
 }
