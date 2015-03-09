@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     
     public static float grounded;
     public static Vector3 interpolateDirection;
-    public static float jumpSpeed = 5F;
+    public static float jumpSpeed = 7F;
     public static Vector3 objectiveDirection;
     public static float seatheCooldown = 0;
     public static float speedA = 3.0F;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashStamina = 500;
     public float dashTimer;
     public float fall = 0F;
-    public float gravity = 14F;
+    public float gravity = 18F;
     public float idleCount = 0;
     public float jumpCooldown = 0;
     public float land = 0;
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         speedD = 3;
         speedS = 1.5f;
         sprint = 4.5f;
-        jumpSpeed = 5F;
+        jumpSpeed = 7F;
     }
 
     private void HorizontalMovement(float speedW, float speedA, float speedD, float speedS, float rootA, float rootD)
@@ -584,19 +584,7 @@ public class PlayerMovement : MonoBehaviour
 				}
 
 
-				if (jumpCooldown > 0)
-				{
-					jumpCooldown += 0.1f;
-
-					if ((jumpCooldown >= 2) && (animationSpeed >= 3))
-					{
-						jumpCooldown = 0;
-					}
-					else if ((jumpCooldown >= 5) && (animationSpeed == 0))
-					{
-						jumpCooldown = 0;
-					}
-				}
+		
 
 				animator.SetBool ("Jump", false);
 				animator.SetBool ("Grounded", true);
@@ -627,8 +615,6 @@ public class PlayerMovement : MonoBehaviour
                 if (((Input.GetKeyDown(KeyCode.Space)) || (state.Buttons.A == ButtonState.Pressed)) && (jumpCooldown == 0))
                 {
 					animator.SetBool("Jump", true);
-
-					jumpCooldown += 0.1f;
 
 					curStam -= 20;
 

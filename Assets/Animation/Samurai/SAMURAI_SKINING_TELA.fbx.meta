@@ -1,0 +1,482 @@
+fileFormatVersion: 2
+guid: 5ccbaae8a16b28946a167dd5e0dc339f
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Bip001
+    100002: Bip001 Footsteps
+    100004: Bip001 Head
+    100006: Bip001 HeadNub
+    100008: Bip001 L Anular 1
+    100010: Bip001 L Anular 2
+    100012: Bip001 L Anular 3
+    100014: Bip001 L Calf
+    100016: Bip001 L Clavicle
+    100018: Bip001 L Corazon 1
+    100020: Bip001 L Corazon 2
+    100022: Bip001 L Corazon 3
+    100024: Bip001 L Finger0Nub
+    100026: Bip001 L Finger1Nub
+    100028: Bip001 L Finger2Nub
+    100030: Bip001 L Finger3Nub
+    100032: Bip001 L Finger4Nub
+    100034: Bip001 L Foot
+    100036: Bip001 L Forearm
+    100038: Bip001 L Hand
+    100040: Bip001 L Indice 1
+    100042: Bip001 L Indice 2
+    100044: Bip001 L Indice 3
+    100046: Bip001 L Menique 1
+    100048: Bip001 L Menique 2
+    100050: Bip001 L Menique 3
+    100052: Bip001 L Pulgar 1
+    100054: Bip001 L Pulgar 2
+    100056: Bip001 L Pulgar 3
+    100058: Bip001 L Thigh
+    100060: Bip001 L Toe0
+    100062: Bip001 L Toe0Nub
+    100064: Bip001 L UpperArm
+    100066: Bip001 Neck
+    100068: Bip001 Pelvis
+    100070: Bip001 R Anular 1
+    100072: Bip001 R Anular 2
+    100074: Bip001 R Anular 3
+    100076: Bip001 R Calf
+    100078: Bip001 R Clavicle
+    100080: Bip001 R Corazon 1
+    100082: Bip001 R Corazon 2
+    100084: Bip001 R Corazon 3
+    100086: Bip001 R Finger0Nub
+    100088: Bip001 R Finger1Nub
+    100090: Bip001 R Finger2Nub
+    100092: Bip001 R Finger3Nub
+    100094: Bip001 R Finger4Nub
+    100096: Bip001 R Foot
+    100098: Bip001 R Forearm
+    100100: Bip001 R Hand
+    100102: Bip001 R Indice 1
+    100104: Bip001 R Indice 2
+    100106: Bip001 R Indice 3
+    100108: Bip001 R Menique 1
+    100110: Bip001 R Menique 2
+    100112: Bip001 R Menique 3
+    100114: Bip001 R Pulgar 1
+    100116: Bip001 R Pulgar 2
+    100118: Bip001 R Pulgar 3
+    100120: Bip001 R Thigh
+    100122: Bip001 R Toe0
+    100124: Bip001 R Toe0Nub
+    100126: Bip001 R UpperArm
+    100128: Bip001 Spine
+    100130: Bip001 Spine1
+    100132: Bip001 Spine2
+    100134: Bolsa1
+    100136: Bolsa2
+    100138: BoneHand
+    100140: BoneVaina
+    100142: Cabeza
+    100144: CAPA
+    100146: CapaA
+    100148: Cuchillo
+    100150: Cuchillo 1
+    100152: Cuerpo
+    100154: joint1
+    100156: joint10
+    100158: joint100
+    100160: joint101
+    100162: joint102
+    100164: joint103
+    100166: joint104
+    100168: joint105
+    100170: joint106
+    100172: joint107
+    100174: joint108
+    100176: joint109
+    100178: joint11
+    100180: joint110
+    100182: joint111
+    100184: joint12
+    100186: joint13
+    100188: joint14
+    100190: joint15
+    100192: joint16
+    100194: joint17
+    100196: joint19
+    100198: joint2
+    100200: joint20
+    100202: joint21
+    100204: joint22
+    100206: joint23
+    100208: joint24
+    100210: joint25
+    100212: joint26
+    100214: joint27
+    100216: joint28
+    100218: joint29
+    100220: joint3
+    100222: joint30
+    100224: joint31
+    100226: joint32
+    100228: joint33
+    100230: joint34
+    100232: joint35
+    100234: joint36
+    100236: joint37
+    100238: joint38
+    100240: joint39
+    100242: joint4
+    100244: joint40
+    100246: joint41
+    100248: joint42
+    100250: joint43
+    100252: joint44
+    100254: joint45
+    100256: joint46
+    100258: joint47
+    100260: joint48
+    100262: joint49
+    100264: joint5
+    100266: joint50
+    100268: joint51
+    100270: joint52
+    100272: joint53
+    100274: joint54
+    100276: joint55
+    100278: joint56
+    100280: joint57
+    100282: joint58
+    100284: joint59
+    100286: joint6
+    100288: joint60
+    100290: joint61
+    100292: joint62
+    100294: joint63
+    100296: joint64
+    100298: joint65
+    100300: joint66
+    100302: joint67
+    100304: joint68
+    100306: joint69
+    100308: joint7
+    100310: joint70
+    100312: joint71
+    100314: joint72
+    100316: joint73
+    100318: joint74
+    100320: joint75
+    100322: joint76
+    100324: joint77
+    100326: joint78
+    100328: joint79
+    100330: joint8
+    100332: joint80
+    100334: joint81
+    100336: joint82
+    100338: joint83
+    100340: joint84
+    100342: joint85
+    100344: joint86
+    100346: joint87
+    100348: joint88
+    100350: joint89
+    100352: joint9
+    100354: joint90
+    100356: joint91
+    100358: joint92
+    100360: joint93
+    100362: joint94
+    100364: joint95
+    100366: joint96
+    100368: joint97
+    100370: joint98
+    100372: joint99
+    100374: KatanaDefault
+    100376: KatanaDefaultHand
+    100378: KatanaLobo
+    100380: KatanaLoboHand
+    100382: Manga L
+    100384: Manga R
+    100386: //RootNode
+    100388: Tela F 1
+    100390: Tela F 2
+    100392: VainaCuchillo
+    100394: VainaDefault
+    100396: VainaLobo
+    400000: Bip001
+    400002: Bip001 Footsteps
+    400004: Bip001 Head
+    400006: Bip001 HeadNub
+    400008: Bip001 L Anular 1
+    400010: Bip001 L Anular 2
+    400012: Bip001 L Anular 3
+    400014: Bip001 L Calf
+    400016: Bip001 L Clavicle
+    400018: Bip001 L Corazon 1
+    400020: Bip001 L Corazon 2
+    400022: Bip001 L Corazon 3
+    400024: Bip001 L Finger0Nub
+    400026: Bip001 L Finger1Nub
+    400028: Bip001 L Finger2Nub
+    400030: Bip001 L Finger3Nub
+    400032: Bip001 L Finger4Nub
+    400034: Bip001 L Foot
+    400036: Bip001 L Forearm
+    400038: Bip001 L Hand
+    400040: Bip001 L Indice 1
+    400042: Bip001 L Indice 2
+    400044: Bip001 L Indice 3
+    400046: Bip001 L Menique 1
+    400048: Bip001 L Menique 2
+    400050: Bip001 L Menique 3
+    400052: Bip001 L Pulgar 1
+    400054: Bip001 L Pulgar 2
+    400056: Bip001 L Pulgar 3
+    400058: Bip001 L Thigh
+    400060: Bip001 L Toe0
+    400062: Bip001 L Toe0Nub
+    400064: Bip001 L UpperArm
+    400066: Bip001 Neck
+    400068: Bip001 Pelvis
+    400070: Bip001 R Anular 1
+    400072: Bip001 R Anular 2
+    400074: Bip001 R Anular 3
+    400076: Bip001 R Calf
+    400078: Bip001 R Clavicle
+    400080: Bip001 R Corazon 1
+    400082: Bip001 R Corazon 2
+    400084: Bip001 R Corazon 3
+    400086: Bip001 R Finger0Nub
+    400088: Bip001 R Finger1Nub
+    400090: Bip001 R Finger2Nub
+    400092: Bip001 R Finger3Nub
+    400094: Bip001 R Finger4Nub
+    400096: Bip001 R Foot
+    400098: Bip001 R Forearm
+    400100: Bip001 R Hand
+    400102: Bip001 R Indice 1
+    400104: Bip001 R Indice 2
+    400106: Bip001 R Indice 3
+    400108: Bip001 R Menique 1
+    400110: Bip001 R Menique 2
+    400112: Bip001 R Menique 3
+    400114: Bip001 R Pulgar 1
+    400116: Bip001 R Pulgar 2
+    400118: Bip001 R Pulgar 3
+    400120: Bip001 R Thigh
+    400122: Bip001 R Toe0
+    400124: Bip001 R Toe0Nub
+    400126: Bip001 R UpperArm
+    400128: Bip001 Spine
+    400130: Bip001 Spine1
+    400132: Bip001 Spine2
+    400134: Bolsa1
+    400136: Bolsa2
+    400138: BoneHand
+    400140: BoneVaina
+    400142: Cabeza
+    400144: CAPA
+    400146: CapaA
+    400148: Cuchillo
+    400150: Cuchillo 1
+    400152: Cuerpo
+    400154: joint1
+    400156: joint10
+    400158: joint100
+    400160: joint101
+    400162: joint102
+    400164: joint103
+    400166: joint104
+    400168: joint105
+    400170: joint106
+    400172: joint107
+    400174: joint108
+    400176: joint109
+    400178: joint11
+    400180: joint110
+    400182: joint111
+    400184: joint12
+    400186: joint13
+    400188: joint14
+    400190: joint15
+    400192: joint16
+    400194: joint17
+    400196: joint19
+    400198: joint2
+    400200: joint20
+    400202: joint21
+    400204: joint22
+    400206: joint23
+    400208: joint24
+    400210: joint25
+    400212: joint26
+    400214: joint27
+    400216: joint28
+    400218: joint29
+    400220: joint3
+    400222: joint30
+    400224: joint31
+    400226: joint32
+    400228: joint33
+    400230: joint34
+    400232: joint35
+    400234: joint36
+    400236: joint37
+    400238: joint38
+    400240: joint39
+    400242: joint4
+    400244: joint40
+    400246: joint41
+    400248: joint42
+    400250: joint43
+    400252: joint44
+    400254: joint45
+    400256: joint46
+    400258: joint47
+    400260: joint48
+    400262: joint49
+    400264: joint5
+    400266: joint50
+    400268: joint51
+    400270: joint52
+    400272: joint53
+    400274: joint54
+    400276: joint55
+    400278: joint56
+    400280: joint57
+    400282: joint58
+    400284: joint59
+    400286: joint6
+    400288: joint60
+    400290: joint61
+    400292: joint62
+    400294: joint63
+    400296: joint64
+    400298: joint65
+    400300: joint66
+    400302: joint67
+    400304: joint68
+    400306: joint69
+    400308: joint7
+    400310: joint70
+    400312: joint71
+    400314: joint72
+    400316: joint73
+    400318: joint74
+    400320: joint75
+    400322: joint76
+    400324: joint77
+    400326: joint78
+    400328: joint79
+    400330: joint8
+    400332: joint80
+    400334: joint81
+    400336: joint82
+    400338: joint83
+    400340: joint84
+    400342: joint85
+    400344: joint86
+    400346: joint87
+    400348: joint88
+    400350: joint89
+    400352: joint9
+    400354: joint90
+    400356: joint91
+    400358: joint92
+    400360: joint93
+    400362: joint94
+    400364: joint95
+    400366: joint96
+    400368: joint97
+    400370: joint98
+    400372: joint99
+    400374: KatanaDefault
+    400376: KatanaDefaultHand
+    400378: KatanaLobo
+    400380: KatanaLoboHand
+    400382: Manga L
+    400384: Manga R
+    400386: //RootNode
+    400388: Tela F 1
+    400390: Tela F 2
+    400392: VainaCuchillo
+    400394: VainaDefault
+    400396: VainaLobo
+    2300000: Cuchillo 1
+    2300002: VainaCuchillo
+    3300000: Cuchillo 1
+    3300002: VainaCuchillo
+    4300000: CapaA
+    4300002: Cuerpo
+    4300004: Cabeza
+    4300006: VainaCuchillo
+    4300008: Cuchillo
+    4300010: KatanaLobo
+    4300012: VainaLobo
+    4300014: VainaDefault
+    4300016: KatanaDefault
+    4300018: KatanaLoboHand
+    4300020: KatanaDefaultHand
+    9500000: //RootNode
+    13700000: Cabeza
+    13700002: CapaA
+    13700004: Cuerpo
+    13700006: KatanaDefault
+    13700008: KatanaDefaultHand
+    13700010: KatanaLobo
+    13700012: KatanaLoboHand
+    13700014: VainaDefault
+    13700016: VainaLobo
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
