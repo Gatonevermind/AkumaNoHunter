@@ -15,7 +15,8 @@ public class GameControl : MonoBehaviour {
         player.name = "Player";
         player.tag = "Player";
 
-        player.transform.position = new Vector3(26, 122, 73);
+        player.transform.position = new Vector3(27.03f, 120.5f, 73.2f);
+        player.transform.Rotate(0, 62.3f, 0);
 
         player.AddComponent("PlayerMovement");
         player.AddComponent("PlayerHealth");

@@ -18,9 +18,13 @@ public class ActivateKatana : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-			other.transform.FindChild("Katana").GetComponent<VisKatana>().activeKatana = true;
-			other.transform.FindChild("KatanaHand").GetComponent<VisKatanaHand>().activeKatanaHand = true;
-			other.transform.FindChild("Vaina").GetComponent<VisVaina>().activeVaina = true;
+			other.transform.FindChild("KatanaDefault").GetComponent<VisKatana>().activeKatana = true;
+			other.transform.FindChild("KatanaDefaultHand").GetComponent<VisKatanaHand>().activeKatanaHand = true;
+            other.transform.FindChild("KatanaLobo").GetComponent<VisKatana>().activeKatana = true;
+            other.transform.FindChild("KatanaLoboHand").GetComponent<VisKatanaHand>().activeKatanaHand = true;
+
+			other.transform.FindChild("VainaDefault").GetComponent<VisVaina>().activeVaina = true;
+            other.transform.FindChild("VainaLobo").GetComponent<VisVaina>().activeVaina = true;
             
             //other.transform.Find("samurai").GetComponent<PlayerAttack>().activate = true;
             //other.transform.Find("samurai").GetComponent<PlayerMovement>().activeEventCombat = true;
