@@ -30,13 +30,14 @@ public class CustomCamera : MonoBehaviour
         x = angles.y;
         y = angles.x;
 
+
         if (rigidbody)
             rigidbody.freezeRotation = true;
     }
 
     void LateUpdate()
     {
-
+        
         if (!playerIndexSet || !prevState.IsConnected)
         {
             for (int i = 0; i < 4; ++i)
@@ -58,13 +59,15 @@ public class CustomCamera : MonoBehaviour
         
         if (!Target)
             return;
-        
+
+        if (!GameObject.Find("GameControl").GetComponent<PauseMenu>().pauseMenu)
+        {
             x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
             x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
             y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
-        
+        }
 
         distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
