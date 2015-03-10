@@ -30,15 +30,8 @@ public class PlayerDetection: MonoBehaviour
 
 	public int maxHealth;
     public Image visualHealth;
-	public float speedH;
-	public float coolDownH;
-	private bool onCoolDownH;
-
     public int maxStamina;
     public Image visualStamina;
-    public float speedS;
-    public float coolDownS;
-    private bool onCoolDownS;
 
 	void Start () 
 	{
@@ -46,13 +39,11 @@ public class PlayerDetection: MonoBehaviour
 		maxXValueH = healthTransform.position.x + healthTransform.rect.width;
 		minXValueH = healthTransform.position.x;
 		currentHealth = maxHealth;
-		onCoolDownH = false;
 
         cachedYS = staminaTransform.position.y;
         maxXValueS = staminaTransform.position.x + staminaTransform.rect.width;
         minXValueS = staminaTransform.position.x;
         currentStamina = maxStamina;
-        onCoolDownS = false;
 	}
 
 	void Update () 

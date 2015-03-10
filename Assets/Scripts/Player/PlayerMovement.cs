@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public static float speedS = 1.55F;
     public static float speedW = 3.0F;
     public static float sprint = 4.5F;
-    public float active = 0;
+    public float activeMov = 0;
     public float animationDirection = 10;
     public float animationSpeed = 0;
     public float back = 1.5F;
@@ -413,12 +413,12 @@ public class PlayerMovement : MonoBehaviour
             if (GodMode == true)
             {
                 GodMode = false;
-                active = 0;
+                activeMov = 0;
             }
             else if (GodMode == false)
             {
                 GodMode = true;
-                active = 1;
+                activeMov = 1;
             }
         }
 
