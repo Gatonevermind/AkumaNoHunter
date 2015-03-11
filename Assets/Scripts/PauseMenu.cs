@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public bool pauseMenu = false;
     GameObject[] pauseControl;
+    public string mainLevel;
 
     void Start() 
     {
@@ -47,7 +48,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("Quit");
-        Application.Quit();  
+        Application.LoadLevel(mainLevel);
     }
 }

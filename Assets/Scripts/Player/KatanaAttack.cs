@@ -21,6 +21,8 @@ public class KatanaAttack : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0)) combatActive = true;
 
+        if ((Input.GetKey(KeyCode.Mouse0)) && combatActive) combatTime = 0;
+
         if (combatActive)
         {
             combatTime += 60 * Time.deltaTime;

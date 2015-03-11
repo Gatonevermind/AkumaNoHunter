@@ -13,6 +13,7 @@ public class Mob : MonoBehaviour
     public AnimationClip run;
     public AnimationClip idle;
     public AnimationClip die;
+    public AnimationClip jump;
 
     public float range;
     public float speed;
@@ -169,13 +170,23 @@ public class Mob : MonoBehaviour
 			case AttackType.JUMP:
 			{
                 follow = false;
+                PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 chargeJump -= Time.deltaTime;
+                if (chargeJump <= 0.5f) animation.CrossFade(jump.name);
                 if (chargeJump <= 0)
                 {
-                    transform.position = Vector3.Lerp(transform.position, positionAttack, 0.2f);
-                    timeJump += Time.deltaTime;    
+                    transform.position = Vector3.Lerp(transform.position, positionAttack, 0.03f);
+                    timeJump += Time.deltaTime;   
+ 
                 }
-                if (timeJump >= 1) attackCurrent = AttackType.IDLE;
+                if (timeJump >= 1)
+                {
+                    attackCurrent = AttackType.IDLE;
+                    if (distance < 1)
+                    {
+                        eh.AddjustCurrentHealth(-15);
+                    }
+                }
 			}
 			break;
 			case AttackType.DEAD:

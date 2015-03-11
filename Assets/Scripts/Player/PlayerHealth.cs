@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour {
    // public float healthBarLenght;
 
     public bool invincible;
-    public float active = 0;
+    public float activeHealth = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -30,12 +30,12 @@ public class PlayerHealth : MonoBehaviour {
             if (invincible == true)
             {
                 invincible = false;
-                active = 0;
+                activeHealth = 0;
             }
             else if (invincible == false)
             {
                 invincible = true;
-                active = 1;
+                activeHealth = 1;
             }
         }
         

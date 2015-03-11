@@ -307,7 +307,7 @@ MonoBehaviour:
   stay: {fileID: 7400000, guid: 13ddef2f1a965a3488b576ac0ce9bc7b, type: 2}
   counterEat: 0
   counterMove: 0
-  levelName: Alpha
+  levelName: Beta
 --- !u!95 &1104426185
 Animator:
   serializedVersion: 3

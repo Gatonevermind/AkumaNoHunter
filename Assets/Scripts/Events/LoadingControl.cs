@@ -25,7 +25,7 @@ public class LoadingControl : MonoBehaviour
     public float counterEat;
     public float counterMove;
 
-    Vector3 initialPosition;
+    //Vector3 initialPosition;
 
     public string levelName;
 
@@ -34,7 +34,7 @@ public class LoadingControl : MonoBehaviour
     {
         fruitEated = 0;
         counterEat = 0;
-        initialPosition = transform.position;
+        //initialPosition = transform.position;
 	}
 	
 	// Update is called once per frame
