@@ -29,20 +29,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ReflectionTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _RefractionTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ReflectiveColorCube
         second:
           m_Texture: {fileID: 8900000, guid: 15c6acc4f11254a04b03849245d80574, type: 3}
@@ -60,6 +46,20 @@ Material:
           name: _ReflectiveColor
         second:
           m_Texture: {fileID: 2800000, guid: b725b62cfc9d04e4886735ab2a8107d1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ReflectionTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RefractionTex
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -108,11 +108,19 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
+          name: _MainTex_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
           name: _SpecColor
         second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
-          name: _MainTex_ST
+          name: _RefrColor
+        second: {r: .647058845, g: 1, b: .956186652, a: 1}
+      data:
+        first:
+          name: _Fresnel_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
@@ -124,18 +132,6 @@ Material:
         second: {r: 9, g: 4.5, b: -8, a: -3.5}
       data:
         first:
-          name: _RefrColor
-        second: {r: .647058845, g: 1, b: .956186652, a: 1}
-      data:
-        first:
-          name: _HorizonColor
-        second: {r: .195609868, g: .272021502, b: .397058845, a: 0}
-      data:
-        first:
-          name: _Fresnel_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
           name: _ReflectiveColor_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
@@ -144,16 +140,16 @@ Material:
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
+          name: _HorizonColor
+        second: {r: .195609868, g: .272021502, b: .397058845, a: 0}
+      data:
+        first:
           name: _ReflectionTex_ST
         second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
           name: _RefractionTex_ST
         second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _horizonColor
-        second: {r: .172000006, g: .463, b: .435000002, a: 0}
       data:
         first:
           name: _DistortParams
@@ -218,6 +214,10 @@ Material:
         first:
           name: _GDirectionCD
         second: {r: .100000001, g: .899999976, b: .5, a: .5}
+      data:
+        first:
+          name: _horizonColor
+        second: {r: .172000006, g: .463, b: .435000002, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 33: {fileID: 3300000}
+  - 23: {fileID: 2300000}
+  - 111: {fileID: 11100000}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: chamferbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 2.18556941e-08, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: .762064695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2300000
+Renderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 48d54c6451af4ac4192ca1cdcc19efed, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3300000
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Mesh: {fileID: 4300002, guid: 87b0fd439d1a3a94fb05409c8ed0e767, type: 3}
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8024813413903294490a35eb9367fe73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  summerdaySkybox: {fileID: 2100000, guid: bacc4b8e58488df4b85a0b2dfb34527b, type: 2}
+  summerdayCubemap: {fileID: 8900000, guid: 3b81c382a18452648ae7aeb161fb0636, type: 2}
+  stormIsComingSkybox: {fileID: 2100000, guid: bd728a86116a0254ebb097adb34b25dd, type: 2}
+  stormIsComingCubemap: {fileID: 8900000, guid: a1e65d4ad834e6848a2193417223168d,
+    type: 2}
+  sunsetSemiCloudySkybox: {fileID: 2100000, guid: 20e86dba8b48ae0489950eb1cd086514,
+    type: 2}
+  sunsetSemiCloudyCubemap: {fileID: 8900000, guid: b49c8e8a82ce8864f80dc153724a8b6b,
+    type: 2}
+  rainyDayLondonSkybox: {fileID: 2100000, guid: 7b25061e60129d9479d903278243476c,
+    type: 2}
+  rainyDayLondonCubemap: {fileID: 8900000, guid: 162548b127b1ef9458d23e11a9294cca,
+    type: 2}
+  semicloudy_afternoonSkybox: {fileID: 2100000, guid: ce526e814c262504bb87e40ce73111b6,
+    type: 2}
+  semicloudy_afternoonCubemap: {fileID: 8900000, guid: f3f464e917139e74589f082cac751fae,
+    type: 2}
+  rainyDayMiddlesbroughSkybox: {fileID: 2100000, guid: 59f6095289a8617408e42ff53ff4d827,
+    type: 2}
+  rainyDayMiddlesbroughCubemap: {fileID: 8900000, guid: 9405d55882460f547b4c086c04e9468d,
+    type: 2}
+  semiCloudySunsetSkybox: {fileID: 2100000, guid: 2b1e58f31ac411d429c28a9ae562ec20,
+    type: 2}
+  semiCloudySunsetCubemap: {fileID: 8900000, guid: 4d20a8445bceb7f4c962ea98c6f29cbc,
+    type: 2}
+  moonShineSkybox: {fileID: 2100000, guid: cf74950ba62f04f4fbac8822ac54c878, type: 2}
+  moonShineCubemap: {fileID: 8900000, guid: 482b0ad9236d5e144995c7b085268b68, type: 2}
+  clearSkySkybox: {fileID: 2100000, guid: 20562497ae6cdc64faef160961b7569f, type: 2}
+  clearSkyCubemap: {fileID: 8900000, guid: d03957129a73a754e9cfc702945e3c4a, type: 2}
+  sunriseStarrySkySkybox: {fileID: 2100000, guid: 346b1a6c60e32cb46a304abf4624459f,
+    type: 2}
+  sunriseStarrySkyCubemap: {fileID: 8900000, guid: 3b13dbf8cac19884fb4e967f71102034,
+    type: 2}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019ea676d8728942848fb20256201ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotateSpeed: 10
+  yRotateSpeed: 20
+  zRotateSpeed: 10
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

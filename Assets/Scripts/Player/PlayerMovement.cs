@@ -593,18 +593,18 @@ public class PlayerMovement : MonoBehaviour
 				{
 					land = 0;
 				}
-				else if (land >= 6)
-				{
-					animator.SetBool ("Land", true);
-					Blocked ();
-					land += 0.1f;
-					if(land >= 11)
-					{
-						Unblocked ();
-						land = 0;
-						animator.SetBool ("Land", false);
-					}
-				}
+//				else if (land >= 6)
+//				{
+//					animator.SetBool ("Land", true);
+//					Blocked ();
+//					land += 0.1f;
+//					if(land >= 11)
+//					{
+//						Unblocked ();
+//						land = 0;
+//						animator.SetBool ("Land", false);
+//					}
+//				}
 
                 
 				if (Input.GetKeyUp(KeyCode.LeftShift))
