@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
                     if (combat)
                     {
-                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount ==2)))
                         {
 
                         }
@@ -242,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
 
                     if (combat)
                     {
-                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                         {
                             
                         }
@@ -302,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
                     objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
                     transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
                 }
-                else if (Input.GetKeyDown(KeyCode.Mouse0))
+                else if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                 {
                     if (combat)
                     {
@@ -333,7 +333,7 @@ public class PlayerMovement : MonoBehaviour
 
                     if (combat)
                     {
-                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                         {
 
                         }

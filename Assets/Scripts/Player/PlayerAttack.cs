@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public static float attackMove;
     public float pruebatiempo;
     public float coolDown;
-    public float attackCount;
+    public static float attackCount;
     public float finalTime;
     public int timecounter = 0;
 
