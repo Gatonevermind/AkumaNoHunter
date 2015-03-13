@@ -117,9 +117,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     animationDirection = 5.2f;
                 }
-
-                objectiveDirection = new Vector3(-rootA, objectiveDirection.y, rootA);
-                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    objectiveDirection = new Vector3(-rootA, objectiveDirection.y, rootA);
+                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
             }
             else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
             {
@@ -141,8 +140,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     animationDirection = 14.8f;
                 }
-                objectiveDirection = new Vector3(rootD, objectiveDirection.y, rootD);
-                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    objectiveDirection = new Vector3(rootD, objectiveDirection.y, rootD);
+                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
             }
 
             else
@@ -187,20 +186,31 @@ public class PlayerMovement : MonoBehaviour
 
                     if (combat)
                     {
-                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount ==2)))
+                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                         {
-
+                            Blocked();
+                        }
+                        if ((Input.GetKey(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
+                        {
+                            Blocked();
                         }
                         else
                         {
-                            objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            if (PlayerAttack.attackCount == 0)
+                            {
+                                Unblocked();
+                                objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
+                                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            }
                         }
                     }
                     else
                     {
-                        objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        if (PlayerAttack.attackCount == 0)
+                        {
+                            objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
                     }
                 }
                 else if (Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))
@@ -244,18 +254,29 @@ public class PlayerMovement : MonoBehaviour
                     {
                         if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                         {
-                            
+                            Blocked();
+                        }
+                        if ((Input.GetKey(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
+                        {
+                            Blocked();
                         }
                         else
                         {
-                            objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            if (PlayerAttack.attackCount == 0)
+                            {
+                                Unblocked();
+                                objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
+                                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            }
                         }
                     }
                     else
                     {
-                        objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        if (PlayerAttack.attackCount == 0)
+                        {
+                            objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
                     }
                 }
                 else if (Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))
@@ -299,17 +320,46 @@ public class PlayerMovement : MonoBehaviour
                     {
                         speedW = 5;
                     }
-                    objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
-                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    if (combat)
+                    {
+                        if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
+                        {
+                            Blocked();
+                        }
+                        if ((Input.GetKey(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
+                        {
+                            Blocked();
+                        }
+                        else
+                        {
+                            if (PlayerAttack.attackCount == 0)
+                            {
+                                Unblocked();
+                                objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (PlayerAttack.attackCount == 0)
+                        {
+                            objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
+                    }
                 }
+                /*
                 else if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                 {
                     if (combat)
                     {
-                        objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, speedW * 10);
                         transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
                     }
                 }
+                 */
                 else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
                 {
                     if (animationSpeed <= -2)
@@ -331,22 +381,39 @@ public class PlayerMovement : MonoBehaviour
                         animationDirection -= transitionSpeed;
                     }
 
+                    if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                    {
+                        speedS = 5;
+                        animator.SetBool("DashBack", true);
+                    }
+
                     if (combat)
                     {
                         if ((Input.GetKeyDown(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
                         {
-
+                            Blocked();
+                        }
+                        if ((Input.GetKey(KeyCode.Mouse0)) && ((PlayerAttack.attackCount == 0) || (PlayerAttack.attackCount == 2)))
+                        {
+                            Blocked();
                         }
                         else
                         {
-                            objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            if (PlayerAttack.attackCount == 0)
+                            {
+                                Unblocked();
+                                objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                                transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                            }
                         }
                     }
                     else
                     {
-                        objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        if (PlayerAttack.attackCount == 0)
+                        {
+                            objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
                     }
 
                 }
@@ -376,6 +443,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
 	{
         staminaBarLenght = Screen.width / 3;
+        /*
+        this.transform.GetComponent<CharacterController>().height = 0.29f;
+        this.transform.GetComponent<CharacterController>().center = new Vector3(0, 01, 0);
+         */
 
         dashTimer = 0;
 		dashCooldown = 1.5f;
@@ -388,6 +459,11 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 
+        if (transform.GetComponent<PlayerHealth>().curHealth <= 0)
+        {
+            Blocked();
+            animator.SetBool("Death", true);
+        }
 
         if (!playerIndexSet || !prevState.IsConnected)
         {
@@ -444,6 +520,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("Dash", false);
                 dashTimer = 0;
+                animator.SetBool("DashBack", false);
             }
 
             //Stamina Control
@@ -496,7 +573,6 @@ public class PlayerMovement : MonoBehaviour
             //sprint
             if (Input.GetKey(KeyCode.LeftShift))
             {
-
                 if (curStam > 200)
                 {
 					sprintActive = true;
@@ -506,7 +582,6 @@ public class PlayerMovement : MonoBehaviour
 
                         //animator.SetBool("Sprint", false);
                         speedW = 3; 
-
                     }
 
                     else if (((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
@@ -521,9 +596,6 @@ public class PlayerMovement : MonoBehaviour
                     {
                         speedW = sprint;
                     }
-
-
-
                 }
 				else if (curStam <= 0)
 				{

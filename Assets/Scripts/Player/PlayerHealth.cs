@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour {
 	void Start () {
         //healthBarLenght = Screen.width / 2;
 
-        level = "Alpha";
+        level = "Beta";
 
         invincible = false;
 	}
@@ -41,8 +41,10 @@ public class PlayerHealth : MonoBehaviour {
         
         if (invincible == false)
         {
+            /*
             if (curHealth <= 0)
                 Application.LoadLevel(level);
+             */
         }
         else if (invincible == true)
         {

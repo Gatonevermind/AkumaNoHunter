@@ -15,7 +15,7 @@ public class CustomCamera : MonoBehaviour
     float yMaxLimit = 80f;
     float zoomRate = 20f;
     //float rotationDampening = 3.0f;
-    LayerMask collisionMask = -1;
+    //LayerMask collisionMask = -1;
     private float x = 0.0f;
     private float y = 0.0f;
 
@@ -23,6 +23,8 @@ public class CustomCamera : MonoBehaviour
     PlayerIndex playerIndex;
     GamePadState state;
     GamePadState prevState;
+
+    int ignoreMask;
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class CustomCamera : MonoBehaviour
 
         if (rigidbody)
             rigidbody.freezeRotation = true;
+
+        ignoreMask = 1 << 8;
     }
 
     void LateUpdate()
@@ -86,7 +90,7 @@ public class CustomCamera : MonoBehaviour
         RaycastHit hit;
         Vector3 trueTargetPosition = Target.transform.position - new Vector3(0.15f, -targetHeight, 0);
         // Cast the line to check: 
-        if (Physics.Linecast(trueTargetPosition, transform.position, out hit, collisionMask))
+        if (Physics.Linecast(trueTargetPosition, transform.position, out hit, ignoreMask))
         {
             // If so, shorten distance so camera is in front of object: 
             float tempDistance = Vector3.Distance(trueTargetPosition, hit.point) - 0.28f;

@@ -14,6 +14,7 @@ public class Mob : MonoBehaviour
     public AnimationClip idle;
     public AnimationClip die;
     public AnimationClip jump;
+    public AnimationClip finaldie;
 
     public float range;
     public float speed;
@@ -24,6 +25,7 @@ public class Mob : MonoBehaviour
     public float timeJump;
     public float chargeBlow;
     public float chargeNibble;
+    public float finalDie;
 
     bool follow;
     bool statusHealth = true;
@@ -59,9 +61,10 @@ public class Mob : MonoBehaviour
         cdBlow = 0;
         cdJump = 0;
         timeJump = 0;
-        chargeJump = 0;
+        chargeJump = 2;
         chargeNibble = 0;
         chargeBlow = 0;
+        finalDie = 0;
 	}
 	
 	// Update is called once per frame
@@ -172,10 +175,10 @@ public class Mob : MonoBehaviour
                 follow = false;
                 PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 chargeJump -= Time.deltaTime;
-                if (chargeJump <= 0.5f) animation.CrossFade(jump.name);
+                if (chargeJump <= 1.45f) animation.CrossFade(jump.name);
                 if (chargeJump <= 0)
                 {
-                    transform.position = Vector3.Lerp(transform.position, positionAttack, 0.03f);
+                    transform.position = Vector3.Lerp(transform.position, positionAttack, 0.04f);
                     timeJump += Time.deltaTime;   
  
                 }
@@ -193,6 +196,9 @@ public class Mob : MonoBehaviour
 			{
 				animation.CrossFade (die.name);
                 follow = false;
+                finalDie += Time.deltaTime;
+
+                if (finalDie >= 4) animation.Play(finaldie.name);
 			}
 			break;
             case AttackType.COMBAT:

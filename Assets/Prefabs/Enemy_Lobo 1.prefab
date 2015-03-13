@@ -1723,9 +1723,11 @@ Animation:
   m_Animation: {fileID: 7400000, guid: c92b5538b5cae374eaebe11914d53db9, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: c92b5538b5cae374eaebe11914d53db9, type: 3}
-  - {fileID: 7400000, guid: f0f2a75f1c9e36245a40c6b8153c5ec9, type: 3}
+  - {fileID: 7400000, guid: eb528b7b96cdd124bba40fa66eb8188b, type: 3}
   - {fileID: 7400000, guid: 84e3ccedd60340b47bd19808a19f2202, type: 3}
   - {fileID: 7400000, guid: 320eb915addbc4349944923d53482a0b, type: 3}
+  - {fileID: 7400000, guid: d28296b9f032fb64695a91fb06efc0f8, type: 3}
+  - {fileID: 7400002, guid: d28296b9f032fb64695a91fb06efc0f8, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 1
@@ -1748,8 +1750,9 @@ MonoBehaviour:
   waitingforbattle: {fileID: 7400000, guid: 84e3ccedd60340b47bd19808a19f2202, type: 3}
   run: {fileID: 7400000, guid: 320eb915addbc4349944923d53482a0b, type: 3}
   idle: {fileID: 7400000, guid: c92b5538b5cae374eaebe11914d53db9, type: 3}
-  die: {fileID: 7400000, guid: c92b5538b5cae374eaebe11914d53db9, type: 3}
-  jump: {fileID: 7400000, guid: f0f2a75f1c9e36245a40c6b8153c5ec9, type: 3}
+  die: {fileID: 7400000, guid: d28296b9f032fb64695a91fb06efc0f8, type: 3}
+  jump: {fileID: 7400000, guid: eb528b7b96cdd124bba40fa66eb8188b, type: 3}
+  finaldie: {fileID: 7400002, guid: d28296b9f032fb64695a91fb06efc0f8, type: 3}
   range: 6
   speed: 2.5
   cdBlow: 0
@@ -1759,6 +1762,7 @@ MonoBehaviour:
   timeJump: 0
   chargeBlow: 0
   chargeNibble: 0
+  finalDie: 0
 --- !u!114 &11486030
 MonoBehaviour:
   m_ObjectHideFlags: 1

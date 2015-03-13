@@ -11,15 +11,6 @@ public class EnemyHealth : MonoBehaviour {
 	void Update () {
         AddjustCurrentHealth(0);
 
-		if (curHealth <= 0) 
-		{
-			deadCounter -= Time.deltaTime;
-
-			if (deadCounter <= 0)
-			{
-				Destroy(this.gameObject);
-			}
-		}
 	}
 
     public void AddjustCurrentHealth(int adj) {

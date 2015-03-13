@@ -25,7 +25,7 @@ public class ActivateKatana : MonoBehaviour
 
 			other.transform.FindChild("VainaDefault").GetComponent<VisVaina>().activeVaina = true;
             other.transform.FindChild("VainaLobo").GetComponent<VisVaina>().activeVaina = true;
-            
+
             //other.transform.Find("samurai").GetComponent<PlayerAttack>().activate = true;
             //other.transform.Find("samurai").GetComponent<PlayerMovement>().activeEventCombat = true;
         }
