@@ -416,7 +416,7 @@ ModelImporter:
     4300016: KatanaDefault
     4300018: KatanaLoboHand
     4300020: KatanaDefaultHand
-    7400000: Take 001
+    7400000: QW_Samurai_DashBack
     9500000: //RootNode
     13700000: Cabeza
     13700002: CapaA
@@ -436,13 +436,538 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: QW_Samurai_DashBack
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip001
+        weight: 1
+      - path: Bip001/Bip001 Footsteps
+        weight: 1
+      - path: Bip001/Bip001 Pelvis
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
+          L Foot
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
+          L Foot/Bip001 L Toe0
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
+          L Foot/Bip001 L Toe0/Bip001 L Toe0Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
+          R Foot
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
+          R Foot/Bip001 R Toe0
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
+          R Foot/Bip001 R Toe0/Bip001 R Toe0Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 Head
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 Head/Bip001 HeadNub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Anular 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Anular 1/Bip001 L Anular 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Anular 1/Bip001 L Anular 2/Bip001 L Anular 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Anular 1/Bip001 L Anular 2/Bip001 L Anular 3/Bip001 L Finger3Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Corazon 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Corazon 1/Bip001 L Corazon 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Corazon 1/Bip001 L Corazon 2/Bip001 L Corazon 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Corazon 1/Bip001 L Corazon 2/Bip001 L Corazon 3/Bip001 L Finger2Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Indice 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Indice 1/Bip001 L Indice 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Indice 1/Bip001 L Indice 2/Bip001 L Indice 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Indice 1/Bip001 L Indice 2/Bip001 L Indice 3/Bip001 L Finger1Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Menique 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Menique 1/Bip001 L Menique 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Menique 1/Bip001 L Menique 2/Bip001 L Menique 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Menique 1/Bip001 L Menique 2/Bip001 L Menique 3/Bip001 L Finger4Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Pulgar 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Pulgar 1/Bip001 L Pulgar 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Pulgar 1/Bip001 L Pulgar 2/Bip001 L Pulgar 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/Bip001
+          L Pulgar 1/Bip001 L Pulgar 2/Bip001 L Pulgar 3/Bip001 L Finger0Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001 L Hand/BoneVaina
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 L Clavicle/Bip001 L UpperArm/Manga L
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Anular 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Anular 1/Bip001 R Anular 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Anular 1/Bip001 R Anular 2/Bip001 R Anular 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Anular 1/Bip001 R Anular 2/Bip001 R Anular 3/Bip001 R Finger3Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Corazon 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Corazon 1/Bip001 R Corazon 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Corazon 1/Bip001 R Corazon 2/Bip001 R Corazon 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Corazon 1/Bip001 R Corazon 2/Bip001 R Corazon 3/Bip001 R Finger2Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Indice 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Indice 1/Bip001 R Indice 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Indice 1/Bip001 R Indice 2/Bip001 R Indice 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Indice 1/Bip001 R Indice 2/Bip001 R Indice 3/Bip001 R Finger1Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Menique 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Menique 1/Bip001 R Menique 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Menique 1/Bip001 R Menique 2/Bip001 R Menique 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Menique 1/Bip001 R Menique 2/Bip001 R Menique 3/Bip001 R Finger4Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Pulgar 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Pulgar 1/Bip001 R Pulgar 2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Pulgar 1/Bip001 R Pulgar 2/Bip001 R Pulgar 3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001
+          R Pulgar 1/Bip001 R Pulgar 2/Bip001 R Pulgar 3/Bip001 R Finger0Nub
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/BoneHand
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
+          Neck/Bip001 R Clavicle/Bip001 R UpperArm/Manga R
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bolsa1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Bolsa1/Bolsa2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint2
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint3
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint4
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint5
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint6
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint7
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint8
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint9
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint10
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint11
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint12
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint13
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint14
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint15
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint16
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint17
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint19
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint20
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint21
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint22
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint23
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint24
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint25
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint26
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint27
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint28
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint29
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint30
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint31
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint32
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint33
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint34
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint35
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint36
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint37
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint38
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint39
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint40
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint41
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint42
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint43
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint44
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint45
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint46
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint47
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint48
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint49
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint50
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint51
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint52
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint53
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint54
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint55
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint56
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint57
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint58
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint59
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint60
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint61
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint62
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint63
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint64
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint65
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint66
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint67
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint68
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint69
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint70
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint71
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint72
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint73
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint74
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint75
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint76
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint77
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint78
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint79
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint80
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint81
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint82
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint83
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint84
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint85
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint86
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint87
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint88
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint89
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint90
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint91
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint92
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint93
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint94
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint95
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint96
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint97
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint98
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint99
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint100
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint101
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint102
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint103
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint104
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint105
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint106
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint107
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint108
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint109
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint110
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/CAPA/joint111
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Cuchillo
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Cuchillo/Cuchillo 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Cuchillo/VainaCuchillo
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Tela F 1
+        weight: 1
+      - path: Bip001/Bip001 Pelvis/Tela F 1/Tela F 2
+        weight: 1
+      - path: Cabeza
+        weight: 1
+      - path: CapaA
+        weight: 1
+      - path: Cuerpo
+        weight: 1
+      - path: KatanaDefault
+        weight: 1
+      - path: KatanaDefaultHand
+        weight: 1
+      - path: KatanaLobo
+        weight: 1
+      - path: KatanaLoboHand
+        weight: 1
+      - path: VainaDefault
+        weight: 1
+      - path: VainaLobo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

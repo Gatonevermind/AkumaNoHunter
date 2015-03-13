@@ -194,11 +194,11 @@ public class Mob : MonoBehaviour
 			break;
 			case AttackType.DEAD:
 			{
-				animation.CrossFade (die.name);
+				animation.Play (die.name);
                 follow = false;
                 finalDie += Time.deltaTime;
 
-                if (finalDie >= 4) animation.Play(finaldie.name);
+                if (finalDie >= 1) animation.Play(finaldie.name);
 			}
 			break;
             case AttackType.COMBAT:
