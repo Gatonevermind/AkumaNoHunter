@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool sprintActive;
 	public float sprintLateral = 3.0F;
 	public float staminaBarLenght;
-    public float transitionSpeed = 13 * Time.deltaTime;
+    public float transitionSpeed = 25 * Time.deltaTime;
 	float acceleration = 0.2F;
 	private Animator animator;
 	bool GodMode = false;
@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 				if (animationSpeed >= 3)
 					animationSpeed = 3;
 				else if (animationSpeed < 3)
-                    animationSpeed += 5 * Time.deltaTime;
+                    animationSpeed += 10 * Time.deltaTime;
 				if (animationDirection < 4.5f)
 				{
 					animationDirection += transitionSpeed;
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 				if (animationSpeed >= 3)
 					animationSpeed = 3;
 				else if (animationSpeed < 3)
-                    animationSpeed += 5 * Time.deltaTime;
+                    animationSpeed += 10 * Time.deltaTime;
 				if (animationDirection < 14.5f)
 				{
 					animationDirection += transitionSpeed;
@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 				{
 					animationDirection -= transitionSpeed;
 				}
-				else if ((animationDirection >= 14.5f) && (animationDirection <= 55.5))
+				else if ((animationDirection >= 14.5f) && (animationDirection <= 15.5))
 				{
 					animationDirection = 14.8f;
 				}
@@ -155,18 +155,18 @@ public class PlayerMovement : MonoBehaviour
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 10 * Time.deltaTime;
 					}
 					else if (animationDirection > 20)
 					{
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 10 * Time.deltaTime;
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
-						speedD = 5;
+						speedD = 7;
 					}
 					if (combat)
 					{
@@ -212,18 +212,18 @@ public class PlayerMovement : MonoBehaviour
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 10 * Time.deltaTime;
 					}
 					else if (animationDirection <= 0)
 					{
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 10 * Time.deltaTime;
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
-						speedA = 5;
+						speedA = 7;
 					}
 					if (combat)
 					{
@@ -258,17 +258,17 @@ public class PlayerMovement : MonoBehaviour
 					{
 						speedW = sprint;
 						if ((animationSpeed >= 3) && (animationSpeed <= 4.5f))
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 3 * Time.deltaTime;
 						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
+                            animationSpeed += 10 * Time.deltaTime;
 					}
 					else
 					{
-						if ((animationSpeed >= 3) && (animationSpeed <= 3.4f))
+						if ((animationSpeed >= 2.9f) && (animationSpeed <= 3.1f))
 							animationSpeed = 3;
-						else if (animationSpeed < 3)
-                            animationSpeed += 5 * Time.deltaTime;
-						else if (animationSpeed > 3.4f)
+						else if (animationSpeed < 2.9f)
+                            animationSpeed += 10 * Time.deltaTime;
+						else if (animationSpeed > 3.1f)
                             animationSpeed -= 5 * Time.deltaTime;
 					}
 					if (animationDirection < 9.5f)
@@ -285,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
-						speedW = 4.5f;
+						speedW = 7f;
 					}
                     if (combat)
                     {
@@ -319,7 +319,7 @@ public class PlayerMovement : MonoBehaviour
                     if (animationSpeed <= -2)
                         animationSpeed = -2;
                     else if (animationSpeed > -2)
-                        animationSpeed -= 5 * Time.deltaTime;
+                        animationSpeed -= 10 * Time.deltaTime;
 					if ((animationDirection >= 9.5f) && (animationDirection <= 10.5f))
 					{
 						animationDirection = 10;
@@ -334,7 +334,7 @@ public class PlayerMovement : MonoBehaviour
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
-						speedS = 5;
+						speedS = 6;
 					}
                     if (combat)
                     {
@@ -369,9 +369,9 @@ public class PlayerMovement : MonoBehaviour
 					if ((animationSpeed >= -0.2f) && (animationSpeed <= 0.2f))
 						animationSpeed = 0;
 					else if (animationSpeed < -0.2f)
-                        animationSpeed += 5 * Time.deltaTime;
+                        animationSpeed += 15 * Time.deltaTime;
 					else if (animationSpeed > 0.2f)
-                        animationSpeed -= 5 * Time.deltaTime;
+                        animationSpeed -= 15 * Time.deltaTime;
 					objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
 				}
 			}
@@ -570,7 +570,7 @@ public class PlayerMovement : MonoBehaviour
 				}
 				if ((dashTimer == 0) && (curStam > 400))
 				{
-					if ((animationSpeed >= 3) && (animationDirection == 10))
+					if ((animationSpeed > 0) || (animationSpeed < 0))
 					{
 						if((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
 						{
@@ -580,6 +580,7 @@ public class PlayerMovement : MonoBehaviour
 							curStam -= 400;
 						}
 					}
+					/*
 					else if ((animationSpeed == 3) && (animationDirection <= 5))
 					{
 						if ((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
@@ -607,6 +608,7 @@ public class PlayerMovement : MonoBehaviour
 						dashTimer = dashCooldown;
 						curStam -= 400;
 					}
+					*/
 				}
 				else if ( dashTimer > 1)
 				{
