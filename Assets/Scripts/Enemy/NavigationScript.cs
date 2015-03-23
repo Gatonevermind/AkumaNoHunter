@@ -46,7 +46,7 @@ public class NavigationScript : MonoBehaviour {
             {
                 PlayerHealth eh = (PlayerHealth)target.GetComponent("PlayerHealth");
                 eh.AddjustCurrentHealth(-10);
-                target.renderer.material.color = Color.red;
+                target.GetComponent<Renderer>().material.color = Color.red;
             }
         }
     }

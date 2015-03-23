@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public static float attackMove;
     public float pruebatiempo;
     public float coolDown;
-    public static float attackCount;
+    public float attackCount;
     public float finalTime;
     public int timecounter = 0;
 
@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
                     }
 
                 }
-                else if (attackTimer >= 1.6f)
+                else if (attackTimer >= 1.4f)
                 {
 
                     if (attackCount == 1)
@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
                         animator.SetFloat("Attack", 0);
                     }
                 }
-                else if (attackTimer >= 3f)
+                else if (attackTimer >= 2.1f)
                 {
 
                     if (attackCount == 2)
@@ -119,7 +119,7 @@ public class PlayerAttack : MonoBehaviour
                         animator.SetFloat("Attack", 0);
                     }
                 }
-                else if (attackTimer >= 3f)
+                else if (attackTimer >= 2.6f)
                 {
                     attackTimer = 0;
                     attackCount = 0;
@@ -166,7 +166,7 @@ public class PlayerAttack : MonoBehaviour
                 }
 
             }
-            if (attackTimer >= 4f)
+            if (attackTimer >= 3f)
             {
                 attackTimer = 0;
                 attackCount = 0;

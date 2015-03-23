@@ -2,13 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Nighttime Water
   m_Shader: {fileID: 4800000, guid: 1cac2e0bcc34e4b3cbb4bd85982eba83, type: 3}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -64,6 +65,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ShoreTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ColorControlCube
         second:
           m_Texture: {fileID: 0}
@@ -108,20 +116,16 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _MainTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
           name: _SpecColor
         second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
-          name: _RefrColor
-        second: {r: .647058845, g: 1, b: .956186652, a: 1}
+          name: _MainTex_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
-          name: _Fresnel_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
+          name: _RefrColor
+        second: {r: .647058845, g: 1, b: .956186652, a: 1}
       data:
         first:
           name: _BumpMap_ST
@@ -132,24 +136,8 @@ Material:
         second: {r: 9, g: 4.5, b: -8, a: -3.5}
       data:
         first:
-          name: _ReflectiveColor_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _ReflectiveColorCube_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
           name: _HorizonColor
         second: {r: .195609868, g: .272021502, b: .397058845, a: 0}
-      data:
-        first:
-          name: _ReflectionTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _RefractionTex_ST
-        second: {r: 1, g: 1, b: 0, a: 0}
       data:
         first:
           name: _DistortParams
@@ -192,6 +180,10 @@ Material:
         second: {r: 0, g: .100000001, b: -.5, a: 0}
       data:
         first:
+          name: _Foam
+        second: {r: .100000001, g: .375, b: 0, a: 0}
+      data:
+        first:
           name: _GAmplitude
         second: {r: .300000012, g: .349999994, b: .25, a: .25}
       data:
@@ -218,6 +210,26 @@ Material:
         first:
           name: _horizonColor
         second: {r: .172000006, g: .463, b: .435000002, a: 0}
+      data:
+        first:
+          name: _Fresnel_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _ReflectiveColor_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _ReflectiveColorCube_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _ReflectionTex_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _RefractionTex_ST
+        second: {r: 1, g: 1, b: 0, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

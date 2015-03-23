@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour {
 		
 		// Construct a ray from the current touch coordinates
 		// LANZAMOS UN RAYCAST DESDE LA PANTALLA
-		Ray ray = camera.ScreenPointToRay( screenPos );
+		Ray ray = GetComponent<Camera>().ScreenPointToRay( screenPos );
 		RaycastHit hit;
 
 		if ( Physics.Raycast( ray, out hit ) ) {

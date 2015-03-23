@@ -125,7 +125,7 @@ public class MobBoss : MonoBehaviour
 					chargeJump = 2;
 				}
 			}
-			else if ((InRange()) && (distance > 4f)) animation.CrossFade(run.name);
+			else if ((InRange()) && (distance > 4f)) GetComponent<Animation>().CrossFade(run.name);
 		}
 		
 		switch (attackCurrent) 
@@ -144,7 +144,7 @@ public class MobBoss : MonoBehaviour
 			follow = false;
 			PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
 			chargeBlow += Time.deltaTime;
-			animation.CrossFade(blow.name);
+			GetComponent<Animation>().CrossFade(blow.name);
 			
 			if (chargeBlow >= 2)
 			{
@@ -166,7 +166,7 @@ public class MobBoss : MonoBehaviour
 			follow = false;
 			PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
 			chargeNibble +=Time.deltaTime;
-			animation.CrossFade(nibble.name);
+			GetComponent<Animation>().CrossFade(nibble.name);
 			
 			if (chargeNibble >= 2)
 			{
@@ -188,7 +188,7 @@ public class MobBoss : MonoBehaviour
 			follow = false;
 			PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
 			chargeJump -= Time.deltaTime;
-			if (chargeJump <= 5) animation.CrossFade(jump.name);
+			if (chargeJump <= 5) GetComponent<Animation>().CrossFade(jump.name);
 			if (chargeJump <= 0)
 			{
 				transform.position = Vector3.Lerp(transform.position, positionAttack, 0.02f);
@@ -207,17 +207,17 @@ public class MobBoss : MonoBehaviour
 			break;
 		case AttackType.DEAD:
 		{
-			animation.CrossFade (die.name);
+			GetComponent<Animation>().CrossFade (die.name);
 			follow = false;
 			finalDie += Time.deltaTime;
 			
-			if (finalDie >= 4) animation.Play(finaldie.name);
+			if (finalDie >= 4) GetComponent<Animation>().Play(finaldie.name);
 			
 		}
 			break;
 		case AttackType.COMBAT:
 		{
-			animation.CrossFade(waitingforbattle.name);
+			GetComponent<Animation>().CrossFade(waitingforbattle.name);
 		}
 			break;
 		}
@@ -231,7 +231,7 @@ public class MobBoss : MonoBehaviour
 			else 
 			{
 				attackCurrent = AttackType.IDLE;
-				animation.CrossFade(idle.name);
+				GetComponent<Animation>().CrossFade(idle.name);
 			}
 		}
 	}

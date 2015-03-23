@@ -122,7 +122,7 @@ public class Mob : MonoBehaviour
                     chargeJump = 2;
                 }
             }
-            else if ((InRange()) && (distance > 1)) animation.CrossFade(run.name);
+            else if ((InRange()) && (distance > 1)) GetComponent<Animation>().CrossFade(run.name);
 		}
 
 		switch (attackCurrent) 
@@ -141,7 +141,7 @@ public class Mob : MonoBehaviour
                 follow = false;
                 PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 chargeBlow += Time.deltaTime;
-                animation.CrossFade(attack.name);
+                GetComponent<Animation>().CrossFade(attack.name);
 
                 if (chargeBlow >= 1)
                 {
@@ -158,7 +158,7 @@ public class Mob : MonoBehaviour
                 follow = false;
                 PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 chargeNibble +=Time.deltaTime;
-                animation.CrossFade(attack.name);
+                GetComponent<Animation>().CrossFade(attack.name);
    
                 if (chargeNibble >= 1)
                 { 
@@ -175,7 +175,7 @@ public class Mob : MonoBehaviour
                 follow = false;
                 PlayerHealth eh = (PlayerHealth)samurai.GetComponent("PlayerHealth");
                 chargeJump -= Time.deltaTime;
-                if (chargeJump <= 1.45f) animation.CrossFade(jump.name);
+                if (chargeJump <= 1.45f) GetComponent<Animation>().CrossFade(jump.name);
                 if (chargeJump <= 0)
                 {
                     transform.position = Vector3.Lerp(transform.position, positionAttack, 0.04f);
@@ -194,16 +194,16 @@ public class Mob : MonoBehaviour
 			break;
 			case AttackType.DEAD:
 			{
-				animation.Play (die.name);
+				GetComponent<Animation>().Play (die.name);
                 follow = false;
                 finalDie += Time.deltaTime;
 
-                if (finalDie >= 1) animation.Play(finaldie.name);
+                if (finalDie >= 1) GetComponent<Animation>().Play(finaldie.name);
 			}
 			break;
             case AttackType.COMBAT:
             {
-                animation.CrossFade(waitingforbattle.name);
+                GetComponent<Animation>().CrossFade(waitingforbattle.name);
             }
             break;
 		}
@@ -217,7 +217,7 @@ public class Mob : MonoBehaviour
 			else 
 			{
 				attackCurrent = AttackType.IDLE;
-                animation.CrossFade(idle.name);
+                GetComponent<Animation>().CrossFade(idle.name);
 			}
 		}
 	}

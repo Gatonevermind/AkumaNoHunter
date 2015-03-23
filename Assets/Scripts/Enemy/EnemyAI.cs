@@ -63,12 +63,12 @@ public class EnemyAI : MonoBehaviour {
 		}
 
 		//color para que sea mas visual
-		if(target.renderer.material.color == Color.red)
+		if(target.GetComponent<Renderer>().material.color == Color.red)
 		{
 			timecounter += 1;
 			if(timecounter > 10)
 			{
-				target.renderer.material.color = Color.white;
+				target.GetComponent<Renderer>().material.color = Color.white;
 				timecounter = 0;
 			}
 		}
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour {
 			if(direction > 0) {
 				PlayerHealth eh = (PlayerHealth)target.GetComponent("PlayerHealth");
 				eh.AddjustCurrentHealth(-10);
-				target.renderer.material.color = Color.red;
+				target.GetComponent<Renderer>().material.color = Color.red;
 			}
 		}
 	}

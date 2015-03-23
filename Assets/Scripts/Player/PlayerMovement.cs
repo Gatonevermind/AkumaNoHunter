@@ -38,11 +38,16 @@ public class PlayerMovement : MonoBehaviour
 	public bool sprintActive;
 	public float sprintLateral = 3.0F;
 	public float staminaBarLenght;
-	public float transitionSpeed = 0.75f;
+    public float transitionSpeed = 13 * Time.deltaTime;
 	float acceleration = 0.2F;
 	private Animator animator;
 	bool GodMode = false;
 	public bool activeEventCombat;
+    public float moveA = 0;
+    public float moveS = 0;
+    public float moveD = 0;
+    public float moveW = 0;
+    public float prueba;
 	public static void Attack()
 	{
 		speedW = 1;
@@ -94,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 				if (animationSpeed >= 3)
 					animationSpeed = 3;
 				else if (animationSpeed < 3)
-					animationSpeed += 0.4f;
+                    animationSpeed += 5 * Time.deltaTime;
 				if (animationDirection < 4.5f)
 				{
 					animationDirection += transitionSpeed;
@@ -115,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 				if (animationSpeed >= 3)
 					animationSpeed = 3;
 				else if (animationSpeed < 3)
-					animationSpeed += 0.4f;
+                    animationSpeed += 5 * Time.deltaTime;
 				if (animationDirection < 14.5f)
 				{
 					animationDirection += transitionSpeed;
@@ -150,14 +155,14 @@ public class PlayerMovement : MonoBehaviour
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.4f;
+                            animationSpeed += 5 * Time.deltaTime;
 					}
 					else if (animationDirection > 20)
 					{
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.4f;
+                            animationSpeed += 5 * Time.deltaTime;
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
@@ -167,16 +172,26 @@ public class PlayerMovement : MonoBehaviour
 					{
 						if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
 						{
+                            moveD = 1;
+                            if (moveD == 1) Blocked();
 						}
 						else
 						{
-							objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
+                            if (moveD <= 0)
+                            {
+                                Unblocked();
+                            }
+                            objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
 							transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 						}
 					}
 					else
 					{
-						objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
+                        if (moveD <= 0)
+                        {
+                            Unblocked();
+                        }
+                        objectiveDirection = new Vector3(speedD, objectiveDirection.y, 0);
 						transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 					}
 				}
@@ -197,14 +212,14 @@ public class PlayerMovement : MonoBehaviour
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.4f;
+                            animationSpeed += 5 * Time.deltaTime;
 					}
 					else if (animationDirection <= 0)
 					{
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.4f;
+                            animationSpeed += 5 * Time.deltaTime;
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
@@ -214,16 +229,26 @@ public class PlayerMovement : MonoBehaviour
 					{
 						if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
 						{
+                            moveA = 1;
+                            if (moveA == 1) Blocked();
 						}
 						else
 						{
-							objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
+                            if (moveA <= 0)
+                            {
+                                Unblocked();
+                            }
+                            objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
 							transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 						}
 					}
 					else
 					{
-						objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
+                        if (moveA <= 0)
+                        {
+                            Unblocked();
+                        }
+                        objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
 						transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 					}
 				}
@@ -233,18 +258,18 @@ public class PlayerMovement : MonoBehaviour
 					{
 						speedW = sprint;
 						if ((animationSpeed >= 3) && (animationSpeed <= 4.5f))
-							animationSpeed += 0.1f;
+                            animationSpeed += 5 * Time.deltaTime;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.4f;
+                            animationSpeed += 5 * Time.deltaTime;
 					}
 					else
 					{
 						if ((animationSpeed >= 3) && (animationSpeed <= 3.4f))
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
-							animationSpeed += 0.2f;
+                            animationSpeed += 5 * Time.deltaTime;
 						else if (animationSpeed > 3.4f)
-							animationSpeed -= 0.2f;
+                            animationSpeed -= 5 * Time.deltaTime;
 					}
 					if (animationDirection < 9.5f)
 					{
@@ -260,25 +285,41 @@ public class PlayerMovement : MonoBehaviour
 					}
 					if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
 					{
-						speedW = 5;
+						speedW = 4.5f;
 					}
-					objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
-					transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-				}
-				else if (Input.GetKeyDown(KeyCode.Mouse0))
-				{
-					if (combat)
-					{
-						objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
-						transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-					}
+                    if (combat)
+                    {
+                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        {
+                            moveW = 1;
+                            if (moveW == 1) Blocked();
+                        }
+                        else
+                        {
+                            if (moveW <= 0)
+                            {
+                                Unblocked();
+                            }
+                            objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (moveW <= 0)
+                        {
+                            Unblocked();
+                        }
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    }
 				}
 				else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
 				{
-					if (animationSpeed <= -2)
-						animationSpeed = -2;
-					else if (animationSpeed > -2)
-						animationSpeed -= 0.1f;
+                    if (animationSpeed <= -2)
+                        animationSpeed = -2;
+                    else if (animationSpeed > -2)
+                        animationSpeed -= 5 * Time.deltaTime;
 					if ((animationDirection >= 9.5f) && (animationDirection <= 10.5f))
 					{
 						animationDirection = 10;
@@ -295,22 +336,32 @@ public class PlayerMovement : MonoBehaviour
 					{
 						speedS = 5;
 					}
-					if (combat)
-					{
-						if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
-						{
-						}
-						else
-						{
-							objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-							transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-						}
-					}
-					else
-					{
-						objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-						transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-					}
+                    if (combat)
+                    {
+                        if ((Input.GetKey(KeyCode.Mouse0)) || (Input.GetKeyDown(KeyCode.Mouse0)))
+                        {
+                            moveS = 1;
+                            if (moveS == 1) Blocked();
+                        }
+                        else
+                        {
+                            if (moveS <= 0)
+                            {
+                                Unblocked();
+                            }
+                            objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (moveS <= 0)
+                        {
+                            Unblocked();
+                        }
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    }
 				}
 				else
 				{
@@ -318,9 +369,9 @@ public class PlayerMovement : MonoBehaviour
 					if ((animationSpeed >= -0.2f) && (animationSpeed <= 0.2f))
 						animationSpeed = 0;
 					else if (animationSpeed < -0.2f)
-						animationSpeed += 0.1f;
+                        animationSpeed += 5 * Time.deltaTime;
 					else if (animationSpeed > 0.2f)
-						animationSpeed -= 0.25f;
+                        animationSpeed -= 5 * Time.deltaTime;
 					objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
 				}
 			}
@@ -353,6 +404,21 @@ public class PlayerMovement : MonoBehaviour
 		}
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
+
+        prueba = speedW;
+
+        moveA -= Time.deltaTime;
+        if (moveA <= 0) moveA = 0;
+
+        moveS -= Time.deltaTime;
+        if (moveS <= 0) moveS = 0;
+
+        moveD -= Time.deltaTime;
+        if (moveD <= 0) moveD = 0;
+
+        moveW -= Time.deltaTime;
+        if (moveW <= 0) moveW = 0;
+
 		if (Input.GetKeyUp(KeyCode.Alpha9))
 		{
 			if (GodMode == true)
@@ -375,6 +441,15 @@ public class PlayerMovement : MonoBehaviour
 			interpolateDirection = new Vector3(Mathf.Lerp(interpolateDirection.x, objectiveDirection.x, acceleration),
 			                                   objectiveDirection.y,
 			                                   Mathf.Lerp(interpolateDirection.z, objectiveDirection.z, acceleration));
+            if (speedW == 4.5F)
+            {
+                curStam -= 2;
+            }
+            else curStam += 2;
+
+            if (curStam >= maxStam) curStam = maxStam;
+            if (curStam <= 0) curStam = 0;
+
 			// Calculates the direction
 			HorizontalMovement(speedW, speedA, speedD, speedS, rootA, rootD);
 			if (dashTimer > 0)
@@ -384,20 +459,13 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool("Dash", false);
 				dashTimer = 0;
 			}
-			//Stamina Control
-			if (speedW == 4.5F)
-			{
-				curStam -= 2;
-			}
-			else curStam += 2;
-			if (curStam >= maxStam) curStam = maxStam;
-			if (curStam <= 0) curStam = 0;
+
 			if (combat)
 			{
 				if((seatheCooldown > 0) && (seatheCooldown < 5))
 				{
 					PlayerAttack.attackTimer = 3;
-					seatheCooldown += 0.1f;
+                    seatheCooldown += 5 * Time.deltaTime;
 					Blocked ();
 				}
 				else if (seatheCooldown >=5)
@@ -412,7 +480,7 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if((seatheCooldown > 0) && (seatheCooldown < 7))
 				{
-					seatheCooldown += 0.1f;
+                    seatheCooldown += 5 * Time.deltaTime;
 					Blocked ();
 				}
 				else if (seatheCooldown >= 7)
@@ -455,23 +523,7 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool ("Sprint", false);
 				//speedW = 3;
 			}
-			/*
-if(Input.GetKey(KeyCode.S))
-{
-speed = back;
-}
-else if (Input.GetKey(KeyCode.D))
-{
-if (speed > back)
-{
-speed--;
-}
-else if (speed <= back)
-{
-speed = back;
-}
-}
-*/
+
 			// Jump/Dash
 			if(controller.isGrounded)
 			{
@@ -484,12 +536,12 @@ speed = back;
 						if (((Input.GetKeyDown(KeyCode.Q)) || (state.Buttons.X == ButtonState.Pressed)) && (PlayerMovement.grounded == 0))
 						{
 							combat = !combat;
-							seatheCooldown += 0.1f;
+                            seatheCooldown += 0.5f * Time.deltaTime;
 						}
 						else if ((prevState.Buttons.X == ButtonState.Released && state.Buttons.X == ButtonState.Pressed) && (PlayerMovement.grounded == 0))
 						{
 							combat = !combat;
-							seatheCooldown += 0.1f;
+                            seatheCooldown += 0.5f * Time.deltaTime;
 						}
 					}
 				}
@@ -499,18 +551,6 @@ speed = back;
 				{
 					land = 0;
 				}
-				// else if (land >= 6)
-				// {
-				// animator.SetBool ("Land", true);
-				// Blocked ();
-				// land += 0.1f;
-				// if(land >= 11)
-				// {
-				// Unblocked ();
-				// land = 0;
-				// animator.SetBool ("Land", false);
-				// }
-				// }
 				if (Input.GetKeyUp(KeyCode.LeftShift))
 				{
 					speedW = 3;
@@ -589,7 +629,7 @@ speed = back;
 			else
 			{
 				//reinicia la gravedad cuando te dejas caer (sin jump)
-				grounded += 0.1f;
+				grounded += 0.5f * Time.deltaTime;
 				animator.SetBool("Grounded", false);
 				if((objectiveDirection.y <= 0) && (grounded <= 0.2f))
 				{
@@ -598,7 +638,7 @@ speed = back;
 				//comprueba cuanto rato llevas en el aire (controlar el Land)
 				if(land < 6)
 				{
-					land += 0.1f;
+					land += 0.5f * Time.deltaTime;
 				}
 				if (Input.GetKeyUp(KeyCode.LeftShift))
 				{

@@ -20,9 +20,9 @@ public class GUITest : MonoBehaviour
             enemy.transform.position = new Vector3(Random.Range(-23, 23), 0.5F, Random.Range(-23, 23));
 
             enemy.AddComponent<CharacterController>();
-            enemy.AddComponent("EnemyAI");
-            enemy.AddComponent("EnemyHealth");
-			enemy.renderer.material.color = Color.white;
+            enemy.AddComponent<EnemyAI>();
+            enemy.AddComponent<EnemyHealth>();
+			enemy.GetComponent<Renderer>().material.color = Color.white;
 
                 
         }
