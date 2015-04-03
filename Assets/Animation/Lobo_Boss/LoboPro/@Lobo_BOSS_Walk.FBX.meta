@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 3e8f0cbf82246174884d1588cf3bdf52
+timeCreated: 1427640810
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BIGBADWOLF
+    100004: Panther
+    100006: Panther2Bone001
+    100008: Panther2Bone001 1
+    100010: PantherHead
+    100012: PantherLLeg1
+    100014: PantherLLeg1 1
+    100016: PantherLLeg2
+    100018: PantherLLeg2 1
+    100020: PantherLLegCollarbone
+    100022: PantherLLegDigit11
+    100024: PantherLLegDigit12
+    100026: PantherLLegDigit21
+    100028: PantherLLegDigit22
+    100030: PantherLLegPalm
+    100032: PantherLLegPalm 1
+    100034: PantherLLegPlatform
+    100036: PantherLLegPlatform 1
+    100038: PantherNeck1
+    100040: PantherNeck2
+    100042: PantherNeck3
+    100044: PantherNeck4
+    100046: PantherNeck5
+    100048: PantherPalmBone001
+    100050: PantherPalmBone001 1
+    100052: PantherPelvis
+    100054: PantherRibcage
+    100056: PantherRLeg1
+    100058: PantherRLeg1 1
+    100060: PantherRLeg2
+    100062: PantherRLeg2 1
+    100064: PantherRLegCollarbone
+    100066: PantherRLegDigit11
+    100068: PantherRLegDigit12
+    100070: PantherRLegDigit21
+    100072: PantherRLegDigit22
+    100074: PantherRLegPalm
+    100076: PantherRLegPalm 1
+    100078: PantherRLegPlatform
+    100080: PantherRLegPlatform 1
+    100082: PantherSpine1
+    100084: PantherSpine2
+    100086: PantherSpine3
+    100088: PantherSpine4
+    100090: PantherSpine5
+    100092: PantherSpine6
+    100094: PantherTail1
+    100096: PantherTail2
+    100098: PantherTail3
+    100100: PantherTail4
+    100102: PantherTail5
+    100104: PantherTail6
+    100106: PantherTail7
+    400000: //RootNode
+    400002: BIGBADWOLF
+    400004: Panther
+    400006: Panther2Bone001
+    400008: Panther2Bone001 1
+    400010: PantherHead
+    400012: PantherLLeg1
+    400014: PantherLLeg1 1
+    400016: PantherLLeg2
+    400018: PantherLLeg2 1
+    400020: PantherLLegCollarbone
+    400022: PantherLLegDigit11
+    400024: PantherLLegDigit12
+    400026: PantherLLegDigit21
+    400028: PantherLLegDigit22
+    400030: PantherLLegPalm
+    400032: PantherLLegPalm 1
+    400034: PantherLLegPlatform
+    400036: PantherLLegPlatform 1
+    400038: PantherNeck1
+    400040: PantherNeck2
+    400042: PantherNeck3
+    400044: PantherNeck4
+    400046: PantherNeck5
+    400048: PantherPalmBone001
+    400050: PantherPalmBone001 1
+    400052: PantherPelvis
+    400054: PantherRibcage
+    400056: PantherRLeg1
+    400058: PantherRLeg1 1
+    400060: PantherRLeg2
+    400062: PantherRLeg2 1
+    400064: PantherRLegCollarbone
+    400066: PantherRLegDigit11
+    400068: PantherRLegDigit12
+    400070: PantherRLegDigit21
+    400072: PantherRLegDigit22
+    400074: PantherRLegPalm
+    400076: PantherRLegPalm 1
+    400078: PantherRLegPlatform
+    400080: PantherRLegPlatform 1
+    400082: PantherSpine1
+    400084: PantherSpine2
+    400086: PantherSpine3
+    400088: PantherSpine4
+    400090: PantherSpine5
+    400092: PantherSpine6
+    400094: PantherTail1
+    400096: PantherTail2
+    400098: PantherTail3
+    400100: PantherTail4
+    400102: PantherTail5
+    400104: PantherTail6
+    400106: PantherTail7
+    4300000: BIGBADWOLF
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: BIGBADWOLF
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

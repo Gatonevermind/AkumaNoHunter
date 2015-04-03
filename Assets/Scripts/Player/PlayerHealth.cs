@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour {
 	void Update () {
         AddjustCurrentHealth(0);
 
+
+
         if (Input.GetKeyUp(KeyCode.Alpha0))
         {
             if (invincible == true)

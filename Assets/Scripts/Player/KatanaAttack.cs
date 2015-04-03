@@ -1,24 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class KatanaAttack : MonoBehaviour 
+public class KatanaAttack : MonoBehaviour
 {
-	// Use this for initialization
+    // Use this for initialization
     public float combatTime;
+
     public bool combatActive;
 
-    PlayerAttack combatActivate;
+    private PlayerAttack combatActivate;
 
-	void Start () 
+    private void Start()
     {
         combatTime = 0;
         combatActive = false;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
+    }
 
+    // Update is called once per frame
+    private void Update()
+    {
         if (Input.GetKey(KeyCode.Mouse0)) combatActive = true;
 
         if ((Input.GetKey(KeyCode.Mouse0)) && combatActive) combatTime = 0;
@@ -33,10 +32,9 @@ public class KatanaAttack : MonoBehaviour
                 combatActive = !combatActive;
             }
         }
+    }
 
-	}
-
-    void OnTriggerEnter (Collider other )
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {

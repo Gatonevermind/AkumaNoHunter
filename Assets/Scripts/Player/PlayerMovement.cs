@@ -3,51 +3,56 @@ using System.Collections;
 using XInputDotNetPure;
 public class PlayerMovement : MonoBehaviour
 {
-	bool playerIndexSet = false;
-	PlayerIndex playerIndex;
-	GamePadState state;
-	GamePadState prevState;
-	public static float grounded;
-	public static Vector3 interpolateDirection;
-	public static float jumpSpeed = 7F;
-	public static Vector3 objectiveDirection;
-	public static float seatheCooldown = 0;
-	public static float speedA = 3.0F;
-	public static float speedD = 3.0F;
-	public static float speedS = 1.55F;
-	public static float speedW = 3.0F;
-	public static float sprint = 4.5F;
-	public float activeMov = 0;
-	public float animationDirection = 10;
-	public float animationSpeed = 0;
-	public float back = 1.5F;
-	public bool blocked;
-	public bool combat;
-	public int curStam = 1000;
-	public float dash = 0;
-	public float dashCooldown;
-	public float dashStamina = 500;
-	public float dashTimer;
-	public float fall = 0F;
-	public float gravity = 18F;
-	public float idleCount = 0;
-	public float jumpCooldown = 0;
-	public float land = 0;
-	public float lateral = 6.0F;
-	public int maxStam = 1000;
-	public bool sprintActive;
-	public float sprintLateral = 3.0F;
-	public float staminaBarLenght;
-    public float transitionSpeed = 25 * Time.deltaTime;
-	float acceleration = 0.2F;
-	private Animator animator;
-	bool GodMode = false;
-	public bool activeEventCombat;
+    public static float grounded;
+    public static Vector3 interpolateDirection;
+    public static float jumpSpeed = 7F;
+    public static Vector3 objectiveDirection;
+    public static float seatheCooldown = 0;
+    public static float speedA = 3.0F;
+    public static float speedD = 3.0F;
+    public static float speedS = 1.55F;
+    public static float speedW = 3.0F;
+    public static float sprint = 4.5F;
+    public bool activeEventCombat;
+    public float activeMov = 0;
+    public float animationDirection = 10;
+    public float animationSpeed = 0;
+    public float back = 1.5F;
+    public bool blocked;
+    public bool combat;
+    public float counterKnockBackBoss = 0;
+    public float counterStun = 0;
+    public float countRest;
+    public int curStam = 1000;
+    public float dash = 0;
+    public float dashCooldown;
+    public float dashStamina = 500;
+    public float dashTimer;
+    public float fall = 0F;
+    public float gravity = 18F;
+    public float idleCount = 0;
+    public float jumpCooldown = 0;
+    public bool knockBackBoss = false;
+    public float land = 0;
+    public float lateral = 6.0F;
+    public int maxStam = 1000;
     public float moveA = 0;
-    public float moveS = 0;
     public float moveD = 0;
+    public float moveS = 0;
     public float moveW = 0;
-    public float prueba;
+    public bool rest;
+    public bool sprintActive;
+    public float sprintLateral = 3.0F;
+    public float staminaBarLenght;
+    public bool stun;
+    public float transitionSpeed = 25 * Time.deltaTime;
+    float acceleration = 0.2F;
+    private Animator animator;
+    bool GodMode = false;
+    PlayerIndex playerIndex;
+    bool playerIndexSet = false;
+    GamePadState prevState;
+    GamePadState state;
 	public static void Attack()
 	{
 		speedW = 1;
@@ -140,7 +145,8 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))
 				{
-					if (animationDirection < 10)
+                    rest = false;
+                    if (animationDirection < 10)
 					{
 						speedD = 0;
 						animationDirection += transitionSpeed * 2;
@@ -197,7 +203,9 @@ public class PlayerMovement : MonoBehaviour
 				}
 				else if (Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))
 				{
-					if (animationDirection > 10)
+                    rest = false;
+
+                    if (animationDirection > 10)
 					{
 						speedA = 0;
 						animationDirection -= transitionSpeed * 2;
@@ -254,7 +262,8 @@ public class PlayerMovement : MonoBehaviour
 				}
 				else if (Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))
 				{
-					if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive == true))
+                    rest = false;
+                    if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive == true))
 					{
 						speedW = sprint;
 						if ((animationSpeed >= 3) && (animationSpeed <= 4.5f))
@@ -316,6 +325,7 @@ public class PlayerMovement : MonoBehaviour
 				}
 				else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
 				{
+                    rest = false;
                     if (animationSpeed <= -2)
                         animationSpeed = -2;
                     else if (animationSpeed > -2)
@@ -378,13 +388,30 @@ public class PlayerMovement : MonoBehaviour
 			objectiveDirection = transform.TransformDirection(objectiveDirection);
 		}
 	}
-	void Start()
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Forja")
+        {
+            activeEventCombat = true;
+        }
+
+        if (other.tag == "Zarpa")
+        {
+            knockBackBoss = true;
+            Debug.Log("lfdfdf");
+        }
+    }
+
+    void Start()
 	{
 		staminaBarLenght = Screen.width / 3;
 		dashTimer = 0;
 		dashCooldown = 1.5f;
 		animator = GetComponent<Animator> ();
-		activeEventCombat = true;
+		activeEventCombat = false;
+        countRest = 0;
+        rest = false;
+        stun = false;
 	}
 	void Update()
 	{
@@ -405,7 +432,21 @@ public class PlayerMovement : MonoBehaviour
 		prevState = state;
 		state = GamePad.GetState(playerIndex);
 
-        prueba = speedW;
+        if (knockBackBoss)
+        {
+            counterKnockBackBoss += Time.deltaTime;
+            if ((counterKnockBackBoss > 0f) && (counterKnockBackBoss <= 2f))
+            {
+                Blocked();
+            }
+            else if (counterKnockBackBoss > 2f)
+            {
+                knockBackBoss = false;
+                Unblocked();
+
+            }
+        }
+        else if (!knockBackBoss) counterKnockBackBoss = 0.0f;
 
         moveA -= Time.deltaTime;
         if (moveA <= 0) moveA = 0;
@@ -441,7 +482,33 @@ public class PlayerMovement : MonoBehaviour
 			interpolateDirection = new Vector3(Mathf.Lerp(interpolateDirection.x, objectiveDirection.x, acceleration),
 			                                   objectiveDirection.y,
 			                                   Mathf.Lerp(interpolateDirection.z, objectiveDirection.z, acceleration));
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                rest = true;
+            }
+
+            if (rest)
+            {
+                animator.SetBool("Rest", true);
+                countRest += Time.deltaTime;
+                if (countRest >= 3) transform.GetComponent<PlayerHealth>().curHealth += 2;
+            }
+            else if (!rest)
+            {
+                animator.SetBool("Rest", false);
+                countRest = 0;
+            }
+
             if (speedW == 4.5F)
+            {
+                curStam -= 2;
+            }
+            else if (speedA == 4.5F)
+            {
+                curStam -= 2;
+            }
+            else if (speedD == 4.5F)
             {
                 curStam -= 2;
             }
@@ -451,7 +518,10 @@ public class PlayerMovement : MonoBehaviour
             if (curStam <= 0) curStam = 0;
 
 			// Calculates the direction
-			HorizontalMovement(speedW, speedA, speedD, speedS, rootA, rootD);
+            if (!knockBackBoss)
+            {
+                HorizontalMovement(speedW, speedA, speedD, speedS, rootA, rootD);
+            }
 			if (dashTimer > 0)
 				dashTimer -= Time.deltaTime;
 			if (dashTimer <= 0)
@@ -511,7 +581,7 @@ public class PlayerMovement : MonoBehaviour
 						speedW = sprint;
 					}
 				}
-				else if (curStam <= 0)
+				else if (curStam <= 550)
 				{
 					sprintActive = false;
 					speedW = 3;
@@ -558,7 +628,8 @@ public class PlayerMovement : MonoBehaviour
 				//jump
 				if (((Input.GetKeyDown(KeyCode.Space)) || (state.Buttons.A == ButtonState.Pressed)) && (jumpCooldown == 0))
 				{
-					animator.SetBool("Jump", true);
+                    rest = false;
+                    animator.SetBool("Jump", true);
 					curStam -= 20;
 					objectiveDirection = new Vector3(objectiveDirection.x, jumpSpeed, objectiveDirection.z);
 					//objectiveDirection.y = jumpSpeed;
@@ -649,7 +720,12 @@ public class PlayerMovement : MonoBehaviour
 				//fall += gravity;
 				objectiveDirection += new Vector3(objectiveDirection.x, -gravity , objectiveDirection.z) * Time.deltaTime;
 			}
-			controller.Move(interpolateDirection * Time.deltaTime);
+            if (knockBackBoss)
+            {
+
+            }
+            else controller.Move(interpolateDirection * Time.deltaTime);
+
 		}
 		if (GodMode == true)
 		{
