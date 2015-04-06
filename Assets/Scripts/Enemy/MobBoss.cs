@@ -31,13 +31,16 @@ public class MobBoss : MonoBehaviour
 
     private int rotationSpeed = 3;
 
+    Color line = Color.yellow;
+
     private bool follow;
     private bool statusHealth = true;
+    public bool exactRotation;
 
     private AttackType attackCurrent;
     private Vector3 positionAttack;
 
-    private enum AttackType { IDLE, JUMP, BLOW, NIBBLE, DEAD, COMBAT, ROTATION };
+    private enum AttackType { IDLE, JUMP, BLOW, NIBBLE, DEAD, COMBAT, ROTATION};
 
     private void Chase()
     {
@@ -48,13 +51,6 @@ public class MobBoss : MonoBehaviour
 
 
         controller.SimpleMove(transform.forward * speed);
-    }
-
-    private void Rotation()
-    {
-        Vector3 relativePos = (samurai.position - transform.position);
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 
     private bool InRange()
@@ -86,6 +82,12 @@ public class MobBoss : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Debug.DrawLine(samurai.transform.position, this.transform.position, line, Mathf.Infinity);
+
+        if (distance <= 3) line = Color.yellow;
+        else if (distance > 3 && distance < range) line = Color.blue;
+        else if (distance >= range) line = Color.red;
+
         distance = Vector3.Distance(samurai.transform.position, transform.position);
 
         Vector3 dir = (samurai.transform.position - transform.position).normalized;
@@ -93,6 +95,9 @@ public class MobBoss : MonoBehaviour
         float direction = Vector3.Dot(dir, transform.forward);
 
         EnemyHealth status = (EnemyHealth)enemy.GetComponent("EnemyHealth");
+
+        Vector3 relativePos = (samurai.position - transform.position);
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
 
         if (status.curHealth <= 0)
         {
@@ -114,7 +119,7 @@ public class MobBoss : MonoBehaviour
             if (distance < 3)
             {
                 //follow = false;
-                if (direction < 3f)
+                if ((direction < 3f) && (exactRotation))
                 {
                     if (cdBlow == 0)
                     {
@@ -208,8 +213,6 @@ public class MobBoss : MonoBehaviour
                     if (chargeJump <= 5)
                     {
                         GetComponent<Animation>().CrossFade(jump.name);
-                        Vector3 relativePos = samurai.position - transform.position;
-                        Quaternion rotation = Quaternion.LookRotation(relativePos);
                         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                     }
                     if (chargeJump <= 0)
@@ -245,14 +248,66 @@ public class MobBoss : MonoBehaviour
                     GetComponent<Animation>().CrossFade(waitingforbattle.name);
                 }
                 break;
+            case AttackType.ROTATION:
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+                    if ((transform.rotation.y <= rotation.y + 10) && (transform.rotation.y >= rotation.y - 10))
+                    {
+                        //exactRotation = true;
+                        attackCurrent = AttackType.IDLE;
+                    }
+                }
+                break;
         }
 
         if (statusHealth)
         {
             if (InRange())
             {
-                if ((distance > 3) && follow) Chase();
-                if ((distance <= 3) && follow) Rotation();
+                if ((distance > 3) && follow)
+                {
+                    if ((transform.rotation.y <= rotation.y + 10) && (transform.rotation.y >= rotation.y - 10))
+                    {
+                        exactRotation = true;
+                        Debug.Log("eee2");
+                        Chase();
+                    }
+                    else
+                    {
+                        exactRotation = false;
+                        Debug.Log("eee1");
+                        attackCurrent = AttackType.ROTATION;
+                    }
+                    
+                    /*
+                    else if ((transform.rotation.y > rotation.y + 10) && (transform.rotation.y < rotation.y - 10))
+                    {
+                        exactRotation = false;
+                        Debug.Log("eee1");
+                        attackCurrent = AttackType.ROTATION;
+                    }
+                    */
+                }
+                else if ((distance <= 3) && follow)
+                {
+                    if ((transform.rotation.y > rotation.y + 10) && (transform.rotation.y < rotation.y - 10))
+                    {
+                        exactRotation = false;
+                        attackCurrent = AttackType.ROTATION;
+                    }
+                    else
+                    {
+                        Debug.Log("eee1");
+                        exactRotation = true;
+                    }
+                        /*
+                    else if ((transform.rotation.y <= rotation.y + 10) && (transform.rotation.y >= rotation.y - 10))
+                    {
+                        exactRotation = true;
+                    }
+                     */
+                }
             }
             else
             {

@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: a8e8c164d195b824ca8110a804678b63
+timeCreated: 1428342966
+licenseType: Free
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
     100002: Bip001
@@ -418,6 +420,7 @@ ModelImporter:
     4300020: KatanaDefaultHand
     7400000: QW_Samurai_RunKA
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Cabeza
     13700002: CapaA
     13700004: Cuerpo
@@ -979,11 +982,13 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -1006,3 +1011,5 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

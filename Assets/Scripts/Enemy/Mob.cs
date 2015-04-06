@@ -18,15 +18,15 @@ public class Mob : MonoBehaviour
 
     public float range;
     public float speed;
-    public float cdBlow;
-    public float cdJump;
-    public float cdNibble;
-    public float chargeJump;
-    public float timeJump;
-    public float chargeBlow;
-    public float chargeNibble;
-    public float finalDie;
-    public float counterHit;
+    float cdBlow;
+    float cdJump;
+    float cdNibble;
+    float chargeJump;
+    float timeJump;
+    float chargeBlow;
+    float chargeNibble;
+    float finalDie;
+    float counterHit;
 
     private bool follow;
     private bool statusHealth = true;
@@ -110,7 +110,7 @@ public class Mob : MonoBehaviour
                     if (cdBlow == 0)
                     {
                         attackCurrent = AttackType.BLOW;
-                        cdBlow = 6;
+                        cdBlow = 3;
                     }
                 }
             }

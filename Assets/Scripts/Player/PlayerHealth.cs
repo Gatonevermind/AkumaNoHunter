@@ -1,28 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour 
+{
     public int maxHealth = 100;
     public float curHealth = 100;
-
-    public string level;
-
-   // public float healthBarLenght;
 
     public bool invincible;
     public float activeHealth = 0;
 
-	// Use this for initialization
-	void Start () {
-        //healthBarLenght = Screen.width / 2;
-
-        level = "Beta";
+	void Start () 
+    {
 
         invincible = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         AddjustCurrentHealth(0);
 
 
@@ -43,10 +37,7 @@ public class PlayerHealth : MonoBehaviour {
         
         if (invincible == false)
         {
-            /*
-            if (curHealth <= 0)
-                Application.LoadLevel(level);
-             */
+
         }
         else if (invincible == true)
         {
@@ -70,7 +61,5 @@ public class PlayerHealth : MonoBehaviour {
         if (maxHealth < 1)
             maxHealth = 1;
 
-
-        //healthBarLenght = (Screen.width / 2) * (curHealth / (float)maxHealth);
     }
 }
