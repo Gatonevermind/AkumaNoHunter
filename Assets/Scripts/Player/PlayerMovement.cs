@@ -157,13 +157,13 @@ public class PlayerMovement : MonoBehaviour
 						{
 							speedD = 3;
 						}
-						animationDirection += transitionSpeed;
+						animationDirection += transitionSpeed * 1.5f;
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
                             animationSpeed += 10 * Time.deltaTime;
 					}
-					else if (animationDirection > 20)
+					else if (animationDirection >= 20)
 					{
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
@@ -216,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
 						{
 							speedA = 3;
 						}
-						animationDirection -= transitionSpeed;
+						animationDirection -= transitionSpeed * 1.5f;
 						if (animationSpeed >= 3)
 							animationSpeed = 3;
 						else if (animationSpeed < 3)
