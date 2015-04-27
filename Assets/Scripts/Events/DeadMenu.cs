@@ -17,7 +17,7 @@ public class DeadMenu : MonoBehaviour
 
     private void Update()
     {
-        if (transform.GetComponent<PlayerHealth>().curHealth <= 0)
+        if (PlayerHealth.curHealth <= 0)
         {
             counterToMenu += Time.deltaTime;
             if (counterToMenu >= 1)

@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 75c866b32a6447a4ebeabf5e6aea07e6
+timeCreated: 1428763771
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Baul
+    100002: Baul Tapa
+    100004: Cama
+    100006: casa01
+    100008: //RootNode
+    100010: Cojin01
+    100012: Cojin02
+    100014: Cojin03
+    100016: Cuenco
+    100018: Cuerdas paredes
+    100020: Lampara01
+    100022: Lampara02
+    100024: Mesa
+    100026: puerta
+    100028: Soporte Katana
+    100030: Suelo
+    100032: Te
+    400000: Baul
+    400002: Baul Tapa
+    400004: Cama
+    400006: casa01
+    400008: //RootNode
+    400010: Cojin01
+    400012: Cojin02
+    400014: Cojin03
+    400016: Cuenco
+    400018: Cuerdas paredes
+    400020: Lampara01
+    400022: Lampara02
+    400024: Mesa
+    400026: puerta
+    400028: Soporte Katana
+    400030: Suelo
+    400032: Te
+    2300000: Baul
+    2300002: Baul Tapa
+    2300004: Cama
+    2300006: casa01
+    2300008: Cojin01
+    2300010: Cojin02
+    2300012: Cojin03
+    2300014: Cuenco
+    2300016: Cuerdas paredes
+    2300018: Lampara01
+    2300020: Lampara02
+    2300022: Mesa
+    2300024: puerta
+    2300026: Soporte Katana
+    2300028: Suelo
+    2300030: Te
+    3300000: Baul
+    3300002: Baul Tapa
+    3300004: Cama
+    3300006: casa01
+    3300008: Cojin01
+    3300010: Cojin02
+    3300012: Cojin03
+    3300014: Cuenco
+    3300016: Cuerdas paredes
+    3300018: Lampara01
+    3300020: Lampara02
+    3300022: Mesa
+    3300024: puerta
+    3300026: Soporte Katana
+    3300028: Suelo
+    3300030: Te
+    4300000: casa01
+    4300002: Suelo
+    4300004: Cuerdas paredes
+    4300006: puerta
+    4300008: Soporte Katana
+    4300010: Te
+    4300012: Cojin01
+    4300014: Cojin02
+    4300016: Cojin03
+    4300018: Mesa
+    4300020: Cuenco
+    4300022: Lampara01
+    4300024: Cama
+    4300026: Lampara02
+    4300028: Baul
+    4300030: Baul Tapa
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

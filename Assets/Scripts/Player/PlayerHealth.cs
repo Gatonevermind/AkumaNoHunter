@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour 
 {
     public int maxHealth = 100;
-    public float curHealth = 100;
+    public static float curHealth = 100;
+	public float health;
 
     public bool invincible;
     public float activeHealth = 0;
@@ -19,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         AddjustCurrentHealth(0);
 
-
+		health = curHealth;
 
         if (Input.GetKeyUp(KeyCode.Alpha0))
         {

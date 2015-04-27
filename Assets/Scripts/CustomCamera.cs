@@ -64,14 +64,25 @@ public class CustomCamera : MonoBehaviour
         if (!Target)
             return;
 
-        if (!GameObject.Find("GameControl").GetComponent<PauseMenu>().pauseMenu)
-        {
-            x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+        if (!GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu)
+		{
+			if (Input.GetKey (KeyCode.LeftAlt)) 
+			{
+				Cursor.visible = true;
+			} 
+			else 
+			{
+				Cursor.visible = false;
+                Debug.Log("invisible");
 
-            x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
-            y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
-        }
+				x += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
+				y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
+
+				x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
+				y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
+			}
+		} 
+		else if (GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu) Cursor.visible = true;
 
         distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);
         distance = Mathf.Clamp(distance, minDistance, maxDistance);

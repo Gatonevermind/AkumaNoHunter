@@ -3,104 +3,43 @@ using System.Collections;
 
 public class VisKatana : MonoBehaviour
 {
-	
-	public bool combat;
-	public bool activeKatana;
-	private float show = 0;
-	private float seatheCooldown = 0;
-	private float timeActive = 0;
-	// Use this for initialization
+	public GameObject katana;
+	public GameObject katanaHand;
+	public GameObject vaina;
+
+	public static bool herreria;
+
 	void Start()
 	{
-		combat = false;
-		activeKatana = false;
-		HideChildren();
+		herreria = false;
 	}
-	
-	// Update is called once per frame
+	private void OnTriggerEnter (Collider other)
+	{
+		if(other.tag == "Forja")
+		{
+			katana.SetActive(true);
+			vaina.SetActive(true);
+			herreria = true;
+		}
+	}
+
 	void Update()
 	{
-		if (activeKatana)
+		if (PlayerMovement.combat)
 		{
-			timeActive += Time.deltaTime;
-			
-			if (timeActive <= 0.4f) ShowChildren();
-			
-			if (seatheCooldown == 0)
+			if (PlayerMovement.seatheCooldown > 0.5f)
 			{
-				if ((Input.GetKeyDown(KeyCode.Q)) && (PlayerMovement.grounded == 0))
-				{
-					combat = !combat;
-					show += Time.deltaTime;
-					seatheCooldown += Time.deltaTime;
-				}
-			}
-			
-			if (combat)
-			{
-				//Cooldown para desenvaine
-				if ((seatheCooldown > 0) && (seatheCooldown < 0.5f))
-				{
-					seatheCooldown += Time.deltaTime;
-				}
-				else if (seatheCooldown >= 0.5f)
-				{
-					seatheCooldown = 0;
-				}
-				
-				//Temporizador para show/hide de la katana
-				if ((show > 0) && (show < 0.5f))
-				{
-					ShowChildren();
-					show += Time.deltaTime;
-				}
-				if (show >= 0.5f)
-				{
-					HideChildren();
-					show = 0;
-				}
-			}
-			else if (!combat)
-			{
-				//Cooldown para envaine
-				if ((seatheCooldown > 0) && (seatheCooldown < 2))
-				{
-					seatheCooldown += Time.deltaTime;
-				}
-				else if (seatheCooldown >= 2)
-				{
-					seatheCooldown = 0;
-				}
-				
-				//Temporizador para show/hide de la katana
-				if ((show > 0) && (show < 2))
-				{
-					HideChildren();
-					show += Time.deltaTime;
-				}
-				if (show >= 2)
-				{
-					ShowChildren();
-					show = 0;
-				}
+				katana.SetActive(false);
+				katanaHand.SetActive(true);
 			}
 		}
-	}
-	
-	void HideChildren()
-	{
-		Renderer[] lChildRenderers = gameObject.GetComponentsInChildren<Renderer>();
-		foreach (Renderer lRenderer in lChildRenderers)
+		else
 		{
-			lRenderer.enabled = false;
-		}
-	}
-	void ShowChildren()
-	{
-		Renderer[] lChildRenderers = gameObject.GetComponentsInChildren<Renderer>();
-		foreach (Renderer lRenderer in lChildRenderers)
-		{
-			lRenderer.enabled = true;
+			if(PlayerMovement.seatheCooldown > 1.7f)
+			{
+				katana.SetActive(true);
+				katanaHand.SetActive(false);
+			}
 		}
 	}
 }

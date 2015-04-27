@@ -21,7 +21,7 @@ public class GUITest : MonoBehaviour
 
             enemy.AddComponent<CharacterController>();
             enemy.AddComponent<EnemyAI>();
-            enemy.AddComponent<EnemyHealth>();
+            enemy.AddComponent<WolfIA>();
 			enemy.GetComponent<Renderer>().material.color = Color.white;
 
                 

@@ -7,11 +7,18 @@ public class PauseMenu : MonoBehaviour
     GameObject[] pauseControl;
     public string mainLevel;
 
+    public bool optionsMenu = false;
+    GameObject[] optionsControl;
+
     void Start() 
     {
         pauseControl = GameObject.FindGameObjectsWithTag("Pause");
         foreach (GameObject pause in pauseControl)
             pause.SetActive(false);
+
+        optionsControl = GameObject.FindGameObjectsWithTag("Options");
+        foreach (GameObject options in optionsControl)
+            options.SetActive(false);
 
     }
 
@@ -21,11 +28,11 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenu)
             foreach (GameObject pause in pauseControl)
                 pause.SetActive(true);
-        else
+        else if (!pauseMenu && !optionsMenu)
             foreach (GameObject pause in pauseControl)
                 pause.SetActive(false);
         
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenu)
         {
             pauseMenu = !pauseMenu;
         }
@@ -34,9 +41,26 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 0.00001f;
         }
-        else
+        else if (!pauseMenu && !optionsMenu)
         {
             Time.timeScale = 1;
+        }
+
+        if (optionsMenu && pauseMenu)
+        {
+            foreach (GameObject options in optionsControl)
+                options.SetActive(true);
+
+            foreach (GameObject pause in pauseControl)
+                pause.SetActive(false);
+        }
+        else if (!optionsMenu && pauseMenu)
+        {
+            foreach (GameObject options in optionsControl)
+                options.SetActive(false);
+
+            foreach (GameObject pause in pauseControl)
+                pause.SetActive(true);
         }
             
 	}
@@ -49,5 +73,10 @@ public class PauseMenu : MonoBehaviour
     public void Exit()
     {
         Application.LoadLevel(mainLevel);
+    }
+
+    public void Options()
+    {
+        optionsMenu = !optionsMenu;
     }
 }

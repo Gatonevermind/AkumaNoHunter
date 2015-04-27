@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 public class Aldeano : MonoBehaviour
 {
@@ -32,11 +32,11 @@ public class Aldeano : MonoBehaviour
 
     private void Chase()
     {
-        /*
+
         Vector3 relativePos = samurai.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        */
+
         transform.LookAt(enemy.position);
         controller.SimpleMove(transform.forward * speed);
     }
@@ -112,7 +112,7 @@ public class Aldeano : MonoBehaviour
             case AttackType.ATTACK:
                 {
                     follow = false;
-                    EnemyHealth eh = (EnemyHealth)enemy.GetComponent("EnemyHealth");
+                    //EnemyHealth eh = (EnemyHealth)enemy.GetComponent("EnemyHealth");
                     //PlayerMovement sa = (PlayerMovement)samurai.GetComponent("PlayerMovement");
                     chargeAttack += Time.deltaTime;
                     GetComponent<Animation>().CrossFade(attack.name);
@@ -121,7 +121,7 @@ public class Aldeano : MonoBehaviour
                     {
                         if (distance < 1)
                         {
-                            eh.AddjustCurrentHealth(-3);
+							//eh.Damage(-3);
                         }
                         attackCurrent = AttackType.IDLE;
                     }
@@ -167,3 +167,4 @@ public class Aldeano : MonoBehaviour
         }
     }
 }
+*/

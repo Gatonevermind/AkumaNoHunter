@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 
 public class FinalLevel : MonoBehaviour
 {
@@ -37,3 +38,4 @@ public class FinalLevel : MonoBehaviour
                 finalLevel.SetActive(false);
     }
 }
+*/

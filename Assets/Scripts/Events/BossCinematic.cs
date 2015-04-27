@@ -20,9 +20,9 @@ public class BossCinematic : MonoBehaviour
 	
 	void Update () 
     {
-        EnemyHealth eh = (EnemyHealth)loboInicial.GetComponent("EnemyHealth");
+        WolfIA eh = (WolfIA)loboInicial.GetComponent("WolfIA");
 
-        if (eh.curHealth <= 0)
+        if (eh.enemyVida <= 0)
         {
             countToCinematic += Time.deltaTime;
 
@@ -33,7 +33,7 @@ public class BossCinematic : MonoBehaviour
                 kai.SetActive(false);
             }
 
-            if (countToCinematic >= 42)
+            if (countToCinematic >= 44)
             {
                 Cinematic.SetActive(false);
                 boss.SetActive(true);

@@ -7,7 +7,6 @@ TagManager:
   - Katana
   - Forja
   - Enemy
-  - sword
   - Pause
   - Tutorial1
   - Tutorial2
@@ -17,6 +16,13 @@ TagManager:
   - FinalLevelCanvas
   - Tutorial_1Manager
   - Zarpa
+  - Cabeza
+  - Wolf
+  - AttackBox
+  - sword
+  - HitBox
+  - ConversationKai
+  - Kai
   layers:
   - Default
   - TransparentFX

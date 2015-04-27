@@ -36,12 +36,12 @@ public class PlayerDetection: MonoBehaviour
 	void Start () 
 	{
 		cachedYH = healthTransform.position.y;
-		maxXValueH = healthTransform.position.x + healthTransform.rect.width;
+		maxXValueH = healthTransform.position.x + (healthTransform.rect.width*1.9f);
 		minXValueH = healthTransform.position.x;
 		currentHealth = maxHealth;
 
         cachedYS = staminaTransform.position.y;
-        maxXValueS = staminaTransform.position.x + staminaTransform.rect.width;
+        maxXValueS = staminaTransform.position.x + (staminaTransform.rect.width*1.4f);
         minXValueS = staminaTransform.position.x;
         currentStamina = maxStamina;
 	}
@@ -52,9 +52,10 @@ public class PlayerDetection: MonoBehaviour
 
         HandleStamina();
 
-        currentHealth = Mathf.Lerp(currentHealth, transform.GetComponent<PlayerHealth> ().curHealth, 0.07f);
 
-        currentStamina = Mathf.Lerp(currentStamina, transform.GetComponent<PlayerMovement>().curStam, 0.07f);
+        currentHealth = Mathf.Lerp(currentHealth, PlayerHealth.curHealth, 0.07f);
+
+        currentStamina = Mathf.Lerp(currentStamina, PlayerMovement.stamina, 0.07f);
 	}
 
     private void HandleHealth()

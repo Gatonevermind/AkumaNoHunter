@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class LoadingControl : MonoBehaviour 
 {
@@ -25,31 +26,29 @@ public class LoadingControl : MonoBehaviour
     public float counterEat;
     public float counterMove;
 
-    //Vector3 initialPosition;
-
     public string levelName;
+    AsyncOperation async;
 
-	// Use this for initialization
+    private Animator animator;
+
+
 	void Start () 
     {
         fruitEated = 0;
         counterEat = 0;
-        //initialPosition = transform.position;
+        StartLoading();
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
         if (fruitEated == 0)
         {
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_1.position, 0.05f);
-            //animation.Play(run.name);
 
             if (counterMove >= 1)
             {
                 counterEat += Time.deltaTime;
-
                 if (counterEat >= 1)
                 {
                     GameObject.Destroy(fruit1);
@@ -122,7 +121,7 @@ public class LoadingControl : MonoBehaviour
 
             if (counterMove >= 1)
             {
-                Application.LoadLevel(levelName);
+                ActivateScene();
             }
         }
 	}
@@ -137,5 +136,25 @@ public class LoadingControl : MonoBehaviour
  
         //Multiply it by percentage and set its origin to 'start'
         return start + startToFinish * percentage;
+    }
+
+    public void StartLoading()
+    {
+        StartCoroutine("load");
+    }
+
+    IEnumerator load()
+    {
+        Debug.LogWarning("ASYNC LOAD STARTED - " +
+            "DO NOT EXIT PLAY MODE UNTIL SCENE LOADS... UNITY WILL CRASH");
+        async = Application.LoadLevelAsync(levelName);
+        async.allowSceneActivation = false;
+        yield return async;
+    }
+
+    public void ActivateScene()
+    {
+        async.allowSceneActivation = true;
+        Debug.Log("Activate");
     }
 }
