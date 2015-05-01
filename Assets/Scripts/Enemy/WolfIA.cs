@@ -10,6 +10,7 @@ public class WolfIA : MonoBehaviour {
 	private float distance;
 	public Transform samurai;
 	public Transform enemy;
+	public Transform front;
 
 	public Vector3 lastPosition;
 
@@ -106,7 +107,7 @@ public class WolfIA : MonoBehaviour {
 	void Start () 
 	{
 		collider = GetComponent <BoxCollider> ();
-		state = State.ALDEANO;
+		state = State.IDLE;
 		animator = GetComponent <Animator> ();
 		playerAttackHit = false;
 		navAgent = GetComponent<NavMeshAgent> (); 
@@ -133,6 +134,10 @@ public class WolfIA : MonoBehaviour {
 			state = State.DEATH;
 
 		}
+		if((IntroCinematic.intro) && (enemy.tag == "Lobo Kai"))
+		{
+			state = State.DEATH;
+		}
 
 		switch (state)
 		{
@@ -148,9 +153,11 @@ public class WolfIA : MonoBehaviour {
 
 			}
 				break;
+
 			case State.SEARCH:
 			{
 				animator.SetBool ("Idle", false);
+				animator.SetBool ("Search", false);
 
 				navAgent.updateRotation = true;
 				
@@ -178,7 +185,6 @@ public class WolfIA : MonoBehaviour {
 						state = State.ATTACK;
 					}
 				}
-
 			}
 				break;
 
@@ -195,8 +201,8 @@ public class WolfIA : MonoBehaviour {
 
 				if (Vector3.Distance(transform.position, samurai.position) < melee)
 				{
-					animator.SetBool("Run",false);
-					state = State.SEARCH;
+					animator.SetBool("Attack", true);
+					state = State.ATTACK;
 				}
 			}
 
@@ -204,6 +210,7 @@ public class WolfIA : MonoBehaviour {
 			else if (Vector3.Distance(transform.position, samurai.position) > detection)
 			{
 				animator.SetBool ("Run", false);
+
 				state = State.IDLE;
 			}
 
@@ -217,19 +224,21 @@ public class WolfIA : MonoBehaviour {
 
 				enemyAttackTimer += Time.deltaTime;
 				animator.SetBool ("Run", false);
-				if (enemyAttackTimer < 0.2f)
+				if (enemyAttackTimer < 0.75f)
 				{
+					navAgent.Stop ();
+
 					Vector3 direction = samurai.position - transform.position;
 					float angle = Vector3.Angle(direction, transform.forward);
 					enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(samurai.position - enemy.position), rotationSearch * Time.deltaTime);
 
-				lastPosition = samurai.position;
+				lastPosition = front.position;
 				}
-				if (enemyAttackTimer >= 0.2f)
+				if (enemyAttackTimer >= 0.75f)
 				{
 					navAgent.Resume();
 					navAgent.destination = lastPosition;
-					navAgent.speed = 6f;
+					navAgent.speed = 5f;
 
 				}
 
@@ -239,15 +248,16 @@ public class WolfIA : MonoBehaviour {
 					animator.SetBool ("Attack", false);
 				}
 				
-				if((enemyAttackTimer > 0.5f) && (enemyAttackTimer < 0.7f))
+				if((enemyAttackTimer > 1.1f) && (enemyAttackTimer < 1.5f))
 					damageBox.SetActive(true);		
 
-				else if(enemyAttackTimer > 0.7f)
+				else if(enemyAttackTimer > 1.5f)
 					damageBox.SetActive(false);
 				
 
-				if (enemyAttackTimer >= 1.5f)
+				if (enemyAttackTimer >= 1.8f)
 				{
+					animator.SetBool("Search", true);
 					state = State.SEARCH;
 					enemyAttackTimer = 0;
 					hitTimer = 0;
@@ -279,7 +289,7 @@ public class WolfIA : MonoBehaviour {
 						if(angle > fieldOfViewAngle * 2)
 								
 						{
-							animator.SetBool("Idle", true);
+							animator.SetBool("Search", true);
 							state = State.SEARCH;
 							hitCounter = 0;
 						}	
@@ -302,6 +312,7 @@ public class WolfIA : MonoBehaviour {
 				animator.SetBool("Death", true);
 				collider.enabled = false;
 				collisionBox.SetActive(false);
+				navAgent.enabled = false;
 
 			}
 				break;

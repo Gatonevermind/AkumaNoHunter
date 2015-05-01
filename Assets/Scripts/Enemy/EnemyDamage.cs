@@ -7,7 +7,6 @@ public class EnemyDamage : MonoBehaviour {
 	public bool hit;
 	private void OnTriggerEnter(Collider other)
 	{
-
 		if (other.tag == "HitBox")
 		{
 
@@ -30,17 +29,17 @@ public class EnemyDamage : MonoBehaviour {
 
 			
 	}
-	private void OnTriggerExit(Collider other)
-	{
-		if(other.tag == "HitBox")
-		{
-			if (!hit)
-			{
-				return;
-			}
-			hit = false;
-		}
-	}
+//	private void OnTriggerExit(Collider other)
+//	{
+//		if(other.tag == "HitBox")
+//		{
+//			if (!hit)
+//			{
+//				return;
+//			}
+//			hit = false;
+//		}
+//	}
 
 
 //	void Update()

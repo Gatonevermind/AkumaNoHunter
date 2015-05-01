@@ -5,10 +5,14 @@ public class IntroCinematic : MonoBehaviour
 {
     public Camera cam1;
     public Camera cam2;
+
+	public static bool intro;
     
     public float counterIntroCinematic;
 
-    public GameObject Cinematic;
+	public GameObject bip;
+	public GameObject cabeza;
+	public GameObject cuerpo;
 
 	void Start () 
     {
@@ -17,12 +21,15 @@ public class IntroCinematic : MonoBehaviour
 
         counterIntroCinematic = 0;
 
+		intro = false;
+
 
     }
 
 	void Update () 
     {
-        counterIntroCinematic += Time.deltaTime;
+		if(counterIntroCinematic < 22)
+        	counterIntroCinematic += Time.deltaTime;
 
         if (counterIntroCinematic <= 0.1f)
         {
@@ -40,11 +47,16 @@ public class IntroCinematic : MonoBehaviour
         {
             cam1.enabled = true;
             cam2.enabled = false;
-            Cinematic.SetActive(false);
+            bip.SetActive(false);
+			cuerpo.SetActive(false);
+			cabeza.SetActive(false);
+
+			intro = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.F))
-            counterIntroCinematic = 20;
-
+		if(counterIntroCinematic <20)
+		{
+	        if (Input.GetKeyDown(KeyCode.F))
+	            counterIntroCinematic = 20;
+		}
     }
 }

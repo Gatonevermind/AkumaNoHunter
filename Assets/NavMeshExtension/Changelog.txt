@@ -1,0 +1,23 @@
+**************************************
+CHANGELOG 
+**************************************
+v1.1.2
+- moved control info box to the scene view
+- fixed issue where scene view cam gets locked
+  (explicitly disabling view controls due to Unity bug)
+- fixed not adding new vertices with alt key pressed
+
+v1.1.1
+- made NavMeshObject lists invisible in inspector again
+- removed temporary GetTriangles button on NavMeshObject
+
+v1.1
+- Added option to delete selected vertices: select vertices
+  when not in Edit Mode, then press backspace to delete them
+- Revisited Undo/Redo: undo/redo will not leave the Edit Mode
+  by default and behave as expected when editing meshes
+- Fixed mesh calculation for reflexive/closed submeshes
+- Added more links to the NavMesh Extension > About window
+
+v1.0
+- Initial release.

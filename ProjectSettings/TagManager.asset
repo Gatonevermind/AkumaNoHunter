@@ -23,6 +23,8 @@ TagManager:
   - HitBox
   - ConversationKai
   - Kai
+  - Options
+  - Lobo Kai
   layers:
   - Default
   - TransparentFX

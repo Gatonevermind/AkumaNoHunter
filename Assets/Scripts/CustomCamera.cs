@@ -6,7 +6,7 @@ public class CustomCamera : MonoBehaviour
 {
     public Transform Target;
     float targetHeight = 0.8f;
-    float distance = 1.5f;
+    float distance = 2f;
     float maxDistance = 3.5f;
     float minDistance = 1.0f;
     float xSpeed = 250.0f;
@@ -41,74 +41,68 @@ public class CustomCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        
-        if (!playerIndexSet || !prevState.IsConnected)
-        {
-            for (int i = 0; i < 4; ++i)
-            {
-                PlayerIndex testPlayerIndex = (PlayerIndex)i;
-                GamePadState testState = GamePad.GetState(testPlayerIndex);
-                if (testState.IsConnected)
-                {
-                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
-                    playerIndex = testPlayerIndex;
-                    playerIndexSet = true;
-                }
-            }
-        }
+		if (IntroCinematic.intro) {
 
-        prevState = state;
-        state = GamePad.GetState(playerIndex);
-        
-        
-        if (!Target)
-            return;
-
-        if (!GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu)
-		{
-			if (Input.GetKey (KeyCode.LeftAlt)) 
-			{
-				Cursor.visible = true;
-			} 
-			else 
-			{
-				Cursor.visible = false;
-                Debug.Log("invisible");
-
-				x += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
-				y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
-
-				x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
-				y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
+			if (!playerIndexSet || !prevState.IsConnected) {
+				for (int i = 0; i < 4; ++i) {
+					PlayerIndex testPlayerIndex = (PlayerIndex)i;
+					GamePadState testState = GamePad.GetState (testPlayerIndex);
+					if (testState.IsConnected) {
+						Debug.Log (string.Format ("GamePad found {0}", testPlayerIndex));
+						playerIndex = testPlayerIndex;
+						playerIndexSet = true;
+					}
+				}
 			}
-		} 
-		else if (GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu) Cursor.visible = true;
 
-        distance -= (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs(distance);
-        distance = Mathf.Clamp(distance, minDistance, maxDistance);
+			prevState = state;
+			state = GamePad.GetState (playerIndex);
+	        
+	        
+			if (!Target)
+				return;
 
-        y = ClampAngle(y, yMinLimit, yMaxLimit);
+			if (!GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu) {
+				if (Input.GetKey (KeyCode.LeftAlt)) {
+					Cursor.visible = true;
+				} else {
+					Cursor.visible = false;
+					Debug.Log ("invisible");
 
-        // ROTATE CAMERA: 
-        Quaternion rotation = Quaternion.Euler(y, x, 0);
-        transform.rotation = rotation;
+					x += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
+					y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
 
-        // POSITION CAMERA: 
-        Vector3 position = Target.position - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
-        transform.position = position;
+					x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
+					y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
+				}
+			} else if (GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu)
+				Cursor.visible = true;
 
-        // IS VIEW BLOCKED? 
-        RaycastHit hit;
-        Vector3 trueTargetPosition = Target.transform.position - new Vector3(0.15f, -targetHeight, 0);
-        // Cast the line to check: 
-        if (Physics.Linecast(trueTargetPosition, transform.position, out hit, ignoreMask))
-        {
-            // If so, shorten distance so camera is in front of object: 
-            float tempDistance = Vector3.Distance(trueTargetPosition, hit.point) - 0.28f;
-            // Finally, rePOSITION the CAMERA: 
-            position = Target.position - (rotation * Vector3.forward * tempDistance + new Vector3(0, -targetHeight, 0));
-            transform.position = position;
-        }
+			distance -= (Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs (distance);
+			distance = Mathf.Clamp (distance, minDistance, maxDistance);
+
+			y = ClampAngle (y, yMinLimit, yMaxLimit);
+
+			// ROTATE CAMERA: 
+			Quaternion rotation = Quaternion.Euler (y, x, 0);
+			transform.rotation = rotation;
+
+			// POSITION CAMERA: 
+			Vector3 position = Target.position - (rotation * Vector3.forward * distance + new Vector3 (0, -targetHeight, 0));
+			transform.position = position;
+
+			// IS VIEW BLOCKED? 
+			RaycastHit hit;
+			Vector3 trueTargetPosition = Target.transform.position - new Vector3 (0.15f, -targetHeight, 0);
+			// Cast the line to check: 
+			if (Physics.Linecast (trueTargetPosition, transform.position, out hit, ignoreMask)) {
+				// If so, shorten distance so camera is in front of object: 
+				float tempDistance = Vector3.Distance (trueTargetPosition, hit.point) - 0.28f;
+				// Finally, rePOSITION the CAMERA: 
+				position = Target.position - (rotation * Vector3.forward * tempDistance + new Vector3 (0, -targetHeight, 0));
+				transform.position = position;
+			}
+		}
     }
 
     static float ClampAngle(float angle, float min, float max)

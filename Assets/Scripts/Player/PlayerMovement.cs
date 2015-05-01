@@ -139,195 +139,189 @@ public class PlayerMovement : MonoBehaviour
 		// 																			>>>>>>>>>>>>>>> PLAYER MOVEMENT <<<<<<<<<<<<<<<<<<<
 		else if ((dashTimer <= 0.3) && (stepCount == 0))
 		{
-            GameObject disableConversation = GameObject.FindGameObjectWithTag("ConversationKai");
-            LoadText loadText = disableConversation.GetComponent<LoadText>();
-
-            if ((!loadText.pauseConversation) || (Input.GetKey (KeyCode.LeftAlt))) 
+            if (seatheCooldown == 0)
             {
-                if (seatheCooldown == 0)
+                // Assign a direction depending on the input introduced
+                //																	>>>>>>>>>>> DIAGONAL LEFT<<<<<<<<<<<<<<<<
+
+                if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))))
                 {
-                    // Assign a direction depending on the input introduced
-                    //																	>>>>>>>>>>> DIAGONAL LEFT<<<<<<<<<<<<<<<<
-
-                    if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))))
+                    if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
                     {
-                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
-                        {
-                            diagAW = 3.15f;
-                            animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
-                        }
-                        else
-                        {
-                            diagAW = 2.1f;
-                            animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
-                        }
-
-                        animator.SetFloat("Direction", animationDirectionAW, 0.1f, Time.deltaTime);
-
-                        objectiveDirection = new Vector3(-diagAW, objectiveDirection.y, diagAW);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                        diagAW = 3.15f;
+                        animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
                     }
-                    //																	>>>>>>>>>>>> DIAGONAL RIGHT <<<<<<<<<<<<<<<<
-
-                    else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
-                    {
-                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
-                        {
-                            diagDW = 3.15f;
-
-                            animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
-                        }
-                        else
-                        {
-                            diagDW = 2.1f;
-
-                            animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
-                        }
-
-                        animator.SetFloat("Direction", animationDirectionDW, 0.1f, Time.deltaTime);
-
-                        objectiveDirection = new Vector3(diagDW, objectiveDirection.y, diagDW);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-                    }
-
-                    // 														>>>>>>>>>>> RIGHT <<<<<<<<<<<<
-
                     else
                     {
-                        if (Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))
+                        diagAW = 2.1f;
+                        animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
+                    }
+
+                    animator.SetFloat("Direction", animationDirectionAW, 0.1f, Time.deltaTime);
+
+                    objectiveDirection = new Vector3(-diagAW, objectiveDirection.y, diagAW);
+                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                }
+                //																	>>>>>>>>>>>> DIAGONAL RIGHT <<<<<<<<<<<<<<<<
+
+                else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
+                {
+                    if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                    {
+                        diagDW = 3.15f;
+
+                        animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
+                    }
+                    else
+                    {
+                        diagDW = 2.1f;
+
+                        animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
+                    }
+
+                    animator.SetFloat("Direction", animationDirectionDW, 0.1f, Time.deltaTime);
+
+                    objectiveDirection = new Vector3(diagDW, objectiveDirection.y, diagDW);
+                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                }
+
+                // 														>>>>>>>>>>> RIGHT <<<<<<<<<<<<
+
+                else
+                {
+                    if (Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))
+                    {
+                        rest = false;
+
+
+                        animator.SetFloat("Direction", animationDirectionD, 0.1f, Time.deltaTime);
+
+                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
                         {
-                            rest = false;
-
-
-                            animator.SetFloat("Direction", animationDirectionD, 0.1f, Time.deltaTime);
-
-                            if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
-                            {
-                                speedA = sprint;
-                                animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
-                            }
-                            else
-                            {
-                                speedA = 3;
-                                animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
-                            }
-
-                            if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
-                            {
-                                speedA = 7;
-                                animator.SetFloat("Direction", 20);
-                            }
-                            objectiveDirection = new Vector3(speedA, objectiveDirection.y, 0);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-                        }
-
-                        //															>>>>>>>>>> LEFT <<<<<<<<<<
-
-                        else if (Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))
-                        {
-                            rest = false;
-
-
-                            animator.SetFloat("Direction", animationDirectionA, 0.1f, Time.deltaTime);
-
-                            if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
-                            {
-                                speedA = sprint;
-                                animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
-                            }
-                            else
-                            {
-                                speedA = 3;
-                                animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
-                            }
-
-                            if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
-                            {
-                                speedA = 7;
-                                animator.SetFloat("Direction", 0);
-                            }
-                            objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-                        }
-
-                        //														>>>>>>>>>>>>>> FRONT <<<<<<<<<<<<<
-
-                        else if (Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))
-                        {
-                            rest = false;
-
-                            if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
-                            {
-                                speedW = sprint;
-                                animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
-                            }
-                            else
-                            {
-                                speedW = 3;
-                                animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
-                            }
-
-                            animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
-
-                            if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
-                            {
-                                animator.SetFloat("Direction", 10);
-                                speedW = 7;
-                            }
-
-                            objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-
-                        }
-
-                        //														>>>>>>>>>>> BACK <<<<<<<<<<<
-
-                        else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
-                        {
-                            rest = false;
-
-                            animator.SetFloat("Speed", animationSpeedBack, 0.05f, Time.deltaTime);
-
-                            animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
-
-                            if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
-                            {
-                                animator.SetFloat("Direction", 10);
-                                speedS = 6;
-                            }
-
-                            objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
-                            transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-
-
+                            speedA = sprint;
+                            animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
                         }
                         else
                         {
-                            animator.SetBool("Run", false);
+                            speedA = 3;
+                            animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
+                        }
 
-                            animator.SetFloat("Speed", animationSpeedIdle, 0.1f, Time.deltaTime);
+                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        {
+                            speedA = 7;
+                            animator.SetFloat("Direction", 20);
+                        }
+                        objectiveDirection = new Vector3(speedA, objectiveDirection.y, 0);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    }
 
-                            objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
-                            if (combat)
-                            {
-                                animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
-                            }
+                    //															>>>>>>>>>> LEFT <<<<<<<<<<
+
+                    else if (Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))
+                    {
+                        rest = false;
+
+
+                        animator.SetFloat("Direction", animationDirectionA, 0.1f, Time.deltaTime);
+
+                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                        {
+                            speedA = sprint;
+                            animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
+                        }
+                        else
+                        {
+                            speedA = 3;
+                            animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
+                        }
+
+                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        {
+                            speedA = 7;
+                            animator.SetFloat("Direction", 0);
+                        }
+                        objectiveDirection = new Vector3(-speedA, objectiveDirection.y, 0);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    }
+
+                    //														>>>>>>>>>>>>>> FRONT <<<<<<<<<<<<<
+
+                    else if (Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0))
+                    {
+                        rest = false;
+
+                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                        {
+                            speedW = sprint;
+                            animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
+                        }
+                        else
+                        {
+                            speedW = 3;
+                            animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
+                        }
+
+                        animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
+
+                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        {
+                            animator.SetFloat("Direction", 10);
+                            speedW = 7;
+                        }
+
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, speedW);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+
+                    }
+
+                    //														>>>>>>>>>>> BACK <<<<<<<<<<<
+
+                    else if (Input.GetKey(KeyCode.S) || (state.ThumbSticks.Left.Y < 0))
+                    {
+                        rest = false;
+
+                        animator.SetFloat("Speed", animationSpeedBack, 0.05f, Time.deltaTime);
+
+                        animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
+
+                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        {
+                            animator.SetFloat("Direction", 10);
+                            speedS = 6;
+                        }
+
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, -speedS);
+                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+
+
+                    }
+                    else
+                    {
+                        animator.SetBool("Run", false);
+
+                        animator.SetFloat("Speed", animationSpeedIdle, 0.1f, Time.deltaTime);
+
+                        objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
+                        if (combat)
+                        {
+                            animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
                         }
                     }
-                    objectiveDirection = transform.TransformDirection(objectiveDirection);
-
-                    if ((combat) && (animator.GetFloat("Speed") == 0))
-                    {
-                        objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
-                        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-                        objectiveDirection = transform.TransformDirection(objectiveDirection);
-                    }
-
                 }
-                else
+                objectiveDirection = transform.TransformDirection(objectiveDirection);
+
+                if ((combat) && (animator.GetFloat("Speed") == 0))
                 {
                     objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
+                    transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+                    objectiveDirection = transform.TransformDirection(objectiveDirection);
                 }
+
+            }
+            else
+            {
+                objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
             }
 		}
 	}
@@ -422,7 +416,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 			// 																				>>>>>>>>>>> SPRINT LOGIC <<<<<<<<<<<<
-			if (stepCount == 0)
+			if (!combat)
 			{
 				if ((Input.GetKey(KeyCode.LeftShift)) && (animator.GetFloat("Speed") > 1))
 				{
@@ -636,7 +630,10 @@ public class PlayerMovement : MonoBehaviour
 						}
 							//speedW = 0;
 						else
+						{
+							hit = false;
 							speedW = 0;
+						}
 					}
 					else if(stepCount == 2)
 					{
@@ -650,7 +647,10 @@ public class PlayerMovement : MonoBehaviour
 								speedW = 7f;
 						}
 						else
+						{
+							//hit = false;
 							speedW = 0;
+						}
 					}
 					else if(stepCount == 3)
 					{

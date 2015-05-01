@@ -4,6 +4,8 @@ using System.Collections;
 public class GameControl : MonoBehaviour 
 {
     public Transform playerPosition;
+	public Transform despertarSpawn;
+	public Transform playerBossSpawn;
     public string levelname;
     public string resetlevel;
 
@@ -32,14 +34,15 @@ public class GameControl : MonoBehaviour
 	
 	void Update () 
     {
-        GameObject counter = GameObject.Find("Cinematica_Despertar");
+		GameObject counter = GameObject.Find("Cinematica_Despertar");
         IntroCinematic introCinematic = counter.GetComponent<IntroCinematic>();
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (introCinematic.counterIntroCinematic >= 15)
+        if ((introCinematic.counterIntroCinematic >= 20) && (introCinematic.counterIntroCinematic < 20.2f))
         {
-            player.transform.position = new Vector3(30.70f, 120.5f, 73.45f);
+            player.transform.position = despertarSpawn.position;
+			player.transform.rotation = despertarSpawn.rotation;
         }
 
         if (Input.GetKey(KeyCode.F6))
