@@ -41,7 +41,7 @@ public class WolfIABOSS : MonoBehaviour {
 	public float playerAttackTimer;
 	public float playerAttackCount;
 
-	public float enemyVida;
+	public static float enemyVida;
 
 	public float preSpeed;
 	public float speed;
@@ -138,6 +138,7 @@ public class WolfIABOSS : MonoBehaviour {
 		enemyAttackTimer = 0;
 		preSpeed = 1.5f;
 		speed = 3.5f;
+        enemyVida = 2000f;
 	
 	}
 

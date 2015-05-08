@@ -23,7 +23,6 @@ public class IntroCinematic : MonoBehaviour
 
 		intro = false;
 
-
     }
 
 	void Update () 
@@ -49,7 +48,7 @@ public class IntroCinematic : MonoBehaviour
             cam2.enabled = false;
             bip.SetActive(false);
 			cuerpo.SetActive(false);
-			cabeza.SetActive(false);
+			cabeza.SetActive(false);;
 
 			intro = true;
         }

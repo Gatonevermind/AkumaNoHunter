@@ -36,12 +36,12 @@ public class PlayerDetection: MonoBehaviour
 	void Start () 
 	{
 		cachedYH = healthTransform.position.y;
-		maxXValueH = healthTransform.position.x + (healthTransform.rect.width*1.9f);
+		maxXValueH = healthTransform.position.x + (healthTransform.rect.width);
 		minXValueH = healthTransform.position.x;
 		currentHealth = maxHealth;
 
         cachedYS = staminaTransform.position.y;
-        maxXValueS = staminaTransform.position.x + (staminaTransform.rect.width*1.4f);
+        maxXValueS = staminaTransform.position.x + (staminaTransform.rect.width);
         minXValueS = staminaTransform.position.x;
         currentStamina = maxStamina;
 	}

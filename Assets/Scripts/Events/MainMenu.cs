@@ -5,6 +5,8 @@ public class MainMenu : MonoBehaviour
 {
     public string playLevel;
 
+    public Animator animatorPlay;
+
     public bool optionsMenu = false;
     GameObject[] optionsControl;
 
@@ -24,18 +26,14 @@ public class MainMenu : MonoBehaviour
         
         if (optionsMenu)
         {
-            optionsControl = GameObject.FindGameObjectsWithTag("Options");
             foreach (GameObject options in optionsControl)
                 options.SetActive(true);
         }
-        /*
         else
         {
-            optionsControl = GameObject.FindGameObjectsWithTag("Options");
             foreach (GameObject options in optionsControl)
                 options.SetActive(false);
         }
-        */
     }
 
     public void Play()
@@ -50,6 +48,6 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        optionsMenu = true;
+        optionsMenu = !optionsMenu;
     }
 }

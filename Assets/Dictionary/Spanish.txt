@@ -1,0 +1,4 @@
+MSG_Initial_Conversation&&Presiona E para hablar con Kai
+MSG_Conversation_1&&Cazador! Debes ir a la zona de entrenamiento!
+MSG_Conversation_2&&La aldea esta siendo atacada por lobos
+MSG_Conversation_3&&El puente esta roto! busca una alternativa para cruzar

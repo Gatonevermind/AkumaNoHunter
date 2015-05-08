@@ -25,6 +25,9 @@ TagManager:
   - Kai
   - Options
   - Lobo Kai
+  - Boss
+  - UIPlayer
+  - Interface
   layers:
   - Default
   - TransparentFX

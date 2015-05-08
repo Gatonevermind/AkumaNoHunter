@@ -24,13 +24,11 @@ public class OptionsMenu : MonoBehaviour
     public void IncreaseQuality()
     {
         QualitySettings.IncreaseLevel();
-        Debug.Log("Increase Quality");
     }
 
     public void DecreaseQuality()
     {
         QualitySettings.DecreaseLevel();
-        Debug.Log("Decrease Quality");
     }
 
     public void ShadowDistance(float newDistance)

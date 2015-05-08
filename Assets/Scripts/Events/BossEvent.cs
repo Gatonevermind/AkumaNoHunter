@@ -24,7 +24,6 @@ public class BossEvent : MonoBehaviour
 
 	public Transform playerSpawn;
 
-
 	void Start () 
     {
         Cinematic.SetActive(false);
@@ -65,6 +64,7 @@ public class BossEvent : MonoBehaviour
 				player.SetActive (true);
                 Cinematic.SetActive(false);
                 boss.SetActive(true);
+        
             }
         }
 

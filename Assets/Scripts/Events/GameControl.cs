@@ -8,6 +8,9 @@ public class GameControl : MonoBehaviour
 	public Transform playerBossSpawn;
     public string levelname;
     public string resetlevel;
+   
+    GameObject[] uiPlayerControl;
+    GameObject[] interfaceControl;
 
 	// Use this for initialization
 	void Start () 
@@ -29,7 +32,15 @@ public class GameControl : MonoBehaviour
         player.AddComponent<PlayerHealth>();
 //		player.AddComponent <PlayerAttack>();
 
-        Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;   
+        Camera.main.gameObject.GetComponent<CustomCamera> ().Target = player.transform;
+
+        uiPlayerControl = GameObject.FindGameObjectsWithTag("UIPlayer");
+        foreach (GameObject uiPlayer in uiPlayerControl)
+            uiPlayer.SetActive(false);
+
+        interfaceControl = GameObject.FindGameObjectsWithTag("Interface");
+        foreach (GameObject inter in interfaceControl)
+            inter.SetActive(false);
 	}
 	
 	void Update () 
@@ -43,6 +54,31 @@ public class GameControl : MonoBehaviour
         {
             player.transform.position = despertarSpawn.position;
 			player.transform.rotation = despertarSpawn.rotation;
+
+            foreach (GameObject uiPlayer in uiPlayerControl)
+                uiPlayer.SetActive(true);
+        }
+
+        if ((BossEvent.countToCinematic > 2) && (BossEvent.countToCinematic < 3))
+        {
+            foreach (GameObject uiPlayer in uiPlayerControl)
+                uiPlayer.SetActive(false);
+        }
+        else if (BossEvent.countToCinematic >= 44)
+        {
+            foreach (GameObject uiPlayer in uiPlayerControl)
+                uiPlayer.SetActive(true);
+        }
+
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            foreach (GameObject inter in interfaceControl)
+                inter.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject inter in interfaceControl)
+                inter.SetActive(false);
         }
 
         if (Input.GetKey(KeyCode.F6))

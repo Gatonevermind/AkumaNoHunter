@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Threading;
+﻿using System.Collections;
+using UnityEngine;
 
-public class LoadingControl : MonoBehaviour 
+public class LoadingControl : MonoBehaviour
 {
     public Transform rhino;
     public Transform fruit_1;
@@ -27,34 +26,36 @@ public class LoadingControl : MonoBehaviour
     public float counterMove;
 
     public string levelName;
-    AsyncOperation async;
+    private AsyncOperation async;
 
-    private Animator animator;
+    public Animator animator;
 
-
-	void Start () 
+    private void Start()
     {
         fruitEated = 0;
         counterEat = 0;
         StartLoading();
-	}
-	
-	void Update () 
+        animator.SetBool("eating", false);
+    }
+
+    private void Update()
     {
         if (fruitEated == 0)
         {
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_1.position, 0.05f);
 
-            if (counterMove >= 1)
+            if (counterMove >= 0.5f)
             {
                 counterEat += Time.deltaTime;
-                if (counterEat >= 1)
+                animator.SetBool("eating", true);
+                if (counterEat >= 1.0f)
                 {
                     GameObject.Destroy(fruit1);
                     fruitEated += 1;
                     counterEat = 0;
                     counterMove = 0;
+                    animator.SetBool("eating", false);
                 }
             }
         }
@@ -63,17 +64,17 @@ public class LoadingControl : MonoBehaviour
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_2.position, 0.05f);
 
-            if (counterMove >= 1)
+            if (counterMove >= 0.5f)
             {
                 counterEat += Time.deltaTime;
-
-
-                if (counterEat >= 1)
+                animator.SetBool("eating", true);
+                if (counterEat >= 1.0f)
                 {
                     GameObject.Destroy(fruit2);
                     fruitEated += 1;
                     counterEat = 0;
                     counterMove = 0;
+                    animator.SetBool("eating", false);
                 }
             }
         }
@@ -82,16 +83,17 @@ public class LoadingControl : MonoBehaviour
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_3.position, 0.05f);
 
-            if (counterMove >= 1)
+            if (counterMove >= 0.5f)
             {
                 counterEat += Time.deltaTime;
-
-                if (counterEat >= 1)
+                animator.SetBool("eating", true);
+                if (counterEat >= 1.0f)
                 {
                     GameObject.Destroy(fruit3);
                     fruitEated += 1;
                     counterEat = 0;
                     counterMove = 0;
+                    animator.SetBool("eating", false);
                 }
             }
         }
@@ -100,40 +102,45 @@ public class LoadingControl : MonoBehaviour
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_4.position, 0.05f);
 
-            if (counterMove >= 1)
+            if (counterMove >= 1f)
             {
+                ActivateScene();
+                /*
                 counterEat += Time.deltaTime;
-
-                if (counterEat >= 1)
+                animator.SetBool("eating", true);
+                if (counterEat >= 1.0f)
                 {
                     GameObject.Destroy(fruit4);
                     fruitEated += 1;
                     counterEat = 0;
                     counterMove = 0;
-                    //transform.position = initialPosition;
+                    animator.SetBool("eating", false);
                 }
+                */
             }
         }
+        /*
         else if (fruitEated == 4)
         {
             counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_5.position, 0.05f);
 
-            if (counterMove >= 1)
+            if (counterMove >= 1.0f)
             {
                 ActivateScene();
             }
         }
-	}
+        */
+    }
 
     public static Vector3 Lerp(Vector3 start, Vector3 finish, float percentage)
     {
         //Make sure percentage is in the range [0.0, 1.0]
         percentage = Mathf.Clamp01(percentage);
- 
+
         //(finish-start) is the Vector3 drawn between 'start' and 'finish'
         Vector3 startToFinish = finish - start;
- 
+
         //Multiply it by percentage and set its origin to 'start'
         return start + startToFinish * percentage;
     }
@@ -143,7 +150,7 @@ public class LoadingControl : MonoBehaviour
         StartCoroutine("load");
     }
 
-    IEnumerator load()
+    private IEnumerator load()
     {
         Debug.LogWarning("ASYNC LOAD STARTED - " +
             "DO NOT EXIT PLAY MODE UNTIL SCENE LOADS... UNITY WILL CRASH");

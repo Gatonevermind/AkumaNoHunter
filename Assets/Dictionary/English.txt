@@ -1,0 +1,4 @@
+MSG_Initial_Conversation&&Press E to talk with Kai
+MSG_Conversation_1&&Hunter! You must go to the training area!
+MSG_Conversation_2&&The village is being attacked by wolves
+MSG_Conversation_3&&The bridge is broken! looking for an alternative to cross
