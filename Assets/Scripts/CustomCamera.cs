@@ -24,6 +24,9 @@ public class CustomCamera : MonoBehaviour
     GamePadState state;
     GamePadState prevState;
 
+	public GameObject cursorCanvas;
+	public GameObject objectivesCanvas;
+
     int ignoreMask;
 
     void Start()
@@ -39,15 +42,32 @@ public class CustomCamera : MonoBehaviour
         ignoreMask = 1 << 8;
     }
 
+	void Update()
+	{
+		if ((IntroCinematic.intro) && (!BossEvent.bossCinematic))
+		{
+			transform.GetComponent<AudioSource> ().enabled = true;
+		} 
+
+
+		if (BossEvent.boolSoundCinematic){
+			transform.GetComponent<AudioSource>().enabled = false;
+		}
+	}
+
     void LateUpdate()
     {
-		if (IntroCinematic.intro) {
+		if (IntroCinematic.intro) 
+        {
 
-			if (!playerIndexSet || !prevState.IsConnected) {
-				for (int i = 0; i < 4; ++i) {
+			if (!playerIndexSet || !prevState.IsConnected) 
+            {
+				for (int i = 0; i < 4; ++i) 
+                {
 					PlayerIndex testPlayerIndex = (PlayerIndex)i;
 					GamePadState testState = GamePad.GetState (testPlayerIndex);
-					if (testState.IsConnected) {
+					if (testState.IsConnected) 
+                    {
 						Debug.Log (string.Format ("GamePad found {0}", testPlayerIndex));
 						playerIndex = testPlayerIndex;
 						playerIndexSet = true;
@@ -62,10 +82,22 @@ public class CustomCamera : MonoBehaviour
 			if (!Target)
 				return;
 
-			if (!GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu) {
-				if (Input.GetKey (KeyCode.LeftAlt)) {
-					Cursor.visible = true;
-				} else {
+			if (!PauseMenu.pauseMenu) 
+			{
+
+				if (Input.GetKey (KeyCode.LeftAlt)) 
+				{
+					cursorCanvas.SetActive(true);
+					Cursor.visible = false;
+				}
+                else if (state.Buttons.Back == ButtonState.Pressed)
+                {
+                    cursorCanvas.SetActive(true);
+                    Cursor.visible = false;
+                }
+				else 
+				{
+					cursorCanvas.SetActive(false);
 					Cursor.visible = false;
 					Debug.Log ("invisible");
 
@@ -75,8 +107,12 @@ public class CustomCamera : MonoBehaviour
 					x += state.ThumbSticks.Right.X * xSpeed * 0.02f;
 					y -= state.ThumbSticks.Right.Y * ySpeed * 0.02f;
 				}
-			} else if (GameObject.Find ("GameControl").GetComponent<PauseMenu> ().pauseMenu)
-				Cursor.visible = true;
+			} 
+			else if (PauseMenu.pauseMenu)
+			{
+				cursorCanvas.SetActive(true);
+				Cursor.visible = false;
+			}
 
 			distance -= (Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime) * zoomRate * Mathf.Abs (distance);
 			distance = Mathf.Clamp (distance, minDistance, maxDistance);

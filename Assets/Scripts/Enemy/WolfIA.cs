@@ -16,6 +16,10 @@ public class WolfIA : MonoBehaviour {
 
 	public GameObject collisionBox;
 	public GameObject damageBox;
+	public GameObject blood1;
+	//public GameObject blood2;
+	//public GameObject blood3;
+	//public GameObject blood4;
 
 	private Animator animator;
 	NavMeshAgent navAgent;
@@ -38,13 +42,27 @@ public class WolfIA : MonoBehaviour {
 
 	public float hitTimer;
 
+	//public static bool boolEnemyAttackSound;
 
 	public float aleatorio;
 
 	public bool enemyAttackHit;
 	public float enemyAttackTimer;
 
+	public float enemyDeathTimer;
+
+
 	public BoxCollider collider;
+
+	//AUDIO
+	public bool soundPlayed;
+
+	public AudioClip soundAttackFlesh1;
+	public AudioClip soundAttackFlesh2;
+	public AudioClip soundAttackFlesh3;
+	public AudioClip enemyAttackSound;
+	public AudioClip enemyDeadSound;
+	//private AudioSource Source;
 
 	// >>>>>>>>>>>> PLAYER DAMAGE TO WOLF <<<<<<<<<<<<
 	private void OnTriggerEnter(Collider other)
@@ -56,9 +74,11 @@ public class WolfIA : MonoBehaviour {
 			{
 				if (PlayerAttack.attackCount == 1)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh1, 1);
 					PlayerMovement.hit = true;
 					enemyVida -= 30;
 					//animator.SetBool ("Hit", true);
+					blood1.SetActive(true);
 					hitCounter = 0;
 					state = State.HIT;
 					playerAttackHit = true;
@@ -67,7 +87,9 @@ public class WolfIA : MonoBehaviour {
 				
 				else if (PlayerAttack.attackCount == 2)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh2, 1);
 					PlayerMovement.hit = true;
+					blood1.SetActive(true);
 					enemyVida -= 30;
 					state = State.HIT;
 					hitCounter = 0;
@@ -76,7 +98,9 @@ public class WolfIA : MonoBehaviour {
 				}
 				else if (PlayerAttack.attackCount ==3)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh3, 1);
 					PlayerMovement.hit = true;
+					blood1.SetActive(true);
 					state = State.HIT;
 					enemyVida -= 50;
 					hitCounter = 0;
@@ -85,7 +109,9 @@ public class WolfIA : MonoBehaviour {
 				}
 				else if (PlayerAttack.attackCount ==8)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh1, 1);
 					PlayerMovement.hit = true;
+					blood1.SetActive(true);
 					state = State.HIT;
 					PlayerMovement.stamina += 15;
 					enemyVida -= 30;
@@ -114,16 +140,26 @@ public class WolfIA : MonoBehaviour {
 		enemyAttackTimer = 0;
 		preSpeed = 1.5f;
 		speed = 3.5f;
+		soundPlayed = false;
+		blood1.SetActive (false);
 	
 	}
 
 	void Update () 
 	{
+		if (PlayerHealth.curHealth <= 0)
+		{
+			detection = 0;
+			state = State.IDLE;
+		}
 		if (enemyAttackTimer == 0)
 			enemyAttackHit = false;
 
-		if (playerAttackTimer == 0)
+		if (playerAttackTimer == 0) 
+		{
+			blood1.SetActive (false);
 			playerAttackHit = false;
+		}
 		
 		playerAttackCount = PlayerAttack.attackCount;
 		playerAttackTimer = PlayerAttack.attackTimer;
@@ -143,6 +179,12 @@ public class WolfIA : MonoBehaviour {
 		{
 			case State.IDLE:
 			{
+				if(PlayerHealth.curHealth <= 0)
+				{
+					Vector3 direction = samurai.position - transform.position;
+					float angle = Vector3.Angle(direction, transform.forward);
+					enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(samurai.position - enemy.position), rotationSearch * Time.deltaTime);
+				}
 				animator.SetBool("Attack", false);
 				if (Vector3.Distance(transform.position, samurai.position) < detection)
 				{
@@ -219,6 +261,13 @@ public class WolfIA : MonoBehaviour {
 
 			case State.ATTACK:
 			{
+				if(enemyAttackTimer == 0)
+				{
+					GetComponent<AudioSource>().PlayOneShot(enemyAttackSound, 1);
+				}
+//				else
+//					boolEnemyAttackSound = false;
+
 				if( hitTimer <0.7f)
 					hitTimer+=Time.deltaTime;
 
@@ -269,6 +318,7 @@ public class WolfIA : MonoBehaviour {
 				break;
 			case State.HIT:
 			{
+			Debug.Log("HIT");
 				enemyAttackTimer = 0;
 				navAgent.Stop();
 				damageBox.SetActive(false);
@@ -308,6 +358,11 @@ public class WolfIA : MonoBehaviour {
 
 			case State.DEATH:
 			{
+				if(enemyDeathTimer < 0.01f)
+					GetComponent<AudioSource>().PlayOneShot(enemyDeadSound, 1);
+
+				enemyDeathTimer += Time.deltaTime;
+				
 				damageBox.SetActive(false);
 				animator.SetBool("Death", true);
 				collider.enabled = false;

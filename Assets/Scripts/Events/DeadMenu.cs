@@ -8,6 +8,8 @@ public class DeadMenu : MonoBehaviour
     public string level;
     private float counterToMenu;
 
+	public GameObject hitbox;
+
     private void Start()
     {
         deadControl = GameObject.FindGameObjectsWithTag("Dead");
@@ -18,7 +20,8 @@ public class DeadMenu : MonoBehaviour
     private void Update()
     {
         if (PlayerHealth.curHealth <= 0)
-        {
+        {	
+			hitbox.SetActive(false);
             counterToMenu += Time.deltaTime;
             if (counterToMenu >= 1)
             {

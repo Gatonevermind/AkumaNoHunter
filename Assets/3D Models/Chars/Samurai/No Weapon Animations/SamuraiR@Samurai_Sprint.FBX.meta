@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 92fb7ab2a8b207543905a14fd6b38c36
-timeCreated: 1429195793
+guid: 1026c8202ce5374478fd921db4207446
+timeCreated: 1431515556
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -380,7 +380,7 @@ ModelImporter:
     4300012: KatanaDefault
     4300014: KatanaLoboHand
     4300016: KatanaDefaultHand
-    7400000: Samurai_NoWeapon_Sprint
+    7400000: Samurai_Sprint
     9500000: //RootNode
     13700000: Cabeza
     13700002: CapaA
@@ -408,10 +408,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Samurai_NoWeapon_Sprint
+      name: Samurai_Sprint
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

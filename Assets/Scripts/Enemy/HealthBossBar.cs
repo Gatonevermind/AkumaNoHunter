@@ -7,7 +7,7 @@ public class HealthBossBar : MonoBehaviour
     public float currentHealth;
     void Update()
     {
-        currentHealth = WolfIABOSS.enemyVida/2000;
+        currentHealth = WolfIABOSS.enemyVida/1200;
 
         Image image = GetComponent<Image>();
 

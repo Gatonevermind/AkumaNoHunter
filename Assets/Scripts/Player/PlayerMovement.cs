@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 	public float moveS = 0;
 	public float moveW = 0;
 	public bool rest;
-	public bool sprintActive;
+	public static bool sprintActive;
 	public bool stun;
 	//public float transitionSpeed = 25 * Time.deltaTime;
 	float acceleration = 0.2F;
@@ -76,6 +76,15 @@ public class PlayerMovement : MonoBehaviour
 
 	public bool sprintCooldown = false;
 
+	//AUDIO
+
+	public static bool boolAttackWind1;
+	public static bool boolAttackWind2;
+	public static bool boolAttackWind3;
+	public static bool boolSheathe;
+	public static bool boolDashCharge;
+	public static bool boolDashWind;
+	public static bool boolFXblood1;
 
 	public static void Blocked()
 	{
@@ -113,6 +122,11 @@ public class PlayerMovement : MonoBehaviour
 //			idleCount = 0;
 //			animator.SetBool("Idle", false);
 //		}
+		if (PlayerHealth.curHealth <= 0) 
+		{
+			animator.SetBool("Death", true);
+			GetComponent<CharacterController>().enabled = false;
+		}
 
 		// 																				>>>>>>>>>>> PLAYER HIT FEEDBACK <<<<<<<<<<<<
 		if (animator.GetBool("Hit") == true)
@@ -121,15 +135,17 @@ public class PlayerMovement : MonoBehaviour
 		}
 		if(enemyHit)
 		{
+			boolFXblood1 = true;
 			hitCounter += Time.deltaTime;
 
 			objectiveDirection = new Vector3(0, 0, 0 );
 			objectiveDirection = transform.TransformDirection(objectiveDirection);
 
-			if(hitCounter >0.1f)
-				animator.SetBool("Hit", false);
+			if(hitCounter >0.1f) animator.SetBool("Hit", false);
+
 			if(hitCounter > 1f)
 			{
+				boolFXblood1 = false;
 				enemyHit = false;
 				hitCounter = 0;
 			}
@@ -139,14 +155,14 @@ public class PlayerMovement : MonoBehaviour
 		// 																			>>>>>>>>>>>>>>> PLAYER MOVEMENT <<<<<<<<<<<<<<<<<<<
 		else if ((dashTimer <= 0.3) && (stepCount == 0))
 		{
-            if (seatheCooldown == 0)
+            if ((seatheCooldown == 0) && (PlayerHealth.curHealth > 0))
             {
                 // Assign a direction depending on the input introduced
                 //																	>>>>>>>>>>> DIAGONAL LEFT<<<<<<<<<<<<<<<<
 
                 if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.A) || (state.ThumbSticks.Left.X < 0))))
                 {
-                    if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                    if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                     {
                         diagAW = 3.15f;
                         animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
@@ -166,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
 
                 else if ((Input.GetKey(KeyCode.W) || (state.ThumbSticks.Left.Y > 0)) && ((Input.GetKey(KeyCode.D) || (state.ThumbSticks.Left.X > 0))))
                 {
-                    if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                    if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                     {
                         diagDW = 3.15f;
 
@@ -196,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
 
                         animator.SetFloat("Direction", animationDirectionD, 0.1f, Time.deltaTime);
 
-                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                        if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                         {
                             speedA = sprint;
                             animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
@@ -207,7 +223,9 @@ public class PlayerMovement : MonoBehaviour
                             animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
                         }
 
-                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        if ((Input.GetKeyDown(KeyCode.LeftControl) || 
+                            (prevState.Buttons.B == ButtonState.Released) && (state.Buttons.B == ButtonState.Pressed)) && 
+                            (dashTimer == 0))
                         {
                             speedA = 7;
                             animator.SetFloat("Direction", 20);
@@ -225,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
 
                         animator.SetFloat("Direction", animationDirectionA, 0.1f, Time.deltaTime);
 
-                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                        if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                         {
                             speedA = sprint;
                             animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
@@ -236,7 +254,9 @@ public class PlayerMovement : MonoBehaviour
                             animator.SetFloat("Speed", animationSpeedRun, 0.05f, Time.deltaTime);
                         }
 
-                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        if ((Input.GetKeyDown(KeyCode.LeftControl) ||
+                            (prevState.Buttons.B == ButtonState.Released) && (state.Buttons.B == ButtonState.Pressed)) &&
+                            (dashTimer == 0))
                         {
                             speedA = 7;
                             animator.SetFloat("Direction", 0);
@@ -251,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         rest = false;
 
-                        if ((Input.GetKey(KeyCode.LeftShift)) && (sprintActive))
+                        if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                         {
                             speedW = sprint;
                             animator.SetFloat("Speed", animationSpeedSprint, 0.1f, Time.deltaTime);
@@ -264,7 +284,9 @@ public class PlayerMovement : MonoBehaviour
 
                         animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
 
-                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        if ((Input.GetKeyDown(KeyCode.LeftControl) ||
+                            (prevState.Buttons.B == ButtonState.Released) && (state.Buttons.B == ButtonState.Pressed)) &&
+                            (dashTimer == 0))
                         {
                             animator.SetFloat("Direction", 10);
                             speedW = 7;
@@ -285,7 +307,7 @@ public class PlayerMovement : MonoBehaviour
 
                         animator.SetFloat("Direction", animationDirectionW, 0.1f, Time.deltaTime);
 
-                        if ((Input.GetKeyDown(KeyCode.LeftControl)) && (dashTimer == 0))
+                        if ((Input.GetKey(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (sprintActive))
                         {
                             animator.SetFloat("Direction", 10);
                             speedS = 6;
@@ -381,7 +403,7 @@ public class PlayerMovement : MonoBehaviour
 			                                   Mathf.Lerp(interpolateDirection.z, objectiveDirection.z, acceleration));
 
 			// 																							>>>>>>>>> REST HEALTH <<<<<<<<<<<
-			if (Input.GetKeyDown(KeyCode.X))
+			if (Input.GetKeyDown(KeyCode.X) || (prevState.Buttons.RightShoulder == ButtonState.Released) && (state.Buttons.RightShoulder == ButtonState.Pressed))
 			{
 				rest = true;
 			}
@@ -418,7 +440,7 @@ public class PlayerMovement : MonoBehaviour
 			// 																				>>>>>>>>>>> SPRINT LOGIC <<<<<<<<<<<<
 			if (!combat)
 			{
-				if ((Input.GetKey(KeyCode.LeftShift)) && (animator.GetFloat("Speed") > 1))
+                if (((Input.GetKey(KeyCode.LeftShift)) || (state.Buttons.LeftShoulder == ButtonState.Pressed)) && (animator.GetFloat("Speed") > 1))
 				{
 					staminaReload= false;
 
@@ -441,7 +463,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 				}
-				else if(Input.GetKeyUp(KeyCode.LeftShift))
+                else if ((Input.GetKeyUp(KeyCode.LeftShift)) ||(state.Buttons.LeftShoulder == ButtonState.Released))
 				{
 					staminaReload = true;
 
@@ -455,6 +477,7 @@ public class PlayerMovement : MonoBehaviour
 
 				}
 			}
+
 
 			//													>>>>>>>>>>>> STAMINA RELOAD <<<<<<<<<<<
 			if (staminaReload)
@@ -478,18 +501,27 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool ("Fall", false);
 				grounded = true;
 				fallBool = false;
-				//  																		>>>>>>>>>> SEATHE/UNSEATHE LOGIC <<<<<<<<<<<
+				//  																		>>>>>>>>>> SHEATHE/UNSHEATHE LOGIC <<<<<<<<<<<
+
+
+
 				if(seatheCooldown == 0)
 				{
 					if (VisKatana.herreria)
 					{
-						if ((Input.GetKeyDown(KeyCode.Q)) || (state.Buttons.X == ButtonState.Pressed))
+						animator.SetFloat("NoWeapon", 0);
+						if ((Input.GetKeyDown(KeyCode.Q)) || (prevState.Buttons.Y == ButtonState.Released) && (state.Buttons.Y == ButtonState.Pressed))
 						{
+							boolSheathe = true;
 							combat = !combat;
 							seatheCooldown += 0.1f;
 						}
+
+
 					}
 				}
+				else
+					boolSheathe = false;
 				// 																			>>>>>>>>>>>>>> SEATHE/UNSEATHE LOGIC <<<<<<<<<<<
 				if (combat)
 				{
@@ -528,13 +560,13 @@ public class PlayerMovement : MonoBehaviour
 				{
 					land = 0;
 				}
-				if (Input.GetKeyUp(KeyCode.LeftShift))
+				if (Input.GetKeyUp(KeyCode.LeftShift) || (state.Buttons.LeftShoulder == ButtonState.Pressed) && (state.Buttons.LeftShoulder == ButtonState.Released))
 				{
 					speedW = 3;
 				}
 
 				//  																					>>>>>>>>>>>> JUMP LOGIC <<<<<<<<<<<<<
-				if ((Input.GetKeyDown(KeyCode.Space)) || (state.Buttons.A == ButtonState.Pressed))
+				if ((Input.GetKeyDown(KeyCode.Space)) || (prevState.Buttons.A == ButtonState.Released) && (state.Buttons.A == ButtonState.Pressed))
 				{
 					if(!enemyHit)
 					{
@@ -552,32 +584,35 @@ public class PlayerMovement : MonoBehaviour
 				{
 					if(attackCount == 0)
 					{	
-						if (animator.GetFloat("Speed") != 0)
+
+						if((Input.GetKeyDown(KeyCode.LeftControl) || (prevState.Buttons.B == ButtonState.Released) && (state.Buttons.B == ButtonState.Pressed)))
 						{
-							if((Input.GetKeyDown(KeyCode.LeftControl) || (state.Buttons.B == ButtonState.Pressed)))
+							if((animator.GetFloat("Speed") > 0)&& (Input.GetKey(KeyCode.S)))
 							{
-								dashTimer = dashCooldown;
-								stamina -= 30;
+								animator.SetBool ("DashBack", true);
 							}
+							
+							else if(animator.GetFloat("Speed") > 0)
+								animator.SetBool("Dash", true);
+							
+							else if(animator.GetFloat("Speed") < 0)
+							{
+								animator.SetBool ("DashBack", true);
+							}
+
+							dashTimer = dashCooldown;
+							stamina -= 30;
 						}
+					
 					}
 				}
 				else if ( dashTimer > 0.1f)
 				{
+					animator.SetBool("Dash", false);
+					animator.SetBool("DashBack", false);
 					staminaReload = false;
 
-					if((animator.GetFloat("Speed") > 0)&& (Input.GetKey(KeyCode.S)))
-					{
-						animator.SetBool ("DashBack", true);
-					}
 
-					else if(animator.GetFloat("Speed") > 0)
-						animator.SetBool("Dash", true);
-
-					else if(animator.GetFloat("Speed") < 0)
-					{
-						animator.SetBool ("DashBack", true);
-					}
 				}
 				
 				else
@@ -617,14 +652,24 @@ public class PlayerMovement : MonoBehaviour
 
 					if(stepCount == 1)
 					{
-						if (attackTimer == 0)stamina -= 10;
+						if (attackTimer == 0)
+						{
+							boolAttackWind1 = true;
+							stamina -= 10;
+						}
+						else
+							boolAttackWind1 = false;
+
 						animator.SetFloat("Speed", 0);
 						animator.SetFloat("Direction", 10);
 					
 						if(attackTimer < 0.15f)
 						{
+
 							if(hit)
+							{
 								speedW = 0;
+							}
 							else
 								speedW = 5f;
 						}
@@ -637,7 +682,13 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if(stepCount == 2)
 					{
-						if (attackTimer == 0)stamina -= 10;
+						if (attackTimer == 0)
+						{
+							boolAttackWind2 = true;
+							stamina -= 10;
+						}
+						else
+							boolAttackWind2 = false;
 
 						if(attackTimer < 0.15f)
 						{
@@ -654,7 +705,13 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if(stepCount == 3)
 					{
-						if (attackTimer == 0)stamina -= 10;
+						if (attackTimer == 0)
+						{
+							boolAttackWind3 = true;
+							stamina -= 10;
+						}
+						else
+							boolAttackWind3 = false;
 
 						if(attackTimer < 0.1f)
 						{
@@ -682,6 +739,11 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if(stepCount == 6)
 					{
+						if(attackTimer == 0)
+							boolDashCharge = true;
+						else
+							boolDashCharge = false;
+
 						animator.SetFloat("Speed", 0);
 						animator.SetFloat("Direction", 10);
 
@@ -697,6 +759,11 @@ public class PlayerMovement : MonoBehaviour
 					}
 					else if(stepCount == 8)
 					{
+						if(attackTimer == 0)
+							boolDashWind = true;
+						else
+							boolDashWind = false;
+
 						speedW = 0;
 					}
 					
@@ -724,7 +791,7 @@ public class PlayerMovement : MonoBehaviour
 				{
 					land += 0.5f * Time.deltaTime;
 				}
-				if (Input.GetKeyUp(KeyCode.LeftShift))
+                if (Input.GetKeyUp(KeyCode.LeftShift) || (prevState.Buttons.LeftShoulder == ButtonState.Pressed) && (state.Buttons.LeftShoulder == ButtonState.Released))
 				{
 					speedW = 3;
 				}
@@ -752,11 +819,11 @@ public class PlayerMovement : MonoBehaviour
 			                                   Mathf.Lerp(interpolateDirection.z, objectiveDirection.z, acceleration));
 			// Calculates the direction
 			HorizontalMovement(speedW, speedA, speedD, speedS, rootA, rootD);
-			if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || (prevState.Buttons.A == ButtonState.Released) && (state.Buttons.A == ButtonState.Pressed))
 			{
 				objectiveDirection = new Vector3(objectiveDirection.x, speed, objectiveDirection.z);
 			}
-			else if (Input.GetKey(KeyCode.LeftShift))
+            else if (Input.GetKey(KeyCode.LeftShift) || (prevState.Buttons.LeftShoulder == ButtonState.Released) && (state.Buttons.LeftShoulder == ButtonState.Pressed))
 			{
 				objectiveDirection = new Vector3(objectiveDirection.x, -speed, objectiveDirection.z); ;
 			}

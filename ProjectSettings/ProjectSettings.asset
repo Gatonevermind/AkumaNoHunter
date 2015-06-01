@@ -14,7 +14,7 @@ PlayerSettings:
   companyName: Akuma No Games
   productName: Akuma No Hunter
   cloudProjectId: 
-  defaultCursor: {fileID: 2800000, guid: 5a97bb4d02d58df48a30b1d3b816c525, type: 3}
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
   defaultScreenWidth: 1024
@@ -133,7 +133,7 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 2800000, guid: 9ca11ad253f643243acb84b50f716029,
+  resolutionDialogBanner: {fileID: 2800000, guid: 4e28ae16b05d95b459521fe6fc956857,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
@@ -142,7 +142,7 @@ PlayerSettings:
       m_Size: 128
   - m_BuildTarget: Standalone
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: e9c63ae09cc9b01439758c59e6f2e7db, type: 3}
+    - m_Icon: {fileID: 2800000, guid: af366fd5fbb3e29498f43aced58ef75c, type: 3}
       m_Size: 1024
     - m_Icon: {fileID: 0}
       m_Size: 512

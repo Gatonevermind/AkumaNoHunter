@@ -8,10 +8,10 @@ TagManager:
   - Forja
   - Enemy
   - Pause
-  - Tutorial1
-  - Tutorial2
-  - Tutorial3
-  - Tutorial4
+  - MovementTutorial
+  - SprintTutorial
+  - AttackTutorial
+  - DashTutorial
   - Dead
   - FinalLevelCanvas
   - Tutorial_1Manager
@@ -28,6 +28,13 @@ TagManager:
   - Boss
   - UIPlayer
   - Interface
+  - CinematicBorder
+  - AudioManager
+  - Foot
+  - ChoseTutorial
+  - UnsheatheTutorial
+  - Controls
+  - DashAttackTutorial
   layers:
   - Default
   - TransparentFX

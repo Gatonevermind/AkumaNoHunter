@@ -13,21 +13,15 @@ public class VisKatana : MonoBehaviour
 	{
 		herreria = false;
 	}
-	private void OnTriggerEnter (Collider other)
-	{
-		if(other.tag == "Forja")
-		{
-			katana.SetActive(true);
-			vaina.SetActive(true);
-			herreria = true;
-		}
-	}
+
 
 	void Update()
 	{
+
+
 		if (PlayerMovement.combat)
 		{
-			if (PlayerMovement.seatheCooldown > 0.5f)
+			if (PlayerMovement.seatheCooldown > 0.8f)
 			{
 				katana.SetActive(false);
 				katanaHand.SetActive(true);
@@ -35,6 +29,16 @@ public class VisKatana : MonoBehaviour
 		}
 		else
 		{
+			if(ConversationKai.choseWeapon2)
+			{
+				if(PlayerMovement.seatheCooldown > 1.7f)
+				{
+					katana.SetActive(true);
+				}
+				vaina.SetActive(true);
+				herreria = true;
+			}
+
 			if(PlayerMovement.seatheCooldown > 1.7f)
 			{
 				katana.SetActive(true);

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class BossUIBar : MonoBehaviour 
@@ -15,7 +15,7 @@ public class BossUIBar : MonoBehaviour
 
 	void Update () 
     {
-        if (BossEvent.countToCinematic >= 44)
+        if (BossEvent.countToCinematic >= 39)
         {
             foreach (GameObject bar in barControl)
                 bar.SetActive(true);
@@ -23,4 +23,4 @@ public class BossUIBar : MonoBehaviour
             Debug.Log("HEY!");
         }
 	}
-}
+}*/

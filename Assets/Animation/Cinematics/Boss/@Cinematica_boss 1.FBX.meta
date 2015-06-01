@@ -1,0 +1,685 @@
+fileFormatVersion: 2
+guid: cdde70bff823edf4987cae3198b70916
+timeCreated: 1431280521
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Animation LayerTransform
+    100004: BIGBADWOLF
+    100006: Bip001
+    100008: Bip001 Footsteps
+    100010: Bip001 Footsteps001
+    100012: Bip001 Head
+    100014: Bip001 Head001
+    100016: Bip001 HeadNub
+    100018: Bip001 HeadNub001
+    100020: Bip001 L Anular 004
+    100022: Bip001 L Anular 005
+    100024: Bip001 L Anular 006
+    100026: Bip001 L Anular 1
+    100028: Bip001 L Anular 2
+    100030: Bip001 L Anular 3
+    100032: Bip001 L Calf
+    100034: Bip001 L Calf001
+    100036: Bip001 L Clavicle
+    100038: Bip001 L Clavicle001
+    100040: Bip001 L Corazon 004
+    100042: Bip001 L Corazon 005
+    100044: Bip001 L Corazon 006
+    100046: Bip001 L Corazon 1
+    100048: Bip001 L Corazon 2
+    100050: Bip001 L Corazon 3
+    100052: Bip001 L Finger0Nub
+    100054: Bip001 L Finger0Nub001
+    100056: Bip001 L Finger1Nub
+    100058: Bip001 L Finger1Nub001
+    100060: Bip001 L Finger2Nub
+    100062: Bip001 L Finger2Nub001
+    100064: Bip001 L Finger3Nub
+    100066: Bip001 L Finger3Nub001
+    100068: Bip001 L Finger4Nub
+    100070: Bip001 L Finger4Nub001
+    100072: Bip001 L Foot
+    100074: Bip001 L Foot001
+    100076: Bip001 L Forearm
+    100078: Bip001 L Forearm001
+    100080: Bip001 L Hand
+    100082: Bip001 L Hand001
+    100084: Bip001 L Indice 004
+    100086: Bip001 L Indice 005
+    100088: Bip001 L Indice 006
+    100090: Bip001 L Indice 1
+    100092: Bip001 L Indice 2
+    100094: Bip001 L Indice 3
+    100096: Bip001 L Menique 004
+    100098: Bip001 L Menique 005
+    100100: Bip001 L Menique 006
+    100102: Bip001 L Menique 1
+    100104: Bip001 L Menique 2
+    100106: Bip001 L Menique 3
+    100108: Bip001 L Pulgar 004
+    100110: Bip001 L Pulgar 005
+    100112: Bip001 L Pulgar 006
+    100114: Bip001 L Pulgar 1
+    100116: Bip001 L Pulgar 2
+    100118: Bip001 L Pulgar 3
+    100120: Bip001 L Thigh
+    100122: Bip001 L Thigh001
+    100124: Bip001 L Toe0
+    100126: Bip001 L Toe001
+    100128: Bip001 L Toe0Nub
+    100130: Bip001 L Toe0Nub001
+    100132: Bip001 L UpperArm
+    100134: Bip001 L UpperArm001
+    100136: Bip001 Neck
+    100138: Bip001 Neck001
+    100140: Bip001 Pelvis
+    100142: Bip001 Pelvis001
+    100144: Bip001 R Anular 004
+    100146: Bip001 R Anular 005
+    100148: Bip001 R Anular 006
+    100150: Bip001 R Anular 1
+    100152: Bip001 R Anular 2
+    100154: Bip001 R Anular 3
+    100156: Bip001 R Calf
+    100158: Bip001 R Calf001
+    100160: Bip001 R Clavicle
+    100162: Bip001 R Clavicle001
+    100164: Bip001 R Corazon 004
+    100166: Bip001 R Corazon 005
+    100168: Bip001 R Corazon 006
+    100170: Bip001 R Corazon 1
+    100172: Bip001 R Corazon 2
+    100174: Bip001 R Corazon 3
+    100176: Bip001 R Finger0Nub
+    100178: Bip001 R Finger0Nub001
+    100180: Bip001 R Finger1Nub
+    100182: Bip001 R Finger1Nub001
+    100184: Bip001 R Finger2Nub
+    100186: Bip001 R Finger2Nub001
+    100188: Bip001 R Finger3Nub
+    100190: Bip001 R Finger3Nub001
+    100192: Bip001 R Finger4Nub
+    100194: Bip001 R Finger4Nub001
+    100196: Bip001 R Foot
+    100198: Bip001 R Foot001
+    100200: Bip001 R Forearm
+    100202: Bip001 R Forearm001
+    100204: Bip001 R Hand
+    100206: Bip001 R Hand001
+    100208: Bip001 R Indice 004
+    100210: Bip001 R Indice 005
+    100212: Bip001 R Indice 006
+    100214: Bip001 R Indice 1
+    100216: Bip001 R Indice 2
+    100218: Bip001 R Indice 3
+    100220: Bip001 R Menique 004
+    100222: Bip001 R Menique 005
+    100224: Bip001 R Menique 006
+    100226: Bip001 R Menique 1
+    100228: Bip001 R Menique 2
+    100230: Bip001 R Menique 3
+    100232: Bip001 R Pulgar 004
+    100234: Bip001 R Pulgar 005
+    100236: Bip001 R Pulgar 006
+    100238: Bip001 R Pulgar 1
+    100240: Bip001 R Pulgar 2
+    100242: Bip001 R Pulgar 3
+    100244: Bip001 R Thigh
+    100246: Bip001 R Thigh001
+    100248: Bip001 R Toe0
+    100250: Bip001 R Toe001
+    100252: Bip001 R Toe0Nub
+    100254: Bip001 R Toe0Nub001
+    100256: Bip001 R UpperArm
+    100258: Bip001 R UpperArm001
+    100260: Bip001 Spine
+    100262: Bip001 Spine003
+    100264: Bip001 Spine004
+    100266: Bip001 Spine005
+    100268: Bip001 Spine1
+    100270: Bip001 Spine2
+    100272: Bip002
+    100274: Body
+    100276: Bolsa003
+    100278: Bolsa004
+    100280: Bolsa1
+    100282: Bolsa2
+    100284: Bone001
+    100286: BoneHand
+    100288: BoneHand001
+    100290: BoneVaina
+    100292: BoneVaina001
+    100294: Cabeza
+    100296: Cabeza001
+    100298: Camera001
+    100300: Camera001.Target
+    100302: CAPA
+    100304: CAPA001
+    100306: Cuchillo
+    100308: Cuchillo 1
+    100310: Cuchillo 2
+    100312: Cuchillo001
+    100314: Cuerpo
+    100316: Cuerpo001
+    100318: Cylinder001
+    100320: Hueso Boca
+    100322: KatanaDefault
+    100324: KatanaDefaultHand
+    100326: KatanaLobo
+    100328: KatanaLoboHand
+    100330: Manga L
+    100332: Manga L001
+    100334: Manga R
+    100336: Manga R001
+    100338: Panther
+    100340: Panther001
+    100342: Panther2Bone001
+    100344: Panther2Bone001 1
+    100346: PantherHead
+    100348: PantherHead001
+    100350: PantherHeadBone001
+    100352: PantherHeadBone002
+    100354: PantherHeadBone003
+    100356: PantherHeadBone004
+    100358: PantherHeadBone005
+    100360: PantherHeadBone006
+    100362: PantherHeadBone007
+    100364: PantherHeadBone008
+    100366: PantherHeadBone009
+    100368: PantherHeadBone010
+    100370: PantherLLeg003
+    100372: PantherLLeg004
+    100374: PantherLLeg1
+    100376: PantherLLeg1 1
+    100378: PantherLLeg1 2
+    100380: PantherLLeg2
+    100382: PantherLLeg2 1
+    100384: PantherLLeg2 2
+    100386: PantherLLegCollarbone
+    100388: PantherLLegCollarbone001
+    100390: PantherLLegDigit023
+    100392: PantherLLegDigit024
+    100394: PantherLLegDigit025
+    100396: PantherLLegDigit026
+    100398: PantherLLegDigit11
+    100400: PantherLLegDigit12
+    100402: PantherLLegDigit21
+    100404: PantherLLegDigit22
+    100406: PantherLLegPalm
+    100408: PantherLLegPalm 1
+    100410: PantherLLegPalm 2
+    100412: PantherLLegPalm001
+    100414: PantherLLegPlatform
+    100416: PantherLLegPlatform 1
+    100418: PantherLLegPlatform 2
+    100420: PantherLLegPlatform001
+    100422: PantherNeck006
+    100424: PantherNeck007
+    100426: PantherNeck008
+    100428: PantherNeck009
+    100430: PantherNeck010
+    100432: PantherNeck1
+    100434: PantherNeck2
+    100436: PantherNeck3
+    100438: PantherNeck4
+    100440: PantherNeck5
+    100442: PantherPalmBone001
+    100444: PantherPalmBone001 1
+    100446: PantherPelvis
+    100448: PantherPelvis001
+    100450: PantherRibcage
+    100452: PantherRibcage001
+    100454: PantherRLeg003
+    100456: PantherRLeg004
+    100458: PantherRLeg1
+    100460: PantherRLeg1 1
+    100462: PantherRLeg1 2
+    100464: PantherRLeg2
+    100466: PantherRLeg2 1
+    100468: PantherRLeg2 2
+    100470: PantherRLegCollarbone
+    100472: PantherRLegDigit023
+    100474: PantherRLegDigit024
+    100476: PantherRLegDigit025
+    100478: PantherRLegDigit026
+    100480: PantherRLegDigit11
+    100482: PantherRLegDigit12
+    100484: PantherRLegDigit21
+    100486: PantherRLegDigit22
+    100488: PantherRLegPalm
+    100490: PantherRLegPalm 1
+    100492: PantherRLegPalm 2
+    100494: PantherRLegPalm001
+    100496: PantherRLegPlatform
+    100498: PantherRLegPlatform 1
+    100500: PantherRLegPlatform 2
+    100502: PantherRLegPlatform001
+    100504: PantherRLegShoulderblade
+    100506: PantherSpine007
+    100508: PantherSpine008
+    100510: PantherSpine009
+    100512: PantherSpine010
+    100514: PantherSpine011
+    100516: PantherSpine012
+    100518: PantherSpine1
+    100520: PantherSpine2
+    100522: PantherSpine3
+    100524: PantherSpine4
+    100526: PantherSpine5
+    100528: PantherSpine6
+    100530: PantherTail008
+    100532: PantherTail009
+    100534: PantherTail010
+    100536: PantherTail011
+    100538: PantherTail012
+    100540: PantherTail013
+    100542: PantherTail014
+    100544: PantherTail1
+    100546: PantherTail2
+    100548: PantherTail3
+    100550: PantherTail4
+    100552: PantherTail5
+    100554: PantherTail6
+    100556: PantherTail7
+    100558: Sombrero
+    100560: Tela F 003
+    100562: Tela F 004
+    100564: Tela F 1
+    100566: Tela F 2
+    100568: VainaCuchillo
+    100570: VainaCuchillo001
+    100572: VainaDefault
+    100574: VainaLobo
+    400000: //RootNode
+    400002: Animation LayerTransform
+    400004: BIGBADWOLF
+    400006: Bip001
+    400008: Bip001 Footsteps
+    400010: Bip001 Footsteps001
+    400012: Bip001 Head
+    400014: Bip001 Head001
+    400016: Bip001 HeadNub
+    400018: Bip001 HeadNub001
+    400020: Bip001 L Anular 004
+    400022: Bip001 L Anular 005
+    400024: Bip001 L Anular 006
+    400026: Bip001 L Anular 1
+    400028: Bip001 L Anular 2
+    400030: Bip001 L Anular 3
+    400032: Bip001 L Calf
+    400034: Bip001 L Calf001
+    400036: Bip001 L Clavicle
+    400038: Bip001 L Clavicle001
+    400040: Bip001 L Corazon 004
+    400042: Bip001 L Corazon 005
+    400044: Bip001 L Corazon 006
+    400046: Bip001 L Corazon 1
+    400048: Bip001 L Corazon 2
+    400050: Bip001 L Corazon 3
+    400052: Bip001 L Finger0Nub
+    400054: Bip001 L Finger0Nub001
+    400056: Bip001 L Finger1Nub
+    400058: Bip001 L Finger1Nub001
+    400060: Bip001 L Finger2Nub
+    400062: Bip001 L Finger2Nub001
+    400064: Bip001 L Finger3Nub
+    400066: Bip001 L Finger3Nub001
+    400068: Bip001 L Finger4Nub
+    400070: Bip001 L Finger4Nub001
+    400072: Bip001 L Foot
+    400074: Bip001 L Foot001
+    400076: Bip001 L Forearm
+    400078: Bip001 L Forearm001
+    400080: Bip001 L Hand
+    400082: Bip001 L Hand001
+    400084: Bip001 L Indice 004
+    400086: Bip001 L Indice 005
+    400088: Bip001 L Indice 006
+    400090: Bip001 L Indice 1
+    400092: Bip001 L Indice 2
+    400094: Bip001 L Indice 3
+    400096: Bip001 L Menique 004
+    400098: Bip001 L Menique 005
+    400100: Bip001 L Menique 006
+    400102: Bip001 L Menique 1
+    400104: Bip001 L Menique 2
+    400106: Bip001 L Menique 3
+    400108: Bip001 L Pulgar 004
+    400110: Bip001 L Pulgar 005
+    400112: Bip001 L Pulgar 006
+    400114: Bip001 L Pulgar 1
+    400116: Bip001 L Pulgar 2
+    400118: Bip001 L Pulgar 3
+    400120: Bip001 L Thigh
+    400122: Bip001 L Thigh001
+    400124: Bip001 L Toe0
+    400126: Bip001 L Toe001
+    400128: Bip001 L Toe0Nub
+    400130: Bip001 L Toe0Nub001
+    400132: Bip001 L UpperArm
+    400134: Bip001 L UpperArm001
+    400136: Bip001 Neck
+    400138: Bip001 Neck001
+    400140: Bip001 Pelvis
+    400142: Bip001 Pelvis001
+    400144: Bip001 R Anular 004
+    400146: Bip001 R Anular 005
+    400148: Bip001 R Anular 006
+    400150: Bip001 R Anular 1
+    400152: Bip001 R Anular 2
+    400154: Bip001 R Anular 3
+    400156: Bip001 R Calf
+    400158: Bip001 R Calf001
+    400160: Bip001 R Clavicle
+    400162: Bip001 R Clavicle001
+    400164: Bip001 R Corazon 004
+    400166: Bip001 R Corazon 005
+    400168: Bip001 R Corazon 006
+    400170: Bip001 R Corazon 1
+    400172: Bip001 R Corazon 2
+    400174: Bip001 R Corazon 3
+    400176: Bip001 R Finger0Nub
+    400178: Bip001 R Finger0Nub001
+    400180: Bip001 R Finger1Nub
+    400182: Bip001 R Finger1Nub001
+    400184: Bip001 R Finger2Nub
+    400186: Bip001 R Finger2Nub001
+    400188: Bip001 R Finger3Nub
+    400190: Bip001 R Finger3Nub001
+    400192: Bip001 R Finger4Nub
+    400194: Bip001 R Finger4Nub001
+    400196: Bip001 R Foot
+    400198: Bip001 R Foot001
+    400200: Bip001 R Forearm
+    400202: Bip001 R Forearm001
+    400204: Bip001 R Hand
+    400206: Bip001 R Hand001
+    400208: Bip001 R Indice 004
+    400210: Bip001 R Indice 005
+    400212: Bip001 R Indice 006
+    400214: Bip001 R Indice 1
+    400216: Bip001 R Indice 2
+    400218: Bip001 R Indice 3
+    400220: Bip001 R Menique 004
+    400222: Bip001 R Menique 005
+    400224: Bip001 R Menique 006
+    400226: Bip001 R Menique 1
+    400228: Bip001 R Menique 2
+    400230: Bip001 R Menique 3
+    400232: Bip001 R Pulgar 004
+    400234: Bip001 R Pulgar 005
+    400236: Bip001 R Pulgar 006
+    400238: Bip001 R Pulgar 1
+    400240: Bip001 R Pulgar 2
+    400242: Bip001 R Pulgar 3
+    400244: Bip001 R Thigh
+    400246: Bip001 R Thigh001
+    400248: Bip001 R Toe0
+    400250: Bip001 R Toe001
+    400252: Bip001 R Toe0Nub
+    400254: Bip001 R Toe0Nub001
+    400256: Bip001 R UpperArm
+    400258: Bip001 R UpperArm001
+    400260: Bip001 Spine
+    400262: Bip001 Spine003
+    400264: Bip001 Spine004
+    400266: Bip001 Spine005
+    400268: Bip001 Spine1
+    400270: Bip001 Spine2
+    400272: Bip002
+    400274: Body
+    400276: Bolsa003
+    400278: Bolsa004
+    400280: Bolsa1
+    400282: Bolsa2
+    400284: Bone001
+    400286: BoneHand
+    400288: BoneHand001
+    400290: BoneVaina
+    400292: BoneVaina001
+    400294: Cabeza
+    400296: Cabeza001
+    400298: Camera001
+    400300: Camera001.Target
+    400302: CAPA
+    400304: CAPA001
+    400306: Cuchillo
+    400308: Cuchillo 1
+    400310: Cuchillo 2
+    400312: Cuchillo001
+    400314: Cuerpo
+    400316: Cuerpo001
+    400318: Cylinder001
+    400320: Hueso Boca
+    400322: KatanaDefault
+    400324: KatanaDefaultHand
+    400326: KatanaLobo
+    400328: KatanaLoboHand
+    400330: Manga L
+    400332: Manga L001
+    400334: Manga R
+    400336: Manga R001
+    400338: Panther
+    400340: Panther001
+    400342: Panther2Bone001
+    400344: Panther2Bone001 1
+    400346: PantherHead
+    400348: PantherHead001
+    400350: PantherHeadBone001
+    400352: PantherHeadBone002
+    400354: PantherHeadBone003
+    400356: PantherHeadBone004
+    400358: PantherHeadBone005
+    400360: PantherHeadBone006
+    400362: PantherHeadBone007
+    400364: PantherHeadBone008
+    400366: PantherHeadBone009
+    400368: PantherHeadBone010
+    400370: PantherLLeg003
+    400372: PantherLLeg004
+    400374: PantherLLeg1
+    400376: PantherLLeg1 1
+    400378: PantherLLeg1 2
+    400380: PantherLLeg2
+    400382: PantherLLeg2 1
+    400384: PantherLLeg2 2
+    400386: PantherLLegCollarbone
+    400388: PantherLLegCollarbone001
+    400390: PantherLLegDigit023
+    400392: PantherLLegDigit024
+    400394: PantherLLegDigit025
+    400396: PantherLLegDigit026
+    400398: PantherLLegDigit11
+    400400: PantherLLegDigit12
+    400402: PantherLLegDigit21
+    400404: PantherLLegDigit22
+    400406: PantherLLegPalm
+    400408: PantherLLegPalm 1
+    400410: PantherLLegPalm 2
+    400412: PantherLLegPalm001
+    400414: PantherLLegPlatform
+    400416: PantherLLegPlatform 1
+    400418: PantherLLegPlatform 2
+    400420: PantherLLegPlatform001
+    400422: PantherNeck006
+    400424: PantherNeck007
+    400426: PantherNeck008
+    400428: PantherNeck009
+    400430: PantherNeck010
+    400432: PantherNeck1
+    400434: PantherNeck2
+    400436: PantherNeck3
+    400438: PantherNeck4
+    400440: PantherNeck5
+    400442: PantherPalmBone001
+    400444: PantherPalmBone001 1
+    400446: PantherPelvis
+    400448: PantherPelvis001
+    400450: PantherRibcage
+    400452: PantherRibcage001
+    400454: PantherRLeg003
+    400456: PantherRLeg004
+    400458: PantherRLeg1
+    400460: PantherRLeg1 1
+    400462: PantherRLeg1 2
+    400464: PantherRLeg2
+    400466: PantherRLeg2 1
+    400468: PantherRLeg2 2
+    400470: PantherRLegCollarbone
+    400472: PantherRLegDigit023
+    400474: PantherRLegDigit024
+    400476: PantherRLegDigit025
+    400478: PantherRLegDigit026
+    400480: PantherRLegDigit11
+    400482: PantherRLegDigit12
+    400484: PantherRLegDigit21
+    400486: PantherRLegDigit22
+    400488: PantherRLegPalm
+    400490: PantherRLegPalm 1
+    400492: PantherRLegPalm 2
+    400494: PantherRLegPalm001
+    400496: PantherRLegPlatform
+    400498: PantherRLegPlatform 1
+    400500: PantherRLegPlatform 2
+    400502: PantherRLegPlatform001
+    400504: PantherRLegShoulderblade
+    400506: PantherSpine007
+    400508: PantherSpine008
+    400510: PantherSpine009
+    400512: PantherSpine010
+    400514: PantherSpine011
+    400516: PantherSpine012
+    400518: PantherSpine1
+    400520: PantherSpine2
+    400522: PantherSpine3
+    400524: PantherSpine4
+    400526: PantherSpine5
+    400528: PantherSpine6
+    400530: PantherTail008
+    400532: PantherTail009
+    400534: PantherTail010
+    400536: PantherTail011
+    400538: PantherTail012
+    400540: PantherTail013
+    400542: PantherTail014
+    400544: PantherTail1
+    400546: PantherTail2
+    400548: PantherTail3
+    400550: PantherTail4
+    400552: PantherTail5
+    400554: PantherTail6
+    400556: PantherTail7
+    400558: Sombrero
+    400560: Tela F 003
+    400562: Tela F 004
+    400564: Tela F 1
+    400566: Tela F 2
+    400568: VainaCuchillo
+    400570: VainaCuchillo001
+    400572: VainaDefault
+    400574: VainaLobo
+    2300000: Cuchillo 1
+    2300002: Cuchillo 2
+    2300004: Cylinder001
+    2300006: Sombrero
+    2300008: VainaCuchillo
+    2300010: VainaCuchillo001
+    3300000: Cuchillo 1
+    3300002: Cuchillo 2
+    3300004: Cylinder001
+    3300006: Sombrero
+    3300008: VainaCuchillo
+    3300010: VainaCuchillo001
+    4300000: Cuerpo
+    4300002: Cabeza
+    4300004: VainaCuchillo
+    4300006: Cuchillo
+    4300008: KatanaLobo
+    4300010: VainaLobo
+    4300012: VainaDefault
+    4300014: KatanaDefault
+    4300016: KatanaLoboHand
+    4300018: KatanaDefaultHand
+    4300020: Cuerpo001
+    4300022: Cabeza001
+    4300024: Cylinder001
+    4300026: Sombrero
+    4300028: VainaCuchillo001
+    4300030: Cuchillo
+    4300032: BIGBADWOLF
+    4300034: Body
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BIGBADWOLF
+    13700002: Body
+    13700004: Cabeza
+    13700006: Cabeza001
+    13700008: Cuerpo
+    13700010: Cuerpo001
+    13700012: KatanaDefault
+    13700014: KatanaDefaultHand
+    13700016: KatanaLobo
+    13700018: KatanaLoboHand
+    13700020: VainaDefault
+    13700022: VainaLobo
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

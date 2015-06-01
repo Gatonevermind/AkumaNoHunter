@@ -63,6 +63,19 @@ public class WolfIABOSS : MonoBehaviour {
 
 	public CapsuleCollider collider;
 
+	public static bool bossDeath;
+
+	//AUDIO
+
+	public AudioClip soundAttackFlesh1;
+	public AudioClip soundAttackFlesh2;
+	public AudioClip soundAttackFlesh3;
+	public AudioClip enemyMordiscoSound;
+	public AudioClip enemyZarpazoSound;
+	public AudioClip enemyJumpSound;
+	public AudioClip enemyBackSound;
+	public AudioClip enemyHowlSound;
+
 	// >>>>>>>>>>>> PLAYER DAMAGE TO WOLF <<<<<<<<<<<<
 	private void OnTriggerEnter(Collider other)
 	{
@@ -75,6 +88,7 @@ public class WolfIABOSS : MonoBehaviour {
 			{
 				if (PlayerAttack.attackCount == 1)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh1, 1);
 					PlayerMovement.hit = true;
 					enemyVida -= 30;
 					//animator.SetBool ("Hit", true);
@@ -88,6 +102,7 @@ public class WolfIABOSS : MonoBehaviour {
 				
 				else if (PlayerAttack.attackCount == 2)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh2, 1);
 					PlayerMovement.hit = true;
 					enemyVida -= 30;
 					hitCounter = 0;
@@ -98,6 +113,7 @@ public class WolfIABOSS : MonoBehaviour {
 				}
 				else if (PlayerAttack.attackCount ==3)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh3, 1);
 					PlayerMovement.hit = true;
 					enemyVida -= 50;
 					hitCounter = 0;
@@ -108,6 +124,7 @@ public class WolfIABOSS : MonoBehaviour {
 				}
 				else if (PlayerAttack.attackCount ==8)
 				{
+					GetComponent<AudioSource>().PlayOneShot(soundAttackFlesh1, 1);
 					PlayerMovement.hit = true;
 					PlayerMovement.stamina += 15;
 					enemyVida -= 30;
@@ -138,12 +155,19 @@ public class WolfIABOSS : MonoBehaviour {
 		enemyAttackTimer = 0;
 		preSpeed = 1.5f;
 		speed = 3.5f;
-        enemyVida = 2000f;
+        enemyVida = 1200f;
+
+		bossDeath = false;
 	
 	}
 
 	void Update () 
 	{
+		if (PlayerHealth.curHealth <= 0)
+		{
+			detection = 0;
+			state = State.IDLE;
+		}
 		if (enemyAttackTimer == 0)
 		{
 			enemyAttackHit = false;
@@ -170,6 +194,7 @@ public class WolfIABOSS : MonoBehaviour {
 			case State.IDLE:
 			{
 				//Debug.Log("Idle");
+				
 				animator.SetBool("Mordisco", false);
 				animator.SetBool("Zarpazo", false);
 				detection = 15;
@@ -230,6 +255,9 @@ public class WolfIABOSS : MonoBehaviour {
 			case State.MORDISCO:
 			{
 			//Debug.Log("Mordisco");
+				if(enemyAttackTimer == 0)
+					GetComponent<AudioSource>().PlayOneShot(enemyMordiscoSound, 1);
+
 				lastBack = back.position;
 
 				enemyAttackTimer += Time.deltaTime;
@@ -321,6 +349,8 @@ public class WolfIABOSS : MonoBehaviour {
 
 			case State.ZARPAZO:
 			{
+				if(enemyAttackTimer == 0)
+					GetComponent<AudioSource>().PlayOneShot(enemyZarpazoSound, 1);
 			//Debug.Log("Zarpazo");
 				enemyAttackTimer += Time.deltaTime;
 				//animator.SetBool ("Idle", false);
@@ -412,6 +442,8 @@ public class WolfIABOSS : MonoBehaviour {
 				
 			case State.JUMP:
 			{
+				if(enemyAttackTimer == 0)
+					GetComponent<AudioSource>().PlayOneShot(enemyJumpSound, 1);
 				enemyAttackTimer += Time.deltaTime;
 
 				if (enemyAttackTimer < 0.6)
@@ -466,6 +498,8 @@ public class WolfIABOSS : MonoBehaviour {
 
 			case State.BACK:
 			{
+				if(enemyAttackTimer == 0)
+					GetComponent<AudioSource>().PlayOneShot(enemyBackSound, 1);
 				enemyAttackTimer += Time.deltaTime;
 
 				if(enemyAttackTimer > 0)
@@ -505,6 +539,9 @@ public class WolfIABOSS : MonoBehaviour {
 
 			case State.HOWL:
 			{
+				if(enemyAttackTimer == 0)
+					GetComponent<AudioSource>().PlayOneShot(enemyHowlSound, 1);
+
 				enemyAttackTimer+= Time.deltaTime;
 				if(enemyAttackTimer < 0.5f)
 				{
@@ -530,7 +567,8 @@ public class WolfIABOSS : MonoBehaviour {
 			}
 				break;
 			case State.DEATH:
-			{
+			{	
+				bossDeath = true;
 				if(enemyAttackTimer <= 0.5)
 					enemyAttackTimer += Time.deltaTime;
 

@@ -29,13 +29,13 @@ public class PlayerAttack : MonoBehaviour
     public bool combatActivate = false;
 
 	public GameObject attackBox;
+	//public GameObject weaponTrail;
 
 	public static float clickCount = 0;
 
 	public float stamina;
 
 	public bool enemyHit;
-
 
     // Use this for initialization
     void Start()
@@ -51,6 +51,14 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		/*if (PlayerMovement.combat)
+			weaponTrail.SetActive (true);
+		else
+			weaponTrail.SetActive (false);
+		/*if (attackCount > 0)
+			weaponTrail.SetActive (true);
+		else
+			weaponTrail.SetActive (false);*/
 		if (attackTimer == 0)
 			attackBox.SetActive (false);
 
@@ -62,7 +70,6 @@ public class PlayerAttack : MonoBehaviour
                 GamePadState testState = GamePad.GetState(testPlayerIndex);
                 if (testState.IsConnected)
                 {
-                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
                     playerIndex = testPlayerIndex;
                     playerIndexSet = true;
                 }
@@ -105,9 +112,15 @@ public class PlayerAttack : MonoBehaviour
 			if (attackCount == 1) 
 			{
 				if ((attackTimer > 0.1f) && (attackTimer < 0.2f))
+				{
 					attackBox.SetActive (true);
-				else
+					//weaponTrail.SetActive (true);
+				}
+				else 
+				{
 					attackBox.SetActive (false);
+					//weaponTrail.SetActive (false);
+				}
 
 				if ((attackTimer >= 0.4f) && (attackTimer < 0.7f)) {
 					if (clickCount >= 2) {
@@ -187,7 +200,6 @@ public class PlayerAttack : MonoBehaviour
 			} 
 			else if (attackCount == 7) 
 			{
-				chargeDetector.SetActive(true);
 
 				if ((attackTimer < 0) || (ChargeDetector.hit))
 				{
@@ -200,6 +212,7 @@ public class PlayerAttack : MonoBehaviour
 			} 
 			else if (attackCount == 8) 
 			{
+
 				animator.SetBool("Charge", false);
 				animator.SetBool ("Fly", false);
 				animator.SetFloat ("ChargeCounter", 0);
@@ -249,14 +262,14 @@ public class PlayerAttack : MonoBehaviour
 					{
 						if ((clickCount == 0) && (PlayerMovement.stamina > 20))
 						{
-							if ((Input.GetKeyDown (KeyCode.Mouse0)) || (state.Triggers.Right > 0)) 
+							if ((Input.GetKeyDown (KeyCode.Mouse0)) || (prevState.Triggers.Left <= 0.7f && state.Triggers.Left > 0.7f)) 
 							{
 								animator.SetFloat ("Attack", 1);
 								attackCount = 1;
 								clickCount = 1;
 								stepCount = 1;
 							}
-							if (Input.GetKeyDown (KeyCode.Mouse1)) 
+                            if ((Input.GetKeyDown(KeyCode.Mouse1)) || (prevState.Triggers.Right <= 0.7f && state.Triggers.Right > 0.7f)) 
 							{
 								animator.SetBool ("Charge", true);
 								attackCount = 6;
@@ -266,14 +279,14 @@ public class PlayerAttack : MonoBehaviour
 						} 
 						else if ((clickCount == 1) && (PlayerMovement.stamina > 20))
 						{
-							if ((Input.GetKeyDown (KeyCode.Mouse1)) || (state.Triggers.Right > 0)) 
+                            if ((Input.GetKeyDown(KeyCode.Mouse1)) || (prevState.Triggers.Right <= 0.7f && state.Triggers.Right > 0.7f)) 
 							{
 								clickCount = 2;
 							}
 						} 
 						else if ((clickCount == 2) && (PlayerMovement.stamina > 20))
 						{
-							if ((Input.GetKeyDown (KeyCode.Mouse0)) || (state.Triggers.Right > 0)) 
+                            if ((Input.GetKeyDown(KeyCode.Mouse0)) || (prevState.Triggers.Left <= 0.7f && state.Triggers.Left > 0.7f)) 
 							{
 								clickCount = 3;
 							}
@@ -282,7 +295,7 @@ public class PlayerAttack : MonoBehaviour
 						{
 							if (attackTimer < 0.6f)
 							{
-								if(Input.GetKeyUp(KeyCode.Mouse1))
+								if((Input.GetKeyUp(KeyCode.Mouse1)) || (prevState.Triggers.Right >= 0.3f && state.Triggers.Right < 0.3f))
 								{
 									animator.SetBool ("Charge", false);
 
@@ -304,7 +317,7 @@ public class PlayerAttack : MonoBehaviour
 							{
 								animator.SetFloat ("ChargeCounter", 1, 0.2f, Time.deltaTime);
 
-								if (Input.GetKeyUp (KeyCode.Mouse1))
+                                if ((Input.GetKeyUp(KeyCode.Mouse1)) || (prevState.Triggers.Right >= 0.3f && state.Triggers.Right < 0.3f))
 								{
 									animator.SetBool ("Fly", true);
 
@@ -316,7 +329,7 @@ public class PlayerAttack : MonoBehaviour
 						} 
 						else if ((clickCount == 8) && (PlayerMovement.stamina > 20))
 						{
-							if (Input.GetKeyDown (KeyCode.Mouse1))
+                            if ((Input.GetKeyDown(KeyCode.Mouse1)) || (prevState.Triggers.Right <= 0.7f && state.Triggers.Right > 0.7f))
 								clickCount = 2;
 						}
 					}

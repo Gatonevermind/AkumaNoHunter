@@ -10,6 +10,8 @@ public class LoadingControl : MonoBehaviour
     public Transform fruit_4;
     public Transform fruit_5;
 
+	public Transform final;
+
     public GameObject fruit1;
     public GameObject fruit2;
     public GameObject fruit3;
@@ -18,9 +20,9 @@ public class LoadingControl : MonoBehaviour
 
     public int fruitEated;
 
-    public AnimationClip run;
-    public AnimationClip eat;
-    public AnimationClip stay;
+    //public AnimationClip run;
+    //public AnimationClip eat;
+    //public AnimationClip stay;
 
     public float counterEat;
     public float counterMove;
@@ -28,10 +30,16 @@ public class LoadingControl : MonoBehaviour
     public string levelName;
     private AsyncOperation async;
 
-    public Animator animator;
+    private Animator animator;
+
+	public float countTransition;
+	public bool activePlayMode;
 
     private void Start()
     {
+		activePlayMode = false;
+
+		animator = GetComponent<Animator> ();
         fruitEated = 0;
         counterEat = 0;
         StartLoading();
@@ -42,95 +50,122 @@ public class LoadingControl : MonoBehaviour
     {
         if (fruitEated == 0)
         {
-            counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_1.position, 0.05f);
 
-            if (counterMove >= 0.5f)
+            if (Vector3.Distance(transform.position, fruit_1.position) < 1.5f)
             {
                 counterEat += Time.deltaTime;
                 animator.SetBool("eating", true);
+				if (counterEat >= 0.25f)
+				{
+					animator.SetBool("eating", false);
+					fruit1.SetActive(false);
+				}
+			
                 if (counterEat >= 1.0f)
                 {
-                    GameObject.Destroy(fruit1);
                     fruitEated += 1;
                     counterEat = 0;
-                    counterMove = 0;
-                    animator.SetBool("eating", false);
                 }
             }
         }
         else if (fruitEated == 1)
         {
-            counterMove += Time.deltaTime;
             transform.position = Lerp(transform.position, fruit_2.position, 0.05f);
 
-            if (counterMove >= 0.5f)
+			if (Vector3.Distance(transform.position, fruit_2.position) < 1.5f)
             {
                 counterEat += Time.deltaTime;
                 animator.SetBool("eating", true);
-                if (counterEat >= 1.0f)
+				if (counterEat >= 0.25f)
+				{
+					animator.SetBool("eating", false);
+					fruit2.SetActive(false);
+				}
+                if (counterEat >= 1)
                 {
-                    GameObject.Destroy(fruit2);
                     fruitEated += 1;
                     counterEat = 0;
-                    counterMove = 0;
-                    animator.SetBool("eating", false);
                 }
             }
         }
         else if (fruitEated == 2)
         {
-            counterMove += Time.deltaTime;
-            transform.position = Lerp(transform.position, fruit_3.position, 0.05f);
-
-            if (counterMove >= 0.5f)
-            {
-                counterEat += Time.deltaTime;
-                animator.SetBool("eating", true);
-                if (counterEat >= 1.0f)
-                {
-                    GameObject.Destroy(fruit3);
-                    fruitEated += 1;
-                    counterEat = 0;
-                    counterMove = 0;
-                    animator.SetBool("eating", false);
-                }
-            }
+			transform.position = Lerp(transform.position, fruit_3.position, 0.05f);
+			
+			if (Vector3.Distance(transform.position, fruit_3.position) < 1.5f)
+			{
+				counterEat += Time.deltaTime;
+				animator.SetBool("eating", true);
+				if (counterEat >= 0.25f)
+				{
+					animator.SetBool("eating", false);
+					fruit3.SetActive(false);
+				}
+				if (counterEat >= 1)
+				{
+					fruitEated += 1;
+					counterEat = 0;
+				}
+			}
         }
         else if (fruitEated == 3)
         {
-            counterMove += Time.deltaTime;
-            transform.position = Lerp(transform.position, fruit_4.position, 0.05f);
-
-            if (counterMove >= 1f)
-            {
-                ActivateScene();
-                /*
-                counterEat += Time.deltaTime;
-                animator.SetBool("eating", true);
-                if (counterEat >= 1.0f)
-                {
-                    GameObject.Destroy(fruit4);
-                    fruitEated += 1;
-                    counterEat = 0;
-                    counterMove = 0;
-                    animator.SetBool("eating", false);
-                }
-                */
-            }
+			transform.position = Lerp(transform.position, fruit_4.position, 0.05f);
+			
+			if (Vector3.Distance(transform.position, fruit_4.position) < 1.5f)
+			{
+				counterEat += Time.deltaTime;
+				animator.SetBool("eating", true);
+				if (counterEat >= 0.25f)
+				{
+					animator.SetBool("eating", false);
+					fruit4.SetActive(false);
+				}
+				if (counterEat >= 1)
+				{
+					fruitEated += 1;
+					counterEat = 0;
+				}
+			}
         }
-        /*
-        else if (fruitEated == 4)
-        {
-            counterMove += Time.deltaTime;
-            transform.position = Lerp(transform.position, fruit_5.position, 0.05f);
+		else if (fruitEated == 4)
+		{
+			transform.position = Lerp(transform.position, fruit_5.position, 0.05f);
+			
+			if (Vector3.Distance(transform.position, fruit_5.position) < 1.3f)
+			{
+				counterEat += Time.deltaTime;
+				animator.SetBool("eating", true);
+				if (counterEat >= 0.25f)
+				{
+					animator.SetBool("eating", false);
+					fruit5.SetActive(false);
+				}
+				if (counterEat >= 1)
+				{
+					fruitEated += 1;
+					counterEat = 0;
+				}
+			}
+		}
+		else if (fruitEated == 5)
+		{
+			transform.position = Lerp(transform.position, final.position, 0.02f);
+			activePlayMode = true;
 
-            if (counterMove >= 1.0f)
-            {
-                ActivateScene();
-            }
-        }
-        */
+			if (Vector3.Distance(transform.position, final.position) < 1)
+			{
+				ActivateScene();
+			}
+
+			if (activePlayMode) {
+				Debug.Log("Play Mode ACTIVATED");
+				float fadeTime = GameObject.Find ("GameMaster").GetComponent<fader> ().BeginFade (1);
+				//yield return new WaitForSeconds (fadeTime);
+				countTransition -= Time.deltaTime;
+			}
+		}
     }
 
     public static Vector3 Lerp(Vector3 start, Vector3 finish, float percentage)

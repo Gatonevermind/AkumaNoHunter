@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class KatanaAttack : MonoBehaviour
 {
     // Use this for initialization
+	//public AudioClip attackFlesh01;
 
 	public float attackCount;
 	public float attackTimer;
@@ -44,7 +47,6 @@ public class KatanaAttack : MonoBehaviour
 			    if (attackCount == 1)
 				{
 					//enemy.Damage(-30);
-
 					attackHit = true;
 					Debug.Log ("HIT 1");
 				}
@@ -52,6 +54,8 @@ public class KatanaAttack : MonoBehaviour
 				if (attackCount == 2)
 				{
 					//enemy.Damage(-30);
+					//other.GetComponent(attackFlesh01);
+
 					attackHit = true;
 					Debug.Log ("HIT 2");
 				}

@@ -3,15 +3,26 @@ using System.Collections;
 
 public class CampoEvent : MonoBehaviour 
 {
-	public GameObject lobo;
-	public GameObject loboCollider;
+	public static bool weaponActive;
 
+	void Start()
+	{
+		weaponActive = false;
+	}
 
 	private void OnTriggerEnter (Collider other)
 	{
 		if(other.tag == "Player")
 		{
-			lobo.SetActive(true);
+			weaponActive = true;
 		}
 	}
+	private void OnTriggerExit (Collider other)
+	{
+		if(other.tag == "Player")
+		{
+			weaponActive = false;
+		}
+	}
+
 }

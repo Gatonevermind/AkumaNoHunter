@@ -3,14 +3,18 @@ using System.Collections;
 
 public class EnemyDamage : MonoBehaviour {
 
+	public AudioClip playerKnockSound;
+
 	public float damage;
 	public bool hit;
+
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "HitBox")
 		{
 
-
+			GetComponent<AudioSource>().PlayOneShot(playerKnockSound, 1);
 			PlayerMovement.animator.SetBool("Hit", true);
 
 			PlayerHealth.curHealth -= damage;

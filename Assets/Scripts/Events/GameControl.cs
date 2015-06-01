@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class GameControl : MonoBehaviour 
 {
@@ -11,6 +12,10 @@ public class GameControl : MonoBehaviour
    
     GameObject[] uiPlayerControl;
     GameObject[] interfaceControl;
+
+    PlayerIndex playerIndex;
+    GamePadState prevState;
+    GamePadState state;
 
 	// Use this for initialization
 	void Start () 
@@ -50,6 +55,9 @@ public class GameControl : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+
         if ((introCinematic.counterIntroCinematic >= 20) && (introCinematic.counterIntroCinematic < 20.2f))
         {
             player.transform.position = despertarSpawn.position;
@@ -64,13 +72,13 @@ public class GameControl : MonoBehaviour
             foreach (GameObject uiPlayer in uiPlayerControl)
                 uiPlayer.SetActive(false);
         }
-        else if (BossEvent.countToCinematic >= 44)
+        else if (BossEvent.countToCinematic >= 39)
         {
             foreach (GameObject uiPlayer in uiPlayerControl)
                 uiPlayer.SetActive(true);
         }
 
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.LeftAlt) || (state.Buttons.Back == ButtonState.Pressed))
         {
             foreach (GameObject inter in interfaceControl)
                 inter.SetActive(true);

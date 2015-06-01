@@ -1,0 +1,42 @@
+Initialize engine version: 4.6.3f1 (4753d8b6ef2b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.4709]
+    Renderer: NVIDIA GeForce GTX 970
+    Vendor:   NVIDIA
+    VRAM:     3072 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+- Completed reload, in  0.029 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\AkumaProject\AkumaNoHunter\AkumaNoHunter_Data\Managed\Boo.Lang.dll (this message is harmless)
+UnloadTime: 11.331187 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 130 unused Assets to reduce memory usage. Loaded Objects now: 320.
+Total: 12.184938 ms (FindLiveObjects: 0.021503 ms CreateObjectMapping: 0.018687 ms MarkObjects: 0.173565 ms  DeleteObjects: 11.454579 ms)
+
+UnloadTime: 0.292348 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 78 unused Assets to reduce memory usage. Loaded Objects now: 19239.
+Total: 2.623455 ms (FindLiveObjects: 0.547321 ms CreateObjectMapping: 0.065279 ms MarkObjects: 1.173745 ms  DeleteObjects: 0.459258 ms)
+
